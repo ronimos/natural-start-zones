@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------
+# Full setup (Ubuntu/WSL2 — do this once, outside the venv):
+#
+#   sudo apt-get install -y libgdal-dev pdal
+#
+# Then activate the venv and install:
+#
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+# ---------------------------------------------------------------
+
+numpy
+matplotlib
+seaborn
+pandas
+scipy
+tqdm
+shapely
+geopandas
+opencv-python
+whitebox
+pdal
+
+# GDAL pip package must match the system library version.
+# Check yours with:  gdal-config --version
+# Ubuntu 24.04 ships 3.8.4:
+GDAL==3.8.4

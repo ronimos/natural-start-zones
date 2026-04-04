@@ -1,0 +1,115 @@
+Date,Hwy Section,HW Path,#,Trigger,Type,D size,Hit Road?,Road Status,cl depth,cl width,Incident?,Comments
+-,Red Mountain Pass,Porcupine,1,N,SS,2,No,U,0,0,No,-
+-,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+-,Red Mountain Pass,Eagle,1,N,SS,3,No,U,0,0,No,-
+-,Red Mountain Pass,Telescope,1,N,SS,3,No,U,0,0,No,-
+-,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+-,Red Mountain Pass,Eagle,1,N,SS,1,No,U,0,0,No,-
+-,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+19-Dec-92,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+19-Dec-92,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+19-Dec-92,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+19-Jan-93,Red Mountain Pass,Telescope,1,N,SS,3,Yes,U,5,-,No,-
+20-Feb-93,Red Mountain Pass,Muleshoe,1,N,HS,4,Yes,U,9,600,No,-
+24-Dec-93,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+24-Dec-93,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+4-Feb-94,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+4-Feb-94,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+5-Feb-94,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+8-Feb-94,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+24-Feb-94,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+12-Nov-94,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+6-Jan-95,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+7-Jan-95,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+7-Jan-95,Red Mountain Pass,Porcupine,1,N,SS,2,No,U,0,0,No,-
+7-Jan-95,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+26-Jan-95,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+27-Jan-95,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+28-Jan-95,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+6-Mar-95,Red Mountain Pass,Muleshoe,1,N,SS,3,No,U,0,0,No,-
+6-Mar-95,Red Mountain Pass,Eagle,1,N,SS,3,No,U,0,0,No,-
+7-Mar-96,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+18-Mar-96,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+18-Mar-96,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+12-Jan-97,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+13-Jan-97,Red Mountain Pass,Muleshoe,1,N,SS,3,No,U,0,0,No,-
+24-Feb-97,Red Mountain Pass,Telescope,1,N,SS,3,No,U,0,0,No,-
+27-Jan-00,Red Mountain Pass,Telescope,1,N,SS,3,No,U,0,0,No,-
+27-Jan-00,Red Mountain Pass,Muleshoe,1,N,SS,3,No,U,0,0,No,-
+27-Jan-00,Red Mountain Pass,Eagle,3,N,SS,3,No,U,0,0,No,-
+16-Dec-00,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,-
+16-Dec-00,Red Mountain Pass,Telescope,1,N,SS,2,No,U,0,0,No,-
+25-Jan-01,Red Mountain Pass,Telescope,1,N,SS,U,No,U,0,0,No,-
+8-Feb-01,Red Mountain Pass,Telescope,1,N,SS,3,No,U,0,0,No,-
+8-Feb-01,Red Mountain Pass,Porcupine,1,N,SS,2,No,U,0,0,No,-
+8-Mar-01,Red Mountain Pass,Eagle,1,N,SS,2,No,U,0,0,No,-
+8-Nov-02,Red Mountain Pass,Telescope,1,N,SS,2,No,Closed,0,0,No,-
+25-Feb-03,Red Mountain Pass,Porcupine,1,N,SS,2,Yes,Open,1,30,No,-
+3-Mar-03,Red Mountain Pass,Muleshoe,1,N,SS,3,No,Open,0,0,No,-
+30-Dec-03,Red Mountain Pass,Eagle,1,N,SS,2,No,Closed,0,0,No,-
+2-Jan-04,Red Mountain Pass,Porcupine,1,N,SS,2,Yes,Open,1,10,No,-
+10-Dec-04,Red Mountain Pass,Telescope,1,N,SS,2,No,Open,0,0,No,-
+10-Dec-04,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Open,0,0,No,-
+10-Dec-04,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,-
+5-Jan-05,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Closed,0,0,No,-
+19-Feb-05,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Open,2,30,No,-
+8-Dec-07,Red Mountain Pass,Eagle,1,N,SS,3,Yes,Open,8,100,No,-
+25-Jan-08,Red Mountain Pass,Telescope,1,N,SS,1.5,No,Open,0,0,No,-
+29-Jan-08,Red Mountain Pass,Porcupine,1,N,SS,2,Yes,Closed,3,20,No,-
+7-Mar-08,Red Mountain Pass,Eagle,1,N,SS,2,Yes,Open,8,30,No,-
+18-Dec-08,Red Mountain Pass,Eagle,1,N,SS,1,Yes,Closed,2,20,No,-
+18-Dec-08,Red Mountain Pass,Eagle,2,N,SS,2.5,Yes,Closed,2,100,No,-
+22-Jan-10,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Closed,3,100,No,-
+22-Jan-10,Red Mountain Pass,Porcupine,1,N,SS,1.5,Yes,Closed,2,60,No,-
+11-Mar-10,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,-
+11-Dec-10,Red Mountain Pass,Eagle,1,N,SS,1,No,Open,0,0,No,release from recent snow and wind
+11-Dec-10,Red Mountain Pass,Telescope,1,N,SS,1,No,Open,0,0,No,release from recent snow and wind
+24-Dec-10,Red Mountain Pass,Porcupine,1,N,SS,2,Yes,Closed,2,15,No,-
+24-Dec-10,Red Mountain Pass,Eagle,1,N,SS,3,No,Closed,0,0,No,Eagle & Telescope - debris mixed with mitigation debris.
+31-Dec-10,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Closed,1,20,No,-
+20-Jan-11,Red Mountain Pass,Eagle,1,N,SS,1,No,Open,0,0,No,Did not affect road.  Two small narrow slides originating from wind loaded upper rock bands
+22-Jan-11,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,Did not affect highway.  Shallow -  narrow slide but ran almost full track - within 200 ft of road.
+5-Feb-11,Red Mountain Pass,Eagle,1,N,SS,2,Yes,Open,2,50,No,no vis for crown descriptions
+5-Feb-11,Red Mountain Pass,Telescope,1,N,SS,2,No,Open,0,0,No,50 ft from road
+4-Mar-11,Red Mountain Pass,Eagle,1,N,SS,1,No,Open,0,0,No,Stopped 500+ ft from road.  Debris shallow as most of the new snow was confined to upper wind-loaded slopes.  Began as shallow slab at top pushing down steep confined couloir through shallow new snow.  Mid-track it behaved more like a wet release (the sun had just popped out following a strong NW wind/snow event). Significance is how far it ran on the old slick surface.
+27-Apr-11,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Open,0,0,No,Bullion King & Muleshoe .  We saw debris in these runouts before we performed mitigation -  but vis was very poor.  One debris pile looks fresher -  but difficult to say whether some newer snow on top of the debris settled making it easier to see today.
+22-Jan-12,Red Mountain Pass,Eagle,1,N,SS,1.5,No,U,0,0,No,ran 1/4 track. Non road hits
+9-Feb-12,Red Mountain Pass,Telescope,1,N,SS,2,No,Open,0,0,No,-
+9-Feb-12,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Open,0,0,No,-
+9-Feb-12,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,-
+10-Feb-12,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,cross loaded gully feature
+2-Jan-13,Red Mountain Pass,Telescope,1,N,SS,1,No,Open,0,0,No,Another small slide resulting from north winds loading over top of eagle/telescope ridge.  Initiated within rocks at top of path
+2-Jan-13,Red Mountain Pass,Eagle,1,N,SS,1,No,Open,0,0,No,Small release from top of path on lookers right side.  Resulted from north winds loading into starting zone.
+16-Jan-13,Red Mountain Pass,Eagle,2,N,SS,1.5,No,Open,0,0,No,Crowns were hard to pick out (very shallow wind triggered) - mostly saw the debris in track. Strip of snow running down the main gully. Not near enough volume to reach the road.
+27-Jan-13,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,many of these crowns are filled in from additional snow/wind. narrow line of debris ran thru bottom cliffs stopping at top of apron
+16-Nov-14,Red Mountain Pass,Eagle,1,N,SS,1.5,No,Open,0,0,No,Feel strongly that wind triggered this slide. Attached photos show intense wind transport from N to S. The slide had not occurred when the photo was taken but was seen on the way back down from the pass. Too wind obscured to see the crown very well. Funnelled down a tight gully -  the shallow debris reached the top of the apron.
+6-Jan-15,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,ran mid track
+3-Mar-15,Red Mountain Pass,Eagle,1,N,SS,2.5,Yes,Closed,3,300,No,Reached road 3' x 300'
+20-Jan-16,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,crown filled in - suggesting it ran during the storm.  Narrow debris pile came 200' from road
+2-Feb-16,Red Mountain Pass,Eagle,1,N,SS,2.5,Yes,Closed,3,500,No,Natural while road was closed
+16-Dec-16,Red Mountain Pass,Telescope,1,N,SS,2.5,No,Closed,0,0,No,-
+17-Dec-16,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Closed,0,0,No,-
+17-Dec-16,Red Mountain Pass,Eagle,1,N,SS,2.5,No,Closed,0,0,No,-
+23-Dec-16,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,Shallow crown -  but good propagation.  Ran narrow and only reached half-track.
+5-Jan-17,Red Mountain Pass,Eagle,1,N,SS,3,Yes,Closed,7,400,No,-
+9-Jan-17,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,Debris came 150' above rd.  Saw debris above road.  A witness later confirmed seeing it run at 8:30am
+9-Jan-17,Red Mountain Pass,Telescope,1,N,SS,2.5,No,Closed,0,0,No,Came within 150' of hwy.
+14-Jan-17,Red Mountain Pass,Eagle,1,N,SS,2.5,No,Closed,0,0,No,Road Closed - did not reach hwy
+21-Jan-17,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,Crown re-covered by additional snow. Shallow debris ran reached lower apron. Not a road hit. Group of these ran during overnight high PI
+22-Jan-17,Red Mountain Pass,Muleshoe,1,N,SS,2.5,No,Open,0,0,No,Significant slide reached edge of road with small amount of debris.
+24-Mar-17,Red Mountain Pass,Eagle,2,N,SS,2,Yes,Open,1.5,100,No,-
+26-Mar-17,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,ran to 400' of road
+26-Mar-17,Red Mountain Pass,Telescope,1,N,SS,1.5,No,Open,0,0,No,debris came out of cliff- couldn't tell how much. Didn't look like a lot.
+26-Mar-17,Red Mountain Pass,Muleshoe,1,N,SS,2,No,Open,0,0,No,ran to 200' of road
+17-Jan-19,Red Mountain Pass,Eagle,2,N,SS,2,No,U,0,0,No,One of these ran this morning. The other - we watched release due to active heavy wind loading. Slide only involved new snow but ran with impressive speed.
+18-Jan-19,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Closed,3,125,No,-
+18-Jan-19,Red Mountain Pass,Eagle,1,N,SS,2,Yes,Closed,2,75,No,-
+15-Feb-19,Red Mountain Pass,Eagle,1,N,HS,2.5,No,Closed,0,0,No,-
+27-Dec-19,Red Mountain Pass,Eagle,1,N,SS,2,Yes,Open,3,50,No,-
+1-Jan-20,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Open,4,50,No,This was a very similar avalanche to the Storm Slab avalanche that hit the road during the holiday storm. Guessing it is running on a crust and has been triggered by strong NW winds.
+11-Jan-20,Red Mountain Pass,Muleshoe,1,N,SS,2,No,U,0,0,No,Shallow wind slab
+14-Jan-20,Red Mountain Pass,Eagle,1,N,HS,2,No,Open,0,0,No,Appears to have run yesterday - crown and bed surface have been covered or obliterated by the wind. Stopped a few hundred yards short of the highway.
+23-Jan-20,Red Mountain Pass,Eagle,1,N,SS,2,No,Open,0,0,No,Avalanche stayed on upper bench. Did not hit road.
+27-Feb-20,Red Mountain Pass,Telescope,1,N,SS,1,No,Open,0,0,No,Warm day.
+19-Mar-20,Red Mountain Pass,Telescope,1,N,SS,2,Yes,Open,4,25,No,Triggered by a period of high PI and a wind shift to the west.
+24-Jan-21,Red Mountain Pass,Telescope,1,N,SS,1.5,No,U,0,0,No,Likely triggered by strong winds.

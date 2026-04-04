@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "natural-start-zones"
+version = "0.1.0"
+description = "Terrain variability analysis of natural avalanche start zones along US-550"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "pandas",
+    "scipy",
+    "tqdm",
+    "shapely",
+    "geopandas",
+    "opencv-python",
+    "whitebox",
+    "pdal==3.4.5",
+    # GDAL version must match the system library — see requirements.txt
+    "GDAL==3.8.4",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"

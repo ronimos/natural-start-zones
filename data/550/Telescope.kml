@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Telescope.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff882d00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>640d01ff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff882d00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>640d01ff</color>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Telescope</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-107.739363778383,37.88107289160371,0 -107.7392103530906,37.88091156586103,0 -107.7388807725551,37.880998297624,0 -107.7383432203045,37.88125275958181,0 -107.7381776198895,37.88162523348569,0 -107.7383172066152,37.88173081562934,0 -107.7386513038561,37.88219819581037,0 -107.7388595302083,37.88254435380279,0 -107.7390535765359,37.88279957288867,0 -107.7393479061973,37.88264073040949,0 -107.7396510105613,37.88245492375501,0 -107.7397401174891,37.88219544993641,0 -107.739363778383,37.88107289160371,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
