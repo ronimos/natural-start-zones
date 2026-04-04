@@ -18,9 +18,9 @@ dependencies = [
     "geopandas",
     "opencv-python",
     "whitebox",
-    "pdal==3.4.5",
+    "pdal",
     # GDAL version must match the system library — see requirements.txt
-    "GDAL==3.8.4",
+    "GDAL==3.12.3",
 ]
 
 [tool.setuptools.package-dir]

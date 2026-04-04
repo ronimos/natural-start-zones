@@ -47,10 +47,40 @@ _WBT_ATTRIBS = {
 }
 
 
+_GDAL_SLOPE_ATTRIBS = {'slope_degrees', 'slope_radians', 'slope_percentage', 'slope_riserun'}
+_GDAL_DIRECT_ATTRIBS = {'aspect', 'hillshade', 'TRI', 'Roughness'}
+
 def _compute_terrain_attribute(dem_path, attrib):
-    """Fill depressions then compute a terrain attribute; returns a numpy array."""
+    """Compute a terrain attribute from a DEM; returns a numpy array.
+
+    Slope and aspect variants use GDAL DEMProcessing (fast, no fill step needed).
+    Curvature-based attributes fall back to WhiteboxTools.
+    """
     dem_path = os.path.abspath(dem_path)
-    # Use a temp dir on the same (Windows) filesystem so WBT can write outputs
+
+    if attrib in _GDAL_SLOPE_ATTRIBS or attrib in _GDAL_DIRECT_ATTRIBS:
+        gdal_processing = 'slope' if attrib in _GDAL_SLOPE_ATTRIBS else attrib
+        with tempfile.TemporaryDirectory(dir=os.path.dirname(dem_path)) as tmpdir:
+            out = os.path.join(tmpdir, 'attr.tif')
+            ds     = gdal.Open(dem_path)
+            result = gdal.DEMProcessing(out, ds, gdal_processing, computeEdges=True)
+            if result is None:
+                raise RuntimeError(f'GDAL DEMProcessing({gdal_processing}) failed for {dem_path}')
+            arr = result.GetRasterBand(1).ReadAsArray().astype(float)
+            nd  = result.GetRasterBand(1).GetNoDataValue()
+            result = None
+            ds = None
+        if nd is not None:
+            arr[arr == nd] = np.nan
+        if attrib == 'slope_radians':
+            arr = np.deg2rad(arr)
+        elif attrib == 'slope_percentage':
+            arr = np.tan(np.deg2rad(arr)) * 100.0
+        elif attrib == 'slope_riserun':
+            arr = np.tan(np.deg2rad(arr))
+        return arr
+
+    # WBT path for curvature-based attributes
     with tempfile.TemporaryDirectory(dir=os.path.dirname(dem_path)) as tmpdir:
         filled = os.path.join(tmpdir, 'filled.tif')
         out    = os.path.join(tmpdir, 'attr.tif')
@@ -66,12 +96,6 @@ def _compute_terrain_attribute(dem_path, attrib):
         ds  = None
     if nd is not None:
         arr[arr == nd] = np.nan
-    if attrib == 'slope_radians':
-        arr = np.deg2rad(arr)
-    elif attrib == 'slope_percentage':
-        arr = np.tan(np.deg2rad(arr)) * 100.0
-    elif attrib == 'slope_riserun':
-        arr = np.tan(np.deg2rad(arr))
     return arr
 
 
@@ -324,32 +348,16 @@ def crop_tif(in_path,
     return dem
 
 
-def show_array(a, cmap='winter', title=''):
-    """
-    Display a 2D array as an image
-
-    Parameters
-    ----------
-    a : 2D numpy array
-        The data array to display.
-   cmap : str, optional
-       A color map. The default is 'winter_r'.
-   title : str, optional
-       The plot title. The default is ''.
-
-    Returns
-    -------
-    None.
-
-    """
-    
-    fig, ax = plt.subplots(figsize=(12,12))
+def show_array(a, cmap='winter', title='', show=True):
+    fig, ax = plt.subplots(figsize=(12, 12))
     im = ax.imshow(a, cmap=cmap)
     plt.title(title)
     fig.colorbar(im, ax=ax)
-    plt.show()
-    
-def plot_3d(arr, cmap='winter_r', title='', **kwargs):
+    if show:
+        plt.show()
+    return fig
+
+def plot_3d(arr, cmap='winter_r', title='', show=True, **kwargs):
     """
     This fuction generate a 3D plot from a 2D array
 
@@ -371,8 +379,9 @@ def plot_3d(arr, cmap='winter_r', title='', **kwargs):
     """
     
     view_elev = kwargs.get('view elev', 20)
-    view_azi = kwargs.get('view azi', 60)
-    ax = plt.figure(figsize=(22,22)).add_subplot(projection='3d')
+    view_azi  = kwargs.get('view azi', 60)
+    fig = plt.figure(figsize=(22, 22))
+    ax  = fig.add_subplot(projection='3d')
     height, width = arr.shape
     x = np.arange(width)
     y = np.arange(height)
@@ -385,7 +394,9 @@ def plot_3d(arr, cmap='winter_r', title='', **kwargs):
     ax.view_init(elev=view_elev, azim=view_azi)
     ax.grid(False)
     plt.title(title)
-    plt.show()
+    if show:
+        plt.show()
+    return fig
     
    
 def get_slope_attributes(dem_path, *args):

@@ -87,6 +87,22 @@ def load_avalanches_by_paths_list(path,
 
 
 
+def load_avalanches_simple(path, filter_str=None, **kwargs):
+    """Load avalanche CSV requiring only Date, HW Path, Trigger, Type columns.
+
+    Works with both the full CAIC CSV and the compact US_550_Avalanches.csv.
+    """
+    av_types = kwargs.get('type', ['HS', 'SS'])
+    av_trigs = kwargs.get('trig', ['N'])
+    df = pd.read_csv(path, usecols=['Date', 'HW Path', 'Trigger', 'Type'])
+    df['Trigger'] = df['Trigger'].str.strip()
+    df['Type']    = df['Type'].str.strip()
+    df = df[df['Trigger'].isin(av_trigs) & df['Type'].isin(av_types)]
+    if filter_str:
+        df = df[df['HW Path'].str.contains(filter_str, na=False)]
+    return df
+
+
 # Alias used by notebooks and analysis scripts
 load_avalanches = load_avalanches_by_patrial_path_name
 
