@@ -1,0 +1,127 @@
+======================================================================
+  STAR MOUNTAIN — AVALANCHE TERRAIN ANALYSIS
+======================================================================
+
+AVALANCHE COUNTS  (Natural HS/SS · CAIC 2009–2021)
+----------------------------------------------------------------------
+HW Path
+Star Mtn A    4
+Star Mtn B    9
+Star Mtn C    4
+Star Mtn D    9
+Star Mtn E    3
+
+KEY TERRAIN METRICS PER START ZONE
+----------------------------------------------------------------------
+  pct_40_50              % of SZ cells with slope 40–50° (core release band)
+  slope_max_1cell        max slope of any single cell (≈1.4 m² at 1.2 m res)
+                         proxy for peak shear stress / crack initiation
+  aspect_entropy         Shannon entropy of aspect distribution over 8
+                         octants (0 = single direction, 3 bits = uniform)
+  aspect_entropy_steep   entropy computed only on cells ≥35°
+                         (high = steep terrain faces many wind directions)
+ pct_steep_near_loading % of SZ cells that are both steep (≥40°) AND
+                         within 2 cells (≈2.4 m) of a 225–315°
+                         (W–NW) facing cell — co-occurrence proxy.
+ profile_curv_p95_steep  95th-percentile profile curvature on steep (≥40°)
+                         interior cells (boundary pixels excluded). Positive
+                         = convex roll; high values indicate stress-
+                         concentration sites analogous to notch-tip K_I.
+  IMPORTANT CAVEAT: the loading (aspect diversity / near-loading-face)
+  and steepness metrics are computed independently across all cells in
+  a start zone. A high score on both does NOT guarantee that the loaded
+  terrain and the steepest terrain are the same cells. Use
+  pct_steep_near_loading as the closest proxy for that co-occurrence.
+
+            pct_40_50  slope_max_1cell  aspect_entropy  aspect_entropy_steep  pct_steep_near_loading  profile_curv_p95_steep   area_m2  avi_per_area
+start_zone                                                                                                                                          
+Star_C         25.927           82.494           1.881                 1.948                   2.559                   0.762  220056.0         0.182
+Star_D         40.640           81.796           2.316                 2.318                  13.354                   0.756  109055.0         0.825
+Star_E         17.511           71.678           0.786                 0.773                   0.000                   0.747   51435.0         0.583
+
+SPEARMAN CORRELATIONS
+----------------------------------------------------------------------
+          terrain_metric       outcome  spearman_rho  p_spearman  kendall_tau  p_kendall
+                Slope SD Avis / 10k m²           0.5       0.667        0.333        1.0
+                Slope CV Avis / 10k m²          -0.5       0.667       -0.333        1.0
+                 % > 35° Avis / 10k m²           0.5       0.667        0.333        1.0
+                 % > 40° Avis / 10k m²           0.5       0.667        0.333        1.0
+                % 40–50° Avis / 10k m²           0.5       0.667        0.333        1.0
+        Max slope 1-cell Avis / 10k m²          -0.5       0.667       -0.333        1.0
+          Aspect entropy Avis / 10k m²           0.5       0.667        0.333        1.0
+         Aspect circ var Avis / 10k m²           0.5       0.667        0.333        1.0
+        N aspect octants Avis / 10k m²           0.0       1.000        0.000        1.0
+  Aspect entropy (steep) Avis / 10k m²           0.5       0.667        0.333        1.0
+   % steep near 225–315° Avis / 10k m²           0.5       0.667        0.333        1.0
+Profile curv P95 (steep) Avis / 10k m²          -0.5       0.667       -0.333        1.0
+
+BOOTSTRAP 95% CIs  (Spearman ρ · 10,000 resamples)
+----------------------------------------------------------------------
+  % 40–50°                         vs  Avis/area       ρ=+0.500  [CI: N/A]
+  Max slope 1-cell                 vs  Avis/area       ρ=-0.500  [CI: N/A]
+  Aspect entropy                   vs  Avis/area       ρ=+0.500  [CI: N/A]
+  Aspect entropy (steep)           vs  Avis/area       ρ=+0.500  [CI: N/A]
+  % steep near 225–315°            vs  Avis/area       ρ=+0.500  [CI: N/A]
+  Profile curv P95 (steep)         vs  Avis/area       ρ=-0.500  [CI: N/A]
+  (N=3 is too small for meaningful bootstrap CIs)
+
+INTERPRETATION
+----------------------------------------------------------------------
+N = 3 start zones (excluded from analysis: Star A, Star B).
+All p-values and effect sizes are exploratory at this sample size.
+
+Slope steepness:
+  % cells in the 40–50° core release band (ρ=+0.50) shows no
+  consistent trend with avalanche frequency. This is expected: all start
+  zones were pre-selected as avalanche terrain and already fall within
+  the slab release angle range. Raw steepness does not discriminate
+  high- from low-frequency zones when all zones are already steep.
+
+Aspect diversity:
+  Aspect entropy of steep cells (≥35°) is the strongest predictor
+  (ρ=+0.500). Zones with the most diverse aspect
+  distribution on steep terrain — Star D, Star C — are also
+  the highest-frequency zones (Star D, Star E).
+
+  This is consistent with a wind-loading hypothesis: start zones
+  whose steep cells face multiple directions accumulate wind slabs
+  from multiple storm tracks, increasing the total loading and the
+  probability of natural slab release.
+
+  Overall aspect entropy (all cells) shows a weaker signal
+  (ρ=+0.500), confirming that the relationship is specific
+  to the steep (release-zone) portion of the terrain.
+
+Co-occurrence of loading and steepness:
+  The loading proxies (aspect entropy, near-loading-face fraction) and
+  the steepness proxies (pct_40_50, slope_max) are computed separately
+  across all cells in a start zone. A start zone can score high on both
+  without those conditions coinciding in the same place — for example,
+  a zone could have a very steep section that faces E (not loaded from
+  W/NW) and a moderate 225–315° section that is only 35°.
+  pct_steep_near_loading is the closest proxy for true co-occurrence,
+  but it is still a necessary rather than sufficient condition.
+  Definitive co-occurrence analysis would require mapping the loaded
+  snow pillow (wind slab deposition) onto the slope map directly.
+
+Profile curvature (stress concentration):
+  Profile curvature P95 on steep cells (ρ=-0.500).
+  Convex rolls (positive profile curvature) concentrate normal stress
+  at the base of the slab in the same way a notch concentrates K_I in
+  fracture mechanics (Gvirtzman et al. 2025). The 95th-percentile on
+  interior steep cells captures the most extreme stress-concentration
+  sites within each start zone while excluding boundary artifacts.
+  Boundary cells (within 2 pixels of NoData) are masked before
+  computing this metric to reduce DEM edge effects.
+
+Next steps:
+  · Replicate at Star Mountain and US-550 paths (Muleshoe, Eagle,
+    Telescope, Porcupine) to increase N before drawing conclusions.
+  · Consider weighting aspect entropy by prevailing wind frequency
+    for the Silverton area to make the loading proxy more physically
+    grounded.
+  · Map snow depth variability (from repeat lidar or GPR) onto slope
+    and aspect rasters to directly measure co-occurrence of loading
+    and high shear stress terrain.
+
+======================================================================

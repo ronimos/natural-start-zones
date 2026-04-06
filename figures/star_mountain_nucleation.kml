@@ -1,0 +1,5446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>Star Mountain</name>
+  <Style id="nuc">
+    <IconStyle>
+      <color>ff0000ff</color>
+      <scale>0.8</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><scale>0</scale></LabelStyle>
+  </Style>
+  <Placemark>
+    <name>Cluster 1</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 41.1°, max 42.2°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5376101,39.0740631,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 2</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.0°, max 40.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5348189,39.0743244,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 3</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5348350,39.0743140,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 4</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 40.6°, max 41.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5364511,39.0741495,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 5</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 45.4°, max 49.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5348680,39.0740268,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 6</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 42.5°, max 43.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5321935,39.0741361,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 7</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 44.6°, max 47.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5338658,39.0738969,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 8</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.0°, max 41.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5321435,39.0740494,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 9</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 41.2°, max 41.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5336544,39.0738151,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 10</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.6°, max 41.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5372689,39.0732773,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 11</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 40.9°, max 41.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5340359,39.0734578,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 12</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 42.3°, max 44.6°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5315026,39.0735729,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 13</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 41.3°, max 42.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5244436,39.0739526,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 14</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 42.0°, max 43.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5372699,39.0727698,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 15</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5386345,39.0726754,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 16</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 40.4°, max 40.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5320358,39.0731393,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 17</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.0°, max 41.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5371503,39.0726402,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 18</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 43.9°, max 44.9°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5241335,39.0737451,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 19</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 42.4°, max 42.4°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5240642,39.0737043,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 20</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.7°, max 41.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5240513,39.0736964,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 21</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.8°, max 41.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5240197,39.0736812,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 22</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5240010,39.0736738,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 23</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.5°, max 42.7°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5386515,39.0722744,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 24</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 41.4°, max 42.4°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5349668,39.0725231,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 25</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 44.0°, max 46.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5350755,39.0724921,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 26</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.5°, max 40.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5299647,39.0729106,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 27</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.2°, max 40.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5373645,39.0722242,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 28</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.8°, max 42.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5379214,39.0721511,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 29</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 46.1°, max 48.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5300289,39.0726411,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 30</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 42.8°, max 46.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5299873,39.0726106,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 31</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 51.3°, max 56.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5321432,39.0720924,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 32</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 47.0°, max 48.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5320296,39.0720661,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 33</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5287974,39.0723501,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 34</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5288077,39.0723403,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 35</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.1°, max 41.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5288180,39.0723304,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 36</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.2°, max 40.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5314777,39.0720144,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 37</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.5°, max 41.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5319556,39.0719512,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 38</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 61&#10;Slope: mean 44.4°, max 48.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5288246,39.0721790,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 39</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 45.4°, max 47.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5286453,39.0721764,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 40</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 41.6°, max 42.6°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5290028,39.0720476,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 41</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.5°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5333211,39.0716779,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 42</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 43.2°, max 46.3°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5283933,39.0720698,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 43</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.9°, max 41.6°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5312038,39.0717459,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 44</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5310480,39.0717637,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 45</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 41.2°, max 42.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5311017,39.0717238,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 46</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 40.8°, max 41.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5287390,39.0719413,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 47</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 40.4°, max 40.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5280099,39.0720072,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 48</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.2°, max 40.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5333791,39.0715293,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 49</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 42.3°, max 43.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5289359,39.0717833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 50</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 46&#10;Slope: mean 43.4°, max 49.8°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5353747,39.0711093,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 51</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 63&#10;Slope: mean 41.2°, max 41.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5348401,39.0711000,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 52</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5331704,39.0713047,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 53</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 43.3°, max 45.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5282401,39.0716619,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 54</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 42.0°, max 43.2°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5346629,39.0710462,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 55</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.5°, max 42.3°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5283387,39.0715977,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 56</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.5°, max 41.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5348187,39.0710567,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 57</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.2°, max 40.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5348827,39.0709854,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 58</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 44.9°, max 46.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5351089,39.0708989,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 59</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.5°, max 40.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5287392,39.0714664,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 60</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.3°, max 40.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5349157,39.0708898,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 61</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 52.8°, max 60.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5283231,39.0713917,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 62</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 41.3°, max 42.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5349660,39.0707902,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 63</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.6°, max 40.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5291772,39.0712957,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 64</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 40.3°, max 40.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5350166,39.0707105,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 65</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 41.2°, max 41.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5350015,39.0706596,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 66</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 57&#10;Slope: mean 45.8°, max 48.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5347835,39.0706293,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 67</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5263816,39.0713168,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 68</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5307863,39.0709331,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 69</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5253007,39.0713100,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 70</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 73&#10;Slope: mean 54.7°, max 65.5°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5276247,39.0709971,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 71</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 42.3°, max 44.0°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5253439,39.0712403,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 72</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 42.7°, max 44.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5265436,39.0711394,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 73</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 46.6°, max 48.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5277188,39.0710684,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 74</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 41.3°, max 42.4°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5252791,39.0711842,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 75</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.4°, max 40.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5349591,39.0703455,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 76</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 42.5°, max 43.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5345434,39.0703839,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 77</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.1°, max 41.4°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5343895,39.0703661,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 78</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 44.3°, max 46.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5343764,39.0703026,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 79</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.3°, max 40.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5299800,39.0706965,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 80</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.3°, max 41.3°&#10;Aspect: mean 86°</description>
+    <Point>
+      <coordinates>-106.5277162,39.0708891,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 81</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.4°, max 40.4°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5350517,39.0702379,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 82</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 44.9°, max 45.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5337718,39.0703118,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 83</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 41.4°, max 43.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5350920,39.0701833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 84</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 42.2°, max 43.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5259563,39.0709911,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 85</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 48.5°, max 48.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5344101,39.0702656,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 86</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 70&#10;Slope: mean 47.1°, max 54.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5345251,39.0701582,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 87</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 47.6°, max 48.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5345906,39.0701931,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 88</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 41.7°, max 42.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5300708,39.0705642,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 89</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 45.9°, max 47.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5342980,39.0701827,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 90</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5290805,39.0706653,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 91</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 43.9°, max 47.2°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5253958,39.0709217,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 92</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 43.6°, max 49.0°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5337971,39.0702003,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 93</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5334812,39.0702549,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 94</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 41.3°, max 41.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5334561,39.0702435,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 95</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.9°, max 41.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5350557,39.0700724,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 96</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 44.2°, max 48.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5349810,39.0700374,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 97</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 44.9°, max 49.8°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5339141,39.0701106,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 98</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 44.0°, max 47.6°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5255911,39.0708205,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 99</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5261535,39.0707976,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 100</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 56.2°, max 64.0°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5335173,39.0701117,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 101</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 41.0°, max 41.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5326638,39.0702033,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 102</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.2°, max 44.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5340777,39.0700784,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 103</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 24&#10;Slope: mean 42.3°, max 44.2°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5341210,39.0700366,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 104</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 54.0°, max 54.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5333763,39.0701148,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 105</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 37&#10;Slope: mean 51.2°, max 56.8°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5283490,39.0704674,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 106</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 46.2°, max 51.5°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5276901,39.0705362,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 107</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.2°, max 42.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5285656,39.0704607,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 108</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 48.7°, max 49.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5277619,39.0704767,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 109</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 46&#10;Slope: mean 50.3°, max 53.0°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5277994,39.0703680,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 110</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 47.8°, max 48.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5276835,39.0704585,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 111</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 47.5°, max 47.7°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5276434,39.0704689,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 112</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 43.4°, max 45.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5262238,39.0705112,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 113</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 42.2°, max 43.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5257276,39.0705595,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 114</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 43.9°, max 43.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5261934,39.0705069,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 115</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 33&#10;Slope: mean 51.4°, max 59.7°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5282944,39.0702447,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 116</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 45.0°, max 46.7°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5297832,39.0701342,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 117</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 45&#10;Slope: mean 54.0°, max 60.1°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5281486,39.0701944,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 118</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5278256,39.0702693,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 119</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.0°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5324756,39.0697973,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 120</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 44.4°, max 45.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5302005,39.0699730,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 121</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.7°, max 41.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5264232,39.0702655,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 122</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.1°, max 44.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5276671,39.0701481,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 123</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.7°, max 43.0°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5297070,39.0698595,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 124</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.3°, max 40.4°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5276847,39.0700539,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 125</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5249257,39.0702646,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 126</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.5°, max 43.8°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5299381,39.0697702,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 127</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.6°, max 41.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5238332,39.0701780,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 128</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 41.1°, max 41.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5246235,39.0700839,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 129</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.8°, max 42.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5242145,39.0700962,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 130</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 42.1°, max 43.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5239183,39.0701030,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 131</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5238821,39.0701110,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 132</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.4°, max 42.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5241402,39.0700515,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 133</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 41.5°, max 42.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5243770,39.0699724,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 134</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 45.0°, max 49.2°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5242197,39.0699257,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 135</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 49.7°, max 58.0°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5311710,39.0693610,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 136</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 46&#10;Slope: mean 42.9°, max 45.9°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5309781,39.0693015,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 137</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 41.0°, max 41.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5246832,39.0698232,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 138</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 43.7°, max 46.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5288364,39.0694846,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 139</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 40.9°, max 41.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5289096,39.0693692,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 140</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 41.2°, max 42.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5247592,39.0696626,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 141</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 43.0°, max 44.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5312053,39.0691194,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 142</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 45.1°, max 48.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5235675,39.0696467,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 143</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5350699,39.0686698,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 144</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.0°, max 43.9°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5302054,39.0690170,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 145</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 44.7°, max 46.6°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5268309,39.0692470,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 146</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 79&#10;Slope: mean 42.8°, max 45.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5353716,39.0684088,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 147</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 41.8°, max 42.0°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5284535,39.0690983,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 148</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.8°, max 44.8°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5224675,39.0695849,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 149</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 43.1°, max 44.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5352363,39.0683880,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 150</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 41.4°, max 42.0°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5284794,39.0689988,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 151</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5349211,39.0684536,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 152</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 48.1°, max 52.1°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5241163,39.0693252,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 153</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 43.8°, max 44.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5223632,39.0695130,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 154</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.5°, max 41.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5283794,39.0689923,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 155</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 52.5°, max 52.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5224540,39.0694918,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 156</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 42.3°, max 42.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5222963,39.0695001,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 157</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 41.5°, max 42.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5283936,39.0689256,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 158</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.7°, max 42.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5256509,39.0691848,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 159</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5349842,39.0684033,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 160</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5349945,39.0683934,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 161</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 48.5°, max 54.5°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5224288,39.0694420,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 162</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 42.8°, max 44.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5270987,39.0689835,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 163</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 42.1°, max 44.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5262911,39.0690876,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 164</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 41.8°, max 45.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5351183,39.0683225,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 165</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.2°, max 40.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5347635,39.0683652,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 166</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.3°, max 40.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5284690,39.0688999,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 167</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 48.1°, max 51.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5256817,39.0691114,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 168</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 52&#10;Slope: mean 45.9°, max 53.9°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5246551,39.0691662,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 169</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5283987,39.0688830,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 170</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 46.5°, max 52.0°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5345945,39.0683063,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 171</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.3°, max 40.4°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5349372,39.0682765,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 172</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 43.1°, max 47.0°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5299339,39.0686573,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 173</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5351259,39.0682476,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 174</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 41.3°, max 42.0°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5339637,39.0683148,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 175</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.9°, max 42.2°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5263161,39.0689776,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 176</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 42.0°, max 43.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5247009,39.0691092,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 177</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 45.9°, max 48.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5270491,39.0688774,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 178</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 60&#10;Slope: mean 46.9°, max 49.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5353345,39.0680668,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 179</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.0°, max 41.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5352141,39.0681844,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 180</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.5°, max 43.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5244527,39.0691109,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 181</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 50.7°, max 59.0°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5220062,39.0692913,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 182</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 47.7°, max 50.6°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5245080,39.0690660,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 183</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 45.6°, max 48.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5262271,39.0689018,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 184</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 40.6°, max 40.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5349756,39.0681527,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 185</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 44.9°, max 46.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5224496,39.0692039,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 186</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.4°, max 40.4°&#10;Aspect: mean 67°</description>
+    <Point>
+      <coordinates>-106.5220565,39.0692608,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 187</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 44.1°, max 47.6°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5220784,39.0692185,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 188</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 40.3°, max 40.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5339784,39.0682008,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 189</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 44.7°, max 47.8°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5318460,39.0683580,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 190</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5346453,39.0680910,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 191</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.4°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5350781,39.0680407,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 192</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.5°, max 40.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5322485,39.0682771,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 193</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 41.0°, max 41.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5339010,39.0681053,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 194</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 41.2°, max 43.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5223710,39.0690879,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 195</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.8°, max 40.8°&#10;Aspect: mean 66°</description>
+    <Point>
+      <coordinates>-106.5221287,39.0691110,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 196</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 44.4°, max 48.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5226842,39.0689982,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 197</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5221390,39.0691012,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 198</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.6°, max 40.9°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5221480,39.0690825,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 199</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 54.7°, max 61.3°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5241176,39.0688754,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 200</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 42.0°, max 43.2°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5275102,39.0685697,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 201</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.7°, max 41.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5245143,39.0688561,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 202</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 53.8°, max 62.2°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5238022,39.0688781,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 203</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.4°, max 40.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5205467,39.0691692,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 204</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 40.7°, max 41.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5339528,39.0680002,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 205</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 41.2°, max 43.1°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5222201,39.0689731,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 206</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5348810,39.0678555,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 207</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 40.4°, max 40.8°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5348975,39.0678346,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 208</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 42.6°, max 46.4°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5352710,39.0677152,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 209</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 40.7°, max 41.6°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5239300,39.0687546,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 210</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 78&#10;Slope: mean 51.1°, max 62.8°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5219119,39.0687878,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 211</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5240211,39.0687257,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 212</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 42.9°, max 44.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5253654,39.0685665,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 213</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 45.2°, max 52.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5221183,39.0687915,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 214</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 70&#10;Slope: mean 42.6°, max 44.8°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5350595,39.0676537,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 215</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 43.8°, max 45.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5251200,39.0685114,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 216</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 45.6°, max 48.7°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5225962,39.0687044,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 217</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 43.9°, max 43.9°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5250787,39.0684921,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 218</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.8°, max 42.7°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5250611,39.0684786,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 219</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5217441,39.0687263,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 220</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 40.6°, max 41.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5337176,39.0676597,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 221</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 67&#10;Slope: mean 47.2°, max 55.4°&#10;Aspect: mean 67°</description>
+    <Point>
+      <coordinates>-106.5238386,39.0684572,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 222</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 48.1°, max 48.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5259818,39.0683255,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 223</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 48.6°, max 53.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5259620,39.0682913,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 224</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5219895,39.0686381,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 225</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 43.6°, max 45.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5220129,39.0685393,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 226</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 49.3°, max 53.1°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5219481,39.0686087,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 227</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 48.2°, max 50.3°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5217594,39.0686080,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 228</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 52.6°, max 61.4°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5218782,39.0685455,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 229</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.5°, max 40.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5345820,39.0674626,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 230</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 44.9°, max 48.3°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5223074,39.0684310,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 231</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 24&#10;Slope: mean 42.8°, max 45.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5349018,39.0673566,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 232</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 40.7°, max 41.6°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5223493,39.0683678,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 233</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5350432,39.0672761,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 234</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.8°, max 41.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5272498,39.0679355,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 235</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 53.6°, max 67.5°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5214936,39.0684052,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 236</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5350709,39.0672648,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 237</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5272146,39.0679244,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 238</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 40.3°, max 40.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5212689,39.0683912,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 239</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.4°, max 40.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5267824,39.0678983,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 240</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 42.5°, max 45.0°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5350847,39.0671113,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 241</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.1°, max 41.1°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5243096,39.0680458,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 242</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 47.3°, max 50.6°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5267614,39.0678128,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 243</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 42.2°, max 43.0°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5243167,39.0680138,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 244</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 46.0°, max 49.4°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5222337,39.0681878,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 245</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 42.1°, max 46.4°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5216573,39.0682265,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 246</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.2°, max 41.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5246510,39.0679719,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 247</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 43.6°, max 46.2°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5343732,39.0671087,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 248</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 49.4°, max 49.4°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5240455,39.0680054,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 249</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5220745,39.0681730,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 250</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 50.4°, max 53.9°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5217212,39.0681733,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 251</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 61.8°, max 61.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5240275,39.0679621,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 252</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 44&#10;Slope: mean 51.3°, max 63.4°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5240503,39.0678953,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 253</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 45.6°, max 47.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5273097,39.0676163,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 254</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 46.9°, max 51.8°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5273953,39.0675794,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 255</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 49.1°, max 53.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5258272,39.0677022,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 256</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.8°, max 42.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5256884,39.0677284,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 257</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5207559,39.0681460,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 258</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 43.9°, max 45.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5344235,39.0669356,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 259</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5207392,39.0681115,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 260</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 45.2°, max 47.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5260323,39.0676396,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 261</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.4°, max 42.7°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5274706,39.0675220,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 262</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 41.3°, max 43.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5206559,39.0680737,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 263</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.6°, max 42.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5219829,39.0679540,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 264</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 24&#10;Slope: mean 48.9°, max 53.5°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5275353,39.0674662,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 265</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 44.7°, max 46.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5250459,39.0676579,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 266</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 44.2°, max 46.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5270890,39.0674498,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 267</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 43.5°, max 43.9°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5276725,39.0674007,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 268</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 37&#10;Slope: mean 47.2°, max 51.6°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5272044,39.0673830,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 269</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 45.3°, max 49.3°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5276327,39.0673319,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 270</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 43.6°, max 48.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5214604,39.0678245,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 271</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.3°, max 44.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5214754,39.0678469,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 272</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.9°, max 41.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5252856,39.0675020,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 273</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 41.9°, max 44.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5205290,39.0678409,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 274</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 40.9°, max 41.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5214803,39.0677633,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 275</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 40.8°, max 41.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5253585,39.0674353,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 276</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5349992,39.0665707,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 277</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 49.2°, max 52.1°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5349212,39.0665273,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 278</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 49.2°, max 55.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5274619,39.0670583,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 279</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 42.9°, max 45.7°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5217617,39.0675252,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 280</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.5°, max 40.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5272248,39.0671066,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 281</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5272119,39.0670987,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 282</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 56.9°, max 64.9°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5269724,39.0670714,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 283</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5284911,39.0669360,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 284</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.4°, max 40.4°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5279462,39.0669824,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 285</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 49.8°, max 55.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5221224,39.0674632,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 286</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.8°, max 41.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5285014,39.0669262,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 287</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 43.6°, max 45.3°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5279281,39.0669570,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 288</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 43.3°, max 44.3°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5285404,39.0668935,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 289</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 50.0°, max 55.2°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5275316,39.0668844,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 290</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.3°, max 41.3°&#10;Aspect: mean 75°</description>
+    <Point>
+      <coordinates>-106.5270096,39.0668377,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 291</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 48.4°, max 52.4°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5269421,39.0668085,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 292</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 48.5°, max 53.6°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5282801,39.0666091,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 293</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.9°, max 41.7°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5281119,39.0665613,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 294</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.3°, max 43.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5223640,39.0670069,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 295</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 40&#10;Slope: mean 48.6°, max 52.4°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5281235,39.0664527,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 296</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 43.0°, max 46.0°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5282756,39.0664714,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 297</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 47.1°, max 47.1°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5282501,39.0664897,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 298</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 47&#10;Slope: mean 45.7°, max 54.2°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5345461,39.0658905,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 299</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 48.0°, max 49.7°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5215810,39.0670390,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 300</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 52&#10;Slope: mean 53.5°, max 61.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5347568,39.0658588,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 301</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 42.0°, max 44.4°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5216184,39.0670215,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 302</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 52.7°, max 58.6°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5215291,39.0670010,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 303</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 56&#10;Slope: mean 45.3°, max 48.7°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5286195,39.0663291,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 304</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 42.0°, max 44.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5296858,39.0662329,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 305</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 50.9°, max 50.9°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5280942,39.0663863,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 306</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 74&#10;Slope: mean 52.0°, max 58.9°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5278710,39.0663540,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 307</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 45.1°, max 47.8°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5281155,39.0663710,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 308</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5281367,39.0663557,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 309</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5220982,39.0668424,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 310</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 85&#10;Slope: mean 46.4°, max 60.6°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5285085,39.0661557,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 311</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 46.0°, max 49.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5272433,39.0663550,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 312</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 147&#10;Slope: mean 46.0°, max 52.4°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5297770,39.0659216,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 313</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 93&#10;Slope: mean 52.5°, max 61.5°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5276200,39.0662255,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 314</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 45&#10;Slope: mean 49.7°, max 61.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5270425,39.0663305,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 315</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.5°, max 41.0°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5282630,39.0662014,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 316</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 46&#10;Slope: mean 45.6°, max 49.3°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5283458,39.0661040,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 317</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 51.2°, max 51.2°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5284343,39.0660611,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 318</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 54.8°, max 54.8°&#10;Aspect: mean 79°</description>
+    <Point>
+      <coordinates>-106.5281560,39.0660848,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 319</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 40.7°, max 40.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5207440,39.0667047,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 320</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 52.0°, max 52.8°&#10;Aspect: mean 74°</description>
+    <Point>
+      <coordinates>-106.5281721,39.0660744,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 321</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 49.0°, max 49.5°&#10;Aspect: mean 70°</description>
+    <Point>
+      <coordinates>-106.5281940,39.0660636,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 322</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 46.2°, max 49.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5266395,39.0661664,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 323</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 49.6°, max 54.9°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5340122,39.0655351,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 324</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 46.8°, max 46.8°&#10;Aspect: mean 67°</description>
+    <Point>
+      <coordinates>-106.5282217,39.0660523,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 325</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 45.8°, max 45.8°&#10;Aspect: mean 64°</description>
+    <Point>
+      <coordinates>-106.5282320,39.0660424,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 326</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 45.4°, max 48.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5280172,39.0660029,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 327</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.2°, max 41.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5279224,39.0660043,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 328</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 38&#10;Slope: mean 46.8°, max 50.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5265850,39.0661034,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 329</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.1°, max 42.0°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5209665,39.0665338,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 330</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 64&#10;Slope: mean 51.0°, max 59.1°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5342650,39.0653341,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 331</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 41.1°, max 42.0°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5286961,39.0657804,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 332</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 35&#10;Slope: mean 45.3°, max 49.6°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5350128,39.0652240,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 333</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 46.8°, max 46.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5349563,39.0652277,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 334</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 43.3°, max 45.9°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5223123,39.0662523,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 335</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 42.8°, max 45.2°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5345477,39.0652336,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 336</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 42.2°, max 44.7°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5351660,39.0651653,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 337</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 56&#10;Slope: mean 43.7°, max 48.8°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5245226,39.0659729,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 338</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.9°, max 41.9°&#10;Aspect: mean 90°</description>
+    <Point>
+      <coordinates>-106.5299375,39.0655831,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 339</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.3°, max 40.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5349853,39.0651445,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 340</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 42.0°, max 43.7°&#10;Aspect: mean 84°</description>
+    <Point>
+      <coordinates>-106.5299523,39.0655639,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 341</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 41.8°, max 42.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5337647,39.0651676,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 342</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 43.4°, max 45.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5177589,39.0664970,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 343</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 33&#10;Slope: mean 42.3°, max 43.9°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5299990,39.0653967,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 344</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.9°, max 43.4°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5287641,39.0655244,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 345</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 42.7°, max 44.0°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5208077,39.0662104,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 346</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.3°, max 40.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5333907,39.0651426,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 347</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.1°, max 40.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5219197,39.0660586,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 348</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.8°, max 41.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5183816,39.0663662,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 349</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.3°, max 40.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5349704,39.0649213,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 350</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 40.8°, max 42.0°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5335139,39.0650388,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 351</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 41.0°, max 41.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5328356,39.0650731,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 352</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.4°, max 42.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5268345,39.0656173,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 353</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 45.8°, max 48.6°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5267354,39.0656138,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 354</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.7°, max 41.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5184267,39.0663332,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 355</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.6°, max 43.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5182430,39.0663320,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 356</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5300302,39.0653328,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 357</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5267956,39.0656080,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 358</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 42.8°, max 44.0°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5184415,39.0662922,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 359</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 50.6°, max 55.9°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5342527,39.0649307,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 360</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 94&#10;Slope: mean 47.4°, max 52.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5338977,39.0649305,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 361</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.2°, max 41.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5336436,39.0649984,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 362</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.6°, max 45.8°&#10;Aspect: mean 73°</description>
+    <Point>
+      <coordinates>-106.5246996,39.0657103,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 363</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5300818,39.0652836,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 364</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.9°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5221857,39.0659507,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 365</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 51.4°, max 51.4°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5341846,39.0649254,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 366</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 38&#10;Slope: mean 43.4°, max 45.3°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5320798,39.0650559,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 367</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 49.2°, max 49.2°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5341949,39.0649155,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 368</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5215687,39.0659853,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 369</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5200853,39.0661159,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 370</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 42.0°, max 43.4°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5346632,39.0648505,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 371</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 43.4°, max 44.5°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5216046,39.0659526,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 372</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.9°, max 41.9°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5200724,39.0661080,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 373</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 41.2°, max 42.7°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5301466,39.0652083,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 374</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 70&#10;Slope: mean 47.1°, max 55.7°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5329111,39.0648596,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 375</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 49.8°, max 54.7°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5221409,39.0658568,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 376</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 83°</description>
+    <Point>
+      <coordinates>-106.5247357,39.0656486,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 377</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5351675,39.0647429,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 378</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 41.1°, max 42.2°&#10;Aspect: mean 66°</description>
+    <Point>
+      <coordinates>-106.5344303,39.0647929,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 379</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 65°</description>
+    <Point>
+      <coordinates>-106.5301706,39.0651683,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 380</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 47.2°, max 51.2°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5276712,39.0653309,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 381</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 45.7°, max 48.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5279625,39.0653274,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 382</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 40.3°, max 40.4°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5351732,39.0647021,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 383</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.4°, max 41.4°&#10;Aspect: mean 76°</description>
+    <Point>
+      <coordinates>-106.5247757,39.0656003,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 384</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 47.4°, max 53.5°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5221023,39.0658007,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 385</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 75°</description>
+    <Point>
+      <coordinates>-106.5247860,39.0655905,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 386</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5247963,39.0655806,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 387</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 45.2°, max 47.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5219571,39.0657906,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 388</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 41.2°, max 42.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5200577,39.0659621,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 389</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 46.4°, max 49.9°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5295540,39.0651425,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 390</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 69°</description>
+    <Point>
+      <coordinates>-106.5248053,39.0655619,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 391</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 45.3°, max 48.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5328011,39.0648546,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 392</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 33&#10;Slope: mean 43.4°, max 46.2°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5302799,39.0650420,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 393</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 42.3°, max 44.7°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5248163,39.0655128,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 394</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.1°, max 41.5°&#10;Aspect: mean 93°</description>
+    <Point>
+      <coordinates>-106.5342329,39.0647327,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 395</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.4°, max 42.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5277520,39.0652843,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 396</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.5°, max 40.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5343069,39.0647175,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 397</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 42.2°, max 43.5°&#10;Aspect: mean 83°</description>
+    <Point>
+      <coordinates>-106.5342670,39.0647173,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 398</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.8°, max 40.8°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5343288,39.0647066,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 399</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 84°</description>
+    <Point>
+      <coordinates>-106.5342928,39.0647007,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 400</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 44.3°, max 48.7°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5269794,39.0653092,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 401</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5189310,39.0660075,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 402</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 41.5°, max 43.1°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5248307,39.0654482,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 403</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 41.1°, max 41.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5189507,39.0659446,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 404</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 46.4°, max 46.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5332128,39.0647268,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 405</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 46.8°, max 46.8°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5332261,39.0647107,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 406</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 66°</description>
+    <Point>
+      <coordinates>-106.5303161,39.0649584,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 407</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 54&#10;Slope: mean 45.2°, max 50.0°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5296983,39.0649408,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 408</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5303264,39.0649485,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 409</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5303355,39.0649298,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 410</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.7°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5303451,39.0649155,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 411</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.9°, max 41.6°&#10;Aspect: mean 64°</description>
+    <Point>
+      <coordinates>-106.5329408,39.0646856,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 412</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.0°, max 42.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5338210,39.0645883,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 413</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 43.6°, max 47.5°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5329585,39.0646547,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 414</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5303535,39.0648924,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 415</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5331205,39.0646299,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 416</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 41.3°, max 42.9°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5293374,39.0649395,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 417</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.1°, max 42.0°&#10;Aspect: mean 68°</description>
+    <Point>
+      <coordinates>-106.5248767,39.0653269,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 418</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 41.6°, max 43.1°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5248899,39.0652905,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 419</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 30&#10;Slope: mean 48.1°, max 50.9°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5332009,39.0645534,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 420</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.2°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5249012,39.0652530,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 421</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 66&#10;Slope: mean 47.4°, max 54.2°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5327165,39.0645567,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 422</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.1°, max 41.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5154168,39.0660548,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 423</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.6°, max 44.6°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5296759,39.0648333,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 424</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 42.3°, max 42.3°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5296862,39.0648235,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 425</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 96&#10;Slope: mean 45.6°, max 52.6°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5342334,39.0642828,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 426</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 49&#10;Slope: mean 46.1°, max 50.6°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5247073,39.0651087,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 427</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 47.6°, max 51.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5173692,39.0657690,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 428</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 72&#10;Slope: mean 49.5°, max 58.1°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5332389,39.0643507,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 429</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 45.6°, max 47.9°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5330095,39.0643803,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 430</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5248774,39.0650889,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 431</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 40.2°, max 40.5°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5348431,39.0642013,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 432</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 45.3°, max 50.7°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5330882,39.0643578,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 433</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 42.7°, max 45.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5350646,39.0640807,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 434</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 47.0°, max 52.9°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5322845,39.0643161,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 435</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5335043,39.0642023,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 436</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 41.9°, max 43.7°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5335386,39.0641724,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 437</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.5°, max 40.5°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5248142,39.0648968,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 438</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 46.9°, max 50.4°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5322903,39.0642092,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 439</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 40.6°, max 41.5°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5248430,39.0648674,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 440</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 76°</description>
+    <Point>
+      <coordinates>-106.5335648,39.0641343,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 441</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 98&#10;Slope: mean 47.5°, max 58.6°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5341680,39.0638977,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 442</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 41.1°, max 42.2°&#10;Aspect: mean 74°</description>
+    <Point>
+      <coordinates>-106.5335796,39.0641151,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 443</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 44.1°, max 46.2°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5281464,39.0645281,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 444</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.8°, max 42.6°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5350363,39.0639761,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 445</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.5°, max 40.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5344877,39.0640243,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 446</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 41.5°, max 42.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5343828,39.0640041,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 447</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5344968,39.0640056,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 448</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 37&#10;Slope: mean 45.6°, max 51.1°&#10;Aspect: mean 62°</description>
+    <Point>
+      <coordinates>-106.5324128,39.0641312,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 449</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 41.6°, max 43.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5184214,39.0653506,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 450</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 41.6°, max 42.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5255243,39.0647113,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 451</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 52.8°, max 60.8°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5334948,39.0640093,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 452</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.1°, max 40.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5282221,39.0644812,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 453</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5345219,39.0639361,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 454</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 41.7°, max 43.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5185400,39.0652515,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 455</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 112&#10;Slope: mean 45.4°, max 52.5°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5346633,39.0637803,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 456</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5325961,39.0640911,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 457</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.5°, max 40.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5184067,39.0652839,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 458</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 43.0°, max 45.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5322811,39.0640737,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 459</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5325793,39.0640566,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 460</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 63&#10;Slope: mean 45.0°, max 47.5°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5326389,39.0639449,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 461</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.2°, max 40.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5254132,39.0646574,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 462</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 45.0°, max 48.3°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5324361,39.0640076,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 463</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 33&#10;Slope: mean 47.8°, max 54.1°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5336760,39.0638258,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 464</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.2°, max 42.2°&#10;Aspect: mean 85°</description>
+    <Point>
+      <coordinates>-106.5327229,39.0638334,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 465</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 76°</description>
+    <Point>
+      <coordinates>-106.5342397,39.0636908,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 466</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 96°</description>
+    <Point>
+      <coordinates>-106.5337064,39.0637362,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 467</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.2°, max 41.2°&#10;Aspect: mean 85°</description>
+    <Point>
+      <coordinates>-106.5327325,39.0638191,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 468</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 38&#10;Slope: mean 49.2°, max 59.7°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5337438,39.0636579,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 469</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 85°</description>
+    <Point>
+      <coordinates>-106.5327429,39.0638092,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 470</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 43.4°, max 44.1°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5237456,39.0645703,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 471</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 81°</description>
+    <Point>
+      <coordinates>-106.5342487,39.0636721,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 472</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 86°</description>
+    <Point>
+      <coordinates>-106.5327532,39.0637994,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 473</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 48&#10;Slope: mean 43.0°, max 45.8°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5344211,39.0635918,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 474</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5236922,39.0645254,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 475</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.3°, max 42.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5227584,39.0645749,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 476</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 44.5°, max 46.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5333901,39.0636599,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 477</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 122&#10;Slope: mean 49.5°, max 57.0°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5323827,39.0635445,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 478</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 51.0°, max 56.8°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5319714,39.0637195,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 479</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5346119,39.0635065,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 480</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 69&#10;Slope: mean 44.6°, max 50.7°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5346394,39.0634019,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 481</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 76°</description>
+    <Point>
+      <coordinates>-106.5329528,39.0636388,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 482</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 41.0°, max 41.9°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5219286,39.0645048,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 483</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 43.7°, max 45.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5329700,39.0635213,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 484</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.5°, max 44.5°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5328240,39.0635600,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 485</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 56&#10;Slope: mean 49.9°, max 54.1°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5328234,39.0634496,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 486</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 43.2°, max 45.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5235850,39.0643041,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 487</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 43.7°, max 48.5°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5337762,39.0634046,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 488</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.4°, max 41.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5270659,39.0639961,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 489</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 41.6°, max 42.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5332297,39.0634648,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 490</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 41.5°, max 43.0°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5250175,39.0641156,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 491</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 41.6°, max 43.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5225434,39.0643538,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 492</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 40.7°, max 41.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5223492,39.0643299,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 493</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 56&#10;Slope: mean 51.4°, max 59.3°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5338195,39.0632444,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 494</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 45.3°, max 50.1°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5345774,39.0632533,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 495</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 49.5°, max 49.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5327209,39.0634161,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 496</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 41.4°, max 42.3°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5259302,39.0639441,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 497</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 48.6°, max 53.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5345095,39.0632112,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 498</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 48.4°, max 52.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5199983,39.0644368,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 499</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 51&#10;Slope: mean 47.2°, max 53.3°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5340976,39.0631745,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 500</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 42.0°, max 43.2°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5230981,39.0641589,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 501</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 41.1°, max 42.0°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5250230,39.0639612,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 502</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 45.2°, max 46.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5320819,39.0633807,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 503</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 49.1°, max 49.1°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5344817,39.0631765,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 504</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 55&#10;Slope: mean 42.7°, max 49.8°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5328122,39.0632415,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 505</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 44.6°, max 46.3°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5329877,39.0632439,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 506</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 43.1°, max 43.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5320903,39.0633576,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 507</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 4&#10;Slope: mean 42.8°, max 44.7°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5345088,39.0631405,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 508</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 90°</description>
+    <Point>
+      <coordinates>-106.5325134,39.0632812,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 509</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 87°</description>
+    <Point>
+      <coordinates>-106.5325237,39.0632713,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 510</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 84°</description>
+    <Point>
+      <coordinates>-106.5325340,39.0632615,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 511</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 43.1°, max 43.1°&#10;Aspect: mean 96°</description>
+    <Point>
+      <coordinates>-106.5338531,39.0631312,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 512</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 42.8°, max 42.8°&#10;Aspect: mean 95°</description>
+    <Point>
+      <coordinates>-106.5338634,39.0631214,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 513</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 43.9°, max 48.4°&#10;Aspect: mean 77°</description>
+    <Point>
+      <coordinates>-106.5339057,39.0630948,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 514</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 70°</description>
+    <Point>
+      <coordinates>-106.5326100,39.0632191,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 515</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.5°, max 41.1°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5199625,39.0642783,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 516</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.8°, max 40.8°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5326203,39.0632092,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 517</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 51.4°, max 51.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5341597,39.0630602,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 518</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.5°, max 45.3°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5326653,39.0631530,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 519</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 41.1°, max 42.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5172368,39.0644926,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 520</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 51.0°, max 51.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5341687,39.0630415,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 521</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.6°, max 41.6°&#10;Aspect: mean 101°</description>
+    <Point>
+      <coordinates>-106.5339368,39.0630613,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 522</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 93&#10;Slope: mean 43.6°, max 47.8°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5330569,39.0630055,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 523</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.7°, max 41.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5193538,39.0642965,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 524</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.6°, max 41.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5170350,39.0644936,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 525</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 48.6°, max 52.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5321140,39.0631384,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 526</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 47.6°, max 52.0°&#10;Aspect: mean 71°</description>
+    <Point>
+      <coordinates>-106.5340804,39.0629997,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 527</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.2°, max 40.4°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5341667,39.0629878,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 528</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 39&#10;Slope: mean 47.3°, max 49.5°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5335714,39.0629471,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 529</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 41&#10;Slope: mean 47.6°, max 58.0°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5315937,39.0631538,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 530</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 42.0°, max 43.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5229899,39.0639041,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 531</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.9°, max 41.9°&#10;Aspect: mean 102°</description>
+    <Point>
+      <coordinates>-106.5341004,39.0629755,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 532</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 41.0°, max 41.4°&#10;Aspect: mean 70°</description>
+    <Point>
+      <coordinates>-106.5327086,39.0630895,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 533</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5196614,39.0641680,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 534</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 44.0°, max 47.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5259919,39.0635373,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 535</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5173130,39.0643227,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 536</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.3°, max 43.0°&#10;Aspect: mean 65°</description>
+    <Point>
+      <coordinates>-106.5328397,39.0629758,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 537</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 42.6°, max 44.2°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5263812,39.0635253,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 538</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.3°, max 41.4°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5231566,39.0638019,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 539</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5263174,39.0635301,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 540</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 43.3°, max 47.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5341703,39.0628108,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 541</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.5°, max 41.5°&#10;Aspect: mean 74°</description>
+    <Point>
+      <coordinates>-106.5328637,39.0629461,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 542</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.0°, max 41.0°&#10;Aspect: mean 75°</description>
+    <Point>
+      <coordinates>-106.5328740,39.0629363,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 543</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 31&#10;Slope: mean 43.0°, max 44.7°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5284388,39.0632390,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 544</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 43.6°, max 45.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5231490,39.0637004,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 545</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.3°, max 40.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5171973,39.0642212,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 546</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.7°, max 41.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5291595,39.0631878,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 547</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 61&#10;Slope: mean 44.8°, max 47.6°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5289572,39.0631172,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 548</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.3°, max 40.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5171533,39.0641926,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 549</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 41.1°, max 41.8°&#10;Aspect: mean 68°</description>
+    <Point>
+      <coordinates>-106.5332046,39.0628154,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 550</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 45&#10;Slope: mean 44.1°, max 47.7°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5127485,39.0644846,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 551</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5332180,39.0627993,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 552</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 43.1°, max 45.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5314880,39.0629098,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 553</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 47.3°, max 50.5°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5340604,39.0627006,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 554</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 29&#10;Slope: mean 42.8°, max 45.9°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5286005,39.0631635,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 555</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 113&#10;Slope: mean 45.5°, max 50.4°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5334231,39.0626081,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 556</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 35&#10;Slope: mean 49.6°, max 56.9°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5330195,39.0627236,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 557</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 74&#10;Slope: mean 46.8°, max 53.7°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5326845,39.0626790,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 558</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.7°, max 40.9°&#10;Aspect: mean 63°</description>
+    <Point>
+      <coordinates>-106.5286508,39.0631117,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 559</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 46.7°, max 49.9°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5264686,39.0632451,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 560</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 40.7°, max 41.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5292167,39.0630211,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 561</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 45.6°, max 45.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5276609,39.0631645,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 562</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 47.6°, max 47.6°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5276712,39.0631546,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 563</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 46.9°, max 48.7°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5332704,39.0626140,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 564</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 42.2°, max 44.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5293532,39.0629728,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 565</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 43.0°, max 45.5°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5171367,39.0640107,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 566</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 41.6°, max 41.8°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5319635,39.0627509,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 567</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 41.9°, max 42.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5266631,39.0631824,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 568</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.7°, max 40.7°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5173594,39.0639956,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 569</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 42.0°, max 44.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5172622,39.0639914,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 570</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 50.0°, max 51.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5276793,39.0631030,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 571</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5331355,39.0626357,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 572</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5294591,39.0629396,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 573</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 49.0°, max 49.8°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5277332,39.0630700,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 574</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5294810,39.0629288,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 575</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.5°, max 42.8°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5125463,39.0643387,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 576</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 44.0°, max 48.2°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5314029,39.0627260,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 577</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 46.6°, max 48.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5184532,39.0638125,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 578</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 41.1°, max 42.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5269634,39.0630814,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 579</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 60°</description>
+    <Point>
+      <coordinates>-106.5314519,39.0626803,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 580</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 42.9°, max 44.4°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5314709,39.0626138,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 581</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 16&#10;Slope: mean 46.6°, max 52.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5280300,39.0629485,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 582</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 42.2°, max 43.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5331570,39.0624954,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 583</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 50.0°, max 54.4°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5289871,39.0628286,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 584</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.8°, max 41.4°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5199198,39.0636313,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 585</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 80&#10;Slope: mean 48.9°, max 56.1°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5333043,39.0623716,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 586</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5331818,39.0624702,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 587</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 64&#10;Slope: mean 42.5°, max 44.7°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5328566,39.0624066,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 588</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 41.7°, max 43.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5189143,39.0636713,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 589</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 45.6°, max 46.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5189715,39.0636611,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 590</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 46.9°, max 50.0°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5190183,39.0636240,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 591</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 46.3°, max 46.3°&#10;Aspect: mean 76°</description>
+    <Point>
+      <coordinates>-106.5335116,39.0623972,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 592</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 42.6°, max 42.6°&#10;Aspect: mean 72°</description>
+    <Point>
+      <coordinates>-106.5335450,39.0623854,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 593</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 32&#10;Slope: mean 42.1°, max 44.8°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5292418,39.0627087,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 594</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 42&#10;Slope: mean 40.9°, max 42.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5300826,39.0626188,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 595</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.4°, max 40.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5273072,39.0628714,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 596</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 41.0°, max 42.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5297070,39.0626227,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 597</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5253615,39.0630100,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 598</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.9°, max 40.9°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5321410,39.0624152,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 599</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5321513,39.0624053,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 600</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 43.2°, max 44.8°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5190727,39.0634648,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 601</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 46.9°, max 52.4°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5284978,39.0626166,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 602</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 42.3°, max 43.9°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5164858,39.0636681,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 603</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 49.6°, max 54.3°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5328781,39.0622065,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 604</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5333801,39.0621391,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 605</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 42.8°, max 44.8°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5333514,39.0621146,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 606</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5195351,39.0632990,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 607</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 23&#10;Slope: mean 52.8°, max 58.5°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5328831,39.0620834,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 608</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 43.2°, max 45.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5320287,39.0621723,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 609</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 15&#10;Slope: mean 44.5°, max 49.0°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5326695,39.0620631,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 610</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 26&#10;Slope: mean 43.1°, max 45.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5306679,39.0621970,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 611</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.4°, max 41.4°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5159630,39.0634320,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 612</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 39&#10;Slope: mean 44.0°, max 47.3°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5238171,39.0626816,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 613</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.8°, max 41.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5306392,39.0621605,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 614</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5236546,39.0627332,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 615</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.0°, max 44.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5291370,39.0622579,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 616</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 43.2°, max 43.3°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5291466,39.0622436,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 617</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 22&#10;Slope: mean 43.3°, max 44.9°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5235762,39.0626856,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 618</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 42.0°, max 43.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5231669,39.0627319,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 619</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 46&#10;Slope: mean 45.3°, max 47.4°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5277592,39.0623003,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 620</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 27&#10;Slope: mean 42.4°, max 44.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5239940,39.0626036,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 621</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 88&#10;Slope: mean 43.9°, max 47.2°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5276587,39.0622272,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 622</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 41.1°, max 42.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5192416,39.0630292,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 623</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 42.6°, max 42.6°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5239625,39.0625903,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 624</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 41.0°, max 42.0°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5238519,39.0625698,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 625</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 44.6°, max 44.6°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5239908,39.0625430,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 626</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 43.6°, max 45.7°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5239842,39.0625147,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 627</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 109&#10;Slope: mean 43.2°, max 47.2°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5296659,39.0618592,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 628</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 45.9°, max 49.0°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5177257,39.0629432,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 629</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 58.9°, max 58.9°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5179468,39.0629492,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 630</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 102&#10;Slope: mean 48.8°, max 60.2°&#10;Aspect: mean 56°</description>
+    <Point>
+      <coordinates>-106.5180635,39.0627894,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 631</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 54&#10;Slope: mean 43.2°, max 47.2°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5253463,39.0621925,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 632</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 41.5°, max 43.0°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5203427,39.0626493,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 633</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 28&#10;Slope: mean 45.8°, max 49.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5245995,39.0622607,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 634</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 33&#10;Slope: mean 49.5°, max 55.7°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5175079,39.0628149,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 635</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 25&#10;Slope: mean 43.9°, max 45.7°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5173803,39.0628243,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 636</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 45.5°, max 48.9°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5245197,39.0621942,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 637</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 7&#10;Slope: mean 40.7°, max 41.3°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5280745,39.0618930,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 638</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 3&#10;Slope: mean 40.5°, max 40.7°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5246065,39.0621765,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 639</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 5&#10;Slope: mean 40.8°, max 41.7°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5172602,39.0627957,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 640</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 76&#10;Slope: mean 41.8°, max 42.8°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5202662,39.0624414,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 641</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 41.9°, max 41.9°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5258315,39.0620453,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 642</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 58&#10;Slope: mean 44.7°, max 48.4°&#10;Aspect: mean 53°</description>
+    <Point>
+      <coordinates>-106.5255346,39.0618681,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 643</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 41.8°, max 43.1°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5291729,39.0615877,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 644</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5203801,39.0623294,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 645</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.1°, max 40.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5204329,39.0622890,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 646</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 48.1°, max 52.0°&#10;Aspect: mean 54°</description>
+    <Point>
+      <coordinates>-106.5182395,39.0624326,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 647</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 21&#10;Slope: mean 48.6°, max 55.6°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5181080,39.0623969,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 648</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.8°, max 40.8°&#10;Aspect: mean 70°</description>
+    <Point>
+      <coordinates>-106.5255777,39.0617527,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 649</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 70°</description>
+    <Point>
+      <coordinates>-106.5255880,39.0617429,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 650</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 6&#10;Slope: mean 40.2°, max 40.3°&#10;Aspect: mean 52°</description>
+    <Point>
+      <coordinates>-106.5285601,39.0613718,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 651</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 12&#10;Slope: mean 42.3°, max 43.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5125526,39.0626984,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 652</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 38&#10;Slope: mean 43.6°, max 46.2°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5283796,39.0611872,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 653</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 48.2°, max 48.2°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5282518,39.0611751,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 654</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 47.1°, max 47.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5282621,39.0611653,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 655</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 34&#10;Slope: mean 45.5°, max 49.5°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5281950,39.0611121,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 656</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5282866,39.0610914,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 657</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5188175,39.0618339,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 658</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 14&#10;Slope: mean 49.9°, max 55.1°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5185961,39.0618277,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 659</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 43.8°, max 45.3°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5188180,39.0617689,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 660</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 46.5°, max 46.5°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5274106,39.0610402,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 661</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 44.2°, max 46.1°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5274380,39.0610130,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 662</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 24&#10;Slope: mean 45.7°, max 49.1°&#10;Aspect: mean 51°</description>
+    <Point>
+      <coordinates>-106.5189253,39.0616466,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 663</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.4°, max 40.5°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5203729,39.0615535,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 664</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.0°, max 40.0°&#10;Aspect: mean 45°</description>
+    <Point>
+      <coordinates>-106.5203826,39.0615392,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 665</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 24&#10;Slope: mean 46.2°, max 50.0°&#10;Aspect: mean 55°</description>
+    <Point>
+      <coordinates>-106.5164517,39.0618038,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 666</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 13&#10;Slope: mean 48.0°, max 48.6°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5167545,39.0617213,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 667</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.6°, max 40.6°&#10;Aspect: mean 64°</description>
+    <Point>
+      <coordinates>-106.5164808,39.0617452,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 668</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 10&#10;Slope: mean 42.4°, max 44.3°&#10;Aspect: mean 57°</description>
+    <Point>
+      <coordinates>-106.5189369,39.0615005,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 669</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 40.9°, max 41.6°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5208149,39.0613117,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 670</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 1&#10;Slope: mean 40.2°, max 40.2°&#10;Aspect: mean 59°</description>
+    <Point>
+      <coordinates>-106.5165001,39.0617166,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 671</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 20&#10;Slope: mean 42.2°, max 45.2°&#10;Aspect: mean 50°</description>
+    <Point>
+      <coordinates>-106.5165197,39.0616575,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 672</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 17&#10;Slope: mean 42.2°, max 44.9°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5167153,39.0616387,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 673</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 11&#10;Slope: mean 40.8°, max 41.8°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5160499,39.0616504,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 674</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 9&#10;Slope: mean 41.0°, max 41.3°&#10;Aspect: mean 47°</description>
+    <Point>
+      <coordinates>-106.5161588,39.0616289,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 675</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 64&#10;Slope: mean 43.6°, max 48.4°&#10;Aspect: mean 49°</description>
+    <Point>
+      <coordinates>-106.5202751,39.0611841,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 676</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 8&#10;Slope: mean 41.2°, max 42.4°&#10;Aspect: mean 48°</description>
+    <Point>
+      <coordinates>-106.5203135,39.0609324,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 677</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 18&#10;Slope: mean 49.9°, max 56.6°&#10;Aspect: mean 61°</description>
+    <Point>
+      <coordinates>-106.5346551,39.0567555,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 678</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 19&#10;Slope: mean 42.2°, max 43.7°&#10;Aspect: mean 58°</description>
+    <Point>
+      <coordinates>-106.5347948,39.0566980,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cluster 679</name>
+    <styleUrl>#nuc</styleUrl>
+    <description>Pixels: 2&#10;Slope: mean 40.7°, max 41.0°&#10;Aspect: mean 46°</description>
+    <Point>
+      <coordinates>-106.5349006,39.0566592,0</coordinates>
+    </Point>
+  </Placemark>
+</Document>
+</kml>
