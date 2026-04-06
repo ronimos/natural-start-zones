@@ -126,6 +126,10 @@ SITES: dict = {
         # Primary storm loading direction (compass degrees, inclusive).
         # Used to compute the "steep terrain near loaded face" co-occurrence metric.
         'loading_az_range': (225, 315),   # W to NW
+        # Nucleation geometry: wind from W-NW loads over N-facing ridge caps
+        # and deposits on the E-facing lee slope (the N→E rollover).
+        'source_face_range': (315, 45),   # N-facing ridge cap  (wraps through 0°)
+        'lee_face_range':    (45, 135),   # E-facing lee slope
     },
 
     'star_mtn': {
@@ -171,54 +175,62 @@ SITES: dict = {
             'Star_D': 'Star Mtn D',
             'Star_E': 'Star Mtn E',
         },
-        'exclude_sz_stems': [],
+        # Star A & B have a different loading pattern and are not comparable
+        # to C, D & E — excluded from correlation analysis and nucleation plot.
+        'exclude_sz_stems': ['Star_A', 'Star_B'],
         'loading_az_range': (225, 315),
+        'source_face_range': (315, 45),
+        'lee_face_range':    (45, 135),
     },
 
-    'us550': {
-        # ── Identity ──────────────────────────────────────────────────────────
-        'name':     'US-550',
-        'data_dir': ROOT / 'data' / '550',
+    # 'us550': {
+    #     # ── Identity ──────────────────────────────────────────────────────────
+    #     'name':     'US-550',
+    #     'data_dir': ROOT / 'data' / '550',
 
-        # ── Processing: LAZ → DEM ────────────────────────────────────────────
-        'laz_glob':   'USGS_*.laz',
-        'merged_laz': '550_merged.laz',
-        'ground_laz': '550_ground.laz',
-        'spatial_bounds': None,
-        'cropped_laz':    None,
-        'dem_resolution': 1.0,
-        'dem_name':       '550.tif',
-        'pixel_crop_window': None,
-        'crp_dem_name':      None,
-        'fill_gaps': False,
-        'compute_terrain_attrs': False,
+    #     # ── Processing: LAZ → DEM ────────────────────────────────────────────
+    #     'laz_glob':   'USGS_*.laz',
+    #     'merged_laz': '550_merged.laz',
+    #     'ground_laz': '550_ground.laz',
+    #     'spatial_bounds': None,
+    #     'cropped_laz':    None,
+    #     'dem_resolution': 1.0,
+    #     'dem_name':       '550.tif',
+    #     'pixel_crop_window': None,
+    #     'crp_dem_name':      None,
+    #     'fill_gaps': False,
+    #     'compute_terrain_attrs': False,
 
-        # ── Processing: start-zone clipping ──────────────────────────────────
-        # 550.kml contains the combined SZ boundary for all four paths
-        'combined_sz_kml': '550.kml',
-        'combined_sz_dem': '550_SZ.tif',
-        # [EMPT]*.kml matches Eagle, Muleshoe, Porcupine, Telescope but not 550.kml
-        'sz_kml_glob':     '[EMPT]*.kml',
-        'sz_dem_suffix':   '',          # Eagle.kml → Eagle.tif
+    #     # ── Processing: start-zone clipping ──────────────────────────────────
+    #     # 550.kml contains the combined SZ boundary for all four paths
+    #     'combined_sz_kml': '550.kml',
+    #     'combined_sz_dem': '550_SZ.tif',
+    #     # [EMPT]*.kml matches Eagle, Muleshoe, Porcupine, Telescope but not 550.kml
+    #     'sz_kml_glob':     '[EMPT]*.kml',
+    #     'sz_dem_suffix':   '',          # Eagle.kml → Eagle.tif
 
-        # ── Analysis: visualisation ───────────────────────────────────────────
-        'sat_image':     None,
-        'sat_slice':     None,
-        'sat_labels':    [],
-        'sz_map_labels': [],
-        'slope_attr':    'slope_degrees',
+    #     # ── Analysis: visualisation ───────────────────────────────────────────
+    #     'sat_image':     None,
+    #     'sat_slice':     None,
+    #     'sat_labels':    [],
+    #     'sz_map_labels': [],
+    #     'slope_attr':    'slope_degrees',
 
-        # ── Analysis: avalanche data ──────────────────────────────────────────
-        # US_550_Avalanches.csv has fewer columns than the full CAIC CSV;
-        # use the 'simple' loader which only requires HW Path, Trigger, Type.
-        'avalanche_csv':    ROOT / 'data' / 'avalanches' / 'US_550_Avalanches.csv',
-        'avalanche_filter': None,   # CSV is already filtered to these paths
-        'avalanche_loader': 'simple',
-        # DEM stems match HW Path names exactly — no explicit map needed
-        'sz_avi_path_map': {},
-        'exclude_sz_stems': [],
-        'loading_az_range': (225, 315),
-    },
+    #     # ── Analysis: avalanche data ──────────────────────────────────────────
+    #     # US_550_Avalanches.csv has fewer columns than the full CAIC CSV;
+    #     # use the 'simple' loader which only requires HW Path, Trigger, Type.
+    #     'avalanche_csv':    ROOT / 'data' / 'avalanches' / 'US_550_Avalanches.csv',
+    #     'avalanche_filter': None,   # CSV is already filtered to these paths
+    #     'avalanche_loader': 'simple',
+    #     # DEM stems match HW Path names exactly — no explicit map needed
+    #     'sz_avi_path_map': {},
+    #     'exclude_sz_stems': [],
+    #     'loading_az_range': (225, 315),
+    #     # Paths face S–SE (~155°). Wind from W-NW blows over W/NW-facing ridge
+    #     # caps and deposits on the E–S lee slopes.
+    #     'source_face_range': (270, 360),  # W to N ridge cap
+    #     'lee_face_range':    (90, 180),   # E to S lee slope
+    # },
 }
 
 
@@ -289,7 +301,7 @@ def ground_filter_laz(in_file: Path, out_file: Path) -> None:
             {
                 "type":          "writers.las",
                 "filename":      str(out_file),
-                "minor_version": 1.4,
+                "minor_version": 4,
                 "extra_dims":    "all",
             },
         ]
@@ -526,17 +538,259 @@ def _lonlat_to_dem_pixels(lons, lats, dem_path: str):
     return cols, rows
 
 
+def _dem_pixels_to_lonlat(rows, cols, dem_path: str):
+    """Convert DEM pixel (row, col) arrays to WGS84 (lon, lat)."""
+    from osgeo import osr
+    ds  = gdal.Open(dem_path)
+    gt  = ds.GetGeoTransform()
+    src = osr.SpatialReference()
+    src.ImportFromWkt(ds.GetProjection())
+    src.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    dst = osr.SpatialReference()
+    dst.ImportFromEPSG(4326)
+    dst.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    ds  = None
+    tf  = osr.CoordinateTransformation(src, dst)
+    xs  = gt[0] + np.asarray(cols) * gt[1] + np.asarray(rows) * gt[2]
+    ys  = gt[3] + np.asarray(cols) * gt[4] + np.asarray(rows) * gt[5]
+    pts = [tf.TransformPoint(float(x), float(y)) for x, y in zip(xs, ys)]
+    lons = np.array([p[0] for p in pts])
+    lats = np.array([p[1] for p in pts])
+    return lons, lats
+
+
+def export_nucleation_kml(nucleation_mask: np.ndarray, dem_path: str,
+                          out_kml: Path, name: str = "Nucleation candidates",
+                          slope_arr: np.ndarray | None = None,
+                          aspect_arr: np.ndarray | None = None) -> int:
+    """Export nucleation-candidate clusters as KML point placemarks.
+
+    Each connected component of `nucleation_mask` becomes one Placemark
+    at its centroid.  Names are hidden on the map; mean slope and aspect
+    are shown in the balloon on click.  Returns the number of clusters written.
+    """
+    from scipy.ndimage import label as nd_label
+    labeled, n_clusters = nd_label(nucleation_mask)
+    if n_clusters == 0:
+        print(f"  [nucleation kml] no candidates — KML not written")
+        return 0
+
+    # Centroid of each cluster in pixel space
+    crows, ccols = [], []
+    for k in range(1, n_clusters + 1):
+        ys, xs = np.where(labeled == k)
+        crows.append(ys.mean())
+        ccols.append(xs.mean())
+
+    lons, lats = _dem_pixels_to_lonlat(crows, ccols, dem_path)
+
+    kml_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<kml xmlns="http://www.opengis.net/kml/2.2">',
+        '<Document>',
+        f'  <name>{name}</name>',
+        '  <Style id="nuc">',
+        '    <IconStyle>',
+        '      <color>ff0000ff</color>',   # red (ABGR)
+        '      <scale>0.8</scale>',
+        '      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>',
+        '    </IconStyle>',
+        '    <LabelStyle><scale>0</scale></LabelStyle>',  # hide name on map
+        '  </Style>',
+    ]
+    for k, (lon, lat) in enumerate(zip(lons, lats), start=1):
+        mask_k = labeled == k
+        n_px   = int(mask_k.sum())
+
+        # Per-cluster slope / aspect stats
+        desc_lines = [f'Pixels: {n_px}']
+        if slope_arr is not None:
+            vals = slope_arr[mask_k]
+            vals = vals[~np.isnan(vals)]
+            if len(vals):
+                desc_lines.append(f'Slope: mean {np.mean(vals):.1f}°, max {np.max(vals):.1f}°')
+        if aspect_arr is not None:
+            vals = aspect_arr[mask_k]
+            vals = vals[~np.isnan(vals)]
+            if len(vals):
+                # circular mean for aspect
+                rad   = np.deg2rad(vals)
+                cmean = float(np.rad2deg(np.arctan2(np.mean(np.sin(rad)),
+                                                    np.mean(np.cos(rad)))) % 360)
+                desc_lines.append(f'Aspect: mean {cmean:.0f}°')
+        description = '&#10;'.join(desc_lines)   # newline in KML balloon
+
+        kml_lines += [
+            '  <Placemark>',
+            f'    <name>Cluster {k}</name>',
+            '    <styleUrl>#nuc</styleUrl>',
+            f'    <description>{description}</description>',
+            '    <Point>',
+            f'      <coordinates>{lon:.7f},{lat:.7f},0</coordinates>',
+            '    </Point>',
+            '  </Placemark>',
+        ]
+    kml_lines += ['</Document>', '</kml>']
+
+    out_kml.write_text('\n'.join(kml_lines))
+    print(f"  Saved: {out_kml.name}  ({n_clusters} clusters)")
+    return n_clusters
+
+
+def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
+                                   avi_counts: pd.Series, out_fig: Path) -> None:
+    """Nucleation cluster count vs. raw avalanche count, split by slope threshold.
+
+    Nucleation is computed on the FULL site DEM (same as the hillshade map),
+    then each SZ KML polygon is rasterised onto the full DEM grid to mask and
+    count clusters within that zone.  This avoids the edge-effect problem of
+    computing loaded_zone on a small clipped DEM where the N-facing ridge may
+    sit just outside the clip boundary.
+
+    Raw avalanche counts are used (not per-area): one nucleation cluster is one
+    independent initiation site regardless of how large the surrounding SZ is.
+
+    Layout
+    ------
+    Row 1 : grouped bar chart — cluster count per SZ at each slope threshold,
+            secondary axis shows raw avalanche count as a line.
+    Row 2 : scatter plots (one per threshold) of cluster count vs. raw
+            avalanche count, with Spearman ρ annotated.
+    """
+    from scipy.ndimage import label as nd_label
+    from matplotlib.path import Path as MplPath
+
+    THRESHOLDS    = [40, 45, 50]
+    COLORS        = ['#4e8fd4', '#e07b39', '#5cb85c']
+    res           = cfg['dem_resolution']
+    avi_map       = cfg.get('sz_avi_path_map', {})
+    exclude       = set(cfg.get('exclude_sz_stems', []))
+    d             = cfg['data_dir']
+    dem_path      = str(d / (cfg.get('crp_dem_name') or cfg['dem_name']))
+    sz_dem_suffix = cfg.get('sz_dem_suffix', '')
+
+    # ── Nucleation criteria on the FULL DEM ──────────────────────────────────
+    dem_arr    = load_tif_as_Array(dem_path).astype(float)
+    dem_arr[dem_arr == dem_arr.min()] = np.nan
+    slope      = _compute_terrain_attribute(dem_path, 'slope_degrees')
+    aspect     = _compute_terrain_attribute(dem_path, 'aspect')
+    curv       = _profile_curvature(dem_arr, res=res)
+
+    src_lo, src_hi = cfg.get('source_face_range', (315, 45))
+    lee_lo, lee_hi = cfg.get('lee_face_range',    (45, 135))
+
+    valid       = ~np.isnan(slope) & ~np.isnan(aspect) & (slope > 0) & (slope < 90)
+    convex      = (curv > 0) & ~np.isnan(curv)
+    # Source face wraps through 0° when src_lo > src_hi (e.g. 315→45)
+    if src_lo > src_hi:
+        source_face = ((aspect >= src_lo) | (aspect <= src_hi)) & ~np.isnan(aspect)
+    else:
+        source_face = (aspect >= src_lo) & (aspect <= src_hi) & ~np.isnan(aspect)
+    lee_face    = (aspect >= lee_lo) & (aspect <= lee_hi) & ~np.isnan(aspect)
+    near_source = binary_dilation(source_face, structure=np.ones((3, 3)), iterations=2)
+    loaded_zone = lee_face & near_source
+
+    H, W = slope.shape
+    col_grid, row_grid = np.meshgrid(np.arange(W), np.arange(H))
+    all_pts = np.column_stack([col_grid.ravel(), row_grid.ravel()])
+
+    # ── Per-SZ counts using KML polygon masks on the full DEM grid ───────────
+    data_rows = []
+    for sz_path in sz_dem_files:
+        stem = Path(sz_path).stem
+        if stem in exclude:
+            continue
+
+        kml_name = (stem.replace(sz_dem_suffix, '') + '.kml'
+                    if sz_dem_suffix else stem + '.kml')
+        kml_path = d / kml_name
+        if not kml_path.exists():
+            print(f"  [warn] {stem}: KML not found, skipping")
+            continue
+
+        sz_mask = np.zeros((H, W), dtype=bool)
+        for lon_ring, lat_ring in _kml_polygon_lonlat(kml_path):
+            pcols, prows = _lonlat_to_dem_pixels(lon_ring, lat_ring, dem_path)
+            sz_mask |= MplPath(np.column_stack([pcols, prows])) \
+                           .contains_points(all_pts).reshape(H, W)
+
+        label   = avi_map.get(stem, stem)
+        display = label.replace('Seven Sister', 'Sister').replace('Star Mtn ', 'Star ')
+        row = dict(stem=stem, label=label, display=display)
+
+        for thr in THRESHOLDS:
+            nuc = (slope >= thr) & valid & loaded_zone & convex & sz_mask
+            _, n_cl = nd_label(nuc)
+            row[f'clusters_{thr}'] = int(n_cl)
+        data_rows.append(row)
+
+    nuc_df = pd.DataFrame(data_rows).set_index('display')
+    nuc_df['avi_count'] = nuc_df['label'].map(avi_counts.to_dict()).fillna(0).astype(int)
+
+    zones = nuc_df.index.tolist()
+    x     = np.arange(len(zones))
+    bar_w = 0.25
+
+    fig = plt.figure(figsize=(max(10, 3 * len(zones)), 10))
+    gs  = fig.add_gridspec(2, 3, hspace=0.55, wspace=0.35)
+
+    # ── Row 1: cluster count bars + avalanche count line ─────────────────────
+    ax1 = fig.add_subplot(gs[0, :])
+    for i, (thr, col) in enumerate(zip(THRESHOLDS, COLORS)):
+        ax1.bar(x + (i - 1) * bar_w, nuc_df[f'clusters_{thr}'], bar_w,
+                label=f'slope >{thr}°', color=col, alpha=0.85)
+    ax1r = ax1.twinx()
+    ax1r.plot(x, nuc_df['avi_count'], 'k--o', lw=1.8, ms=7,
+              label='Avalanche count', zorder=10)
+    ax1.set_xticks(x); ax1.set_xticklabels(zones, rotation=25, ha='right')
+    ax1.set_ylabel('Nucleation clusters (independent initiation sites)')
+    ax1r.set_ylabel('Natural avalanche count (HS/SS)', color='k')
+    lines1, labs1 = ax1.get_legend_handles_labels()
+    lines2, labs2 = ax1r.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labs1 + labs2, fontsize=8, loc='upper left')
+    ax1.set_title('Nucleation cluster count per start zone')
+
+    # ── Row 2: scatter — cluster count vs avi_count, one panel per threshold ─
+    for col_idx, (thr, col) in enumerate(zip(THRESHOLDS, COLORS)):
+        ax = fig.add_subplot(gs[1, col_idx])
+        x_s = nuc_df[f'clusters_{thr}'].values.astype(float)
+        y_s = nuc_df['avi_count'].values.astype(float)
+        mask = ~(np.isnan(x_s) | np.isnan(y_s))
+        ax.scatter(x_s[mask], y_s[mask], color=col, s=70, zorder=5)
+        for z, xi, yi in zip(np.array(zones)[mask], x_s[mask], y_s[mask]):
+            ax.annotate(z, (xi, yi), fontsize=7, ha='left', va='bottom')
+        if mask.sum() >= 2:
+            rho, p = spearmanr(x_s[mask], y_s[mask])
+            ax.set_title(f'slope >{thr}°  |  ρ={rho:.2f}, p={p:.2f}', fontsize=9)
+        else:
+            ax.set_title(f'slope >{thr}°  |  N<2', fontsize=9)
+        ax.set_xlabel(f'Cluster count >{thr}°')
+        ax.set_ylabel('Avalanche count' if col_idx == 0 else '')
+
+    fig.suptitle(
+        f"{cfg['name']} — Nucleation clusters vs avalanche count\n"
+        f"Criteria: E-face within ~3 m of N→E rollover + convex + steep (threshold varies)",
+        fontsize=11, y=1.01,
+    )
+    plt.tight_layout()
+    fig.savefig(str(out_fig), dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print(f"  Saved: {out_fig.name}")
+
+
 def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
-                        out_fig_hs: Path, out_fig_sat: Path | None = None) -> None:
-    """Hillshade map with nucleation-patch candidate overlays.
+                        out_fig_hs: Path, out_fig_sat: Path | None = None,
+                        out_kml: Path | None = None) -> None:
+    """Hillshade map with nucleation-patch candidate overlays + optional KML.
 
     Three-tier overlay (computed on the full-area DEM):
-      · Red    — all 3 criteria: steep ≥40°, near W–NW loading face, convex
+      · Red    — all 3 criteria: steep ≥40°, E-face within ~3 m of N→E rollover, convex
       · Orange — exactly 2 of 3 criteria (expansion zone candidates)
 
     SZ polygon boundaries drawn as white outlines.
     If out_fig_sat is given and cfg has sat_image + sat_labels, an approximate
     satellite overlay is also produced using the label positions as GCPs.
+    If out_kml is given, nucleation clusters are exported as KML placemarks.
     """
     d        = cfg['data_dir']
     res      = cfg['dem_resolution']
@@ -552,15 +806,27 @@ def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
     curv      = _profile_curvature(dem_arr, res=res)
 
     # ── Nucleation criteria ───────────────────────────────────────────────────
-    valid        = ~np.isnan(slope) & ~np.isnan(aspect) & (slope > 0) & (slope < 90)
-    steep        = (slope >= 40) & valid
-    loading_face = (aspect >= lo_az) & (aspect <= hi_az) & ~np.isnan(aspect)
-    near_loading = binary_dilation(loading_face, structure=np.ones((3, 3)), iterations=2)
-    convex       = (curv > 0) & ~np.isnan(curv)
+    valid      = ~np.isnan(slope) & ~np.isnan(aspect) & (slope > 0) & (slope < 90)
+    steep      = (slope >= 40) & valid
+    convex     = (curv > 0) & ~np.isnan(curv)
 
-    n_crit     = steep.astype(int) + near_loading.astype(int) + convex.astype(int)
+    # Wind from W–NW deposits snow on the lee face.
+    # The crack-initiation zone sits on the lee face right at the rollover
+    # where the aspect transitions from the source face to the lee face —
+    # typically within ~3 m of that boundary (2 cell-lengths at resolution).
+    src_lo, src_hi = cfg.get('source_face_range', (315, 45))
+    lee_lo, lee_hi = cfg.get('lee_face_range',    (45, 135))
+    if src_lo > src_hi:
+        source_face = ((aspect >= src_lo) | (aspect <= src_hi)) & ~np.isnan(aspect)
+    else:
+        source_face = (aspect >= src_lo) & (aspect <= src_hi) & ~np.isnan(aspect)
+    lee_face    = (aspect >= lee_lo) & (aspect <= lee_hi) & ~np.isnan(aspect)
+    near_source = binary_dilation(source_face, structure=np.ones((3, 3)), iterations=2)
+    loaded_zone = lee_face & near_source
+
+    n_crit     = steep.astype(int) + loaded_zone.astype(int) + convex.astype(int)
     nucleation = n_crit == 3      # all three — most likely nucleation sites
-    two_crit   = n_crit == 2      # expansion zone
+    two_crit   = n_crit == 2      # expansion zone (2 of 3 criteria)
 
     # ── SZ polygon boundaries ─────────────────────────────────────────────────
     sz_dem_suffix   = cfg.get('sz_dem_suffix', '')
@@ -611,7 +877,7 @@ def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
     from matplotlib.patches import Patch
     legend_elems = [
         Patch(facecolor=(0.92, 0.10, 0.05, 0.70),
-              label='Nucleation candidate  (steep ≥40° + near W–NW face + convex)'),
+              label=f'Nucleation candidate  (steep ≥40° + {lee_lo}–{lee_hi}° face within 3 m of {src_lo}–{src_hi}° rollover + convex)'),
         Patch(facecolor=(1.00, 0.65, 0.00, 0.40),
               label='Expansion zone  (2 of 3 criteria)'),
     ]
@@ -621,7 +887,7 @@ def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
     ax.legend(handles=legend_elems, loc='lower left', fontsize=8, framealpha=0.85)
     ax.set_title(
         f"{cfg['name']} — Crack Nucleation Candidates\n"
-        f"Criteria: slope ≥40°  |  near {lo_az}–{hi_az}° face  |  convex (profile curv > 0)",
+        f"Criteria: slope ≥40°  |  {lee_lo}–{lee_hi}° face within ~3 m of {src_lo}–{src_hi}° rollover (wind from {lo_az}–{hi_az}°)  |  convex",
         fontsize=11,
     )
     ax.axis('off')
@@ -629,6 +895,11 @@ def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
     fig.savefig(str(out_fig_hs), dpi=200, bbox_inches='tight')
     plt.close(fig)
     print(f"  Saved: {out_fig_hs.name}")
+
+    # ── KML export (optional) ─────────────────────────────────────────────────
+    if out_kml is not None:
+        export_nucleation_kml(nucleation, dem_path, out_kml, name=cfg['name'],
+                              slope_arr=slope, aspect_arr=aspect)
 
     # ── Figure 2: satellite overlay (optional, approximate GCP warp) ─────────
     if out_fig_sat is None or not cfg.get('sat_image') or not cfg.get('sat_labels'):
@@ -690,7 +961,7 @@ def plot_nucleation_map(cfg: dict, site_slug: str, sz_dem_files: list,
     ax.legend(handles=legend_elems, loc='lower left', fontsize=8, framealpha=0.85)
     ax.set_title(
         f"{cfg['name']} — Crack Nucleation Candidates (satellite overlay, approx.)\n"
-        f"Criteria: slope ≥40°  |  near {lo_az}–{hi_az}° face  |  convex",
+        f"Criteria: slope ≥40°  |  E-face within ~3 m of N→E rollover (wind from {lo_az}–{hi_az}°)  |  convex",
         fontsize=11,
     )
     ax.axis('off')
@@ -870,12 +1141,20 @@ def plot_sz_distributions(sz_paths: list, attrib: str,
         vals = _compute_terrain_attribute(path, attrib)
         vals = vals[~np.isnan(vals)]
 
+        if len(vals) == 0:
+            print(f"  [warn] {Path(path).stem}: no valid values for {attrib}, skipping")
+            continue
+
         unique, counts = np.unique(vals, return_counts=True)
         if counts.max() / vals.shape[0] > 0.75:
             vals = vals[vals != unique[counts.argmax()]]
 
         if lo is not None:
             vals = vals[(vals >= lo) & (vals <= hi)]
+
+        if len(vals) == 0:
+            print(f"  [warn] {Path(path).stem}: no values in range [{lo}, {hi}] for {attrib}, skipping")
+            continue
         if attrib == 'slope_riserun':
             vals = np.rad2deg(np.arctan(vals))
         elif attrib == 'aspect':
@@ -1100,34 +1379,7 @@ def analyze_site(cfg: dict) -> None:
     else:
         print("Step 1 — Satellite image  [skipped — not configured]")
 
-    # ── 2. 3-D DEM ───────────────────────────────────────────────────────────
-    print("Step 2 — 3-D DEM visualisation")
-    import cv2
-    dem_arr = load_tif_as_Array(dem_path).astype(float)
-    dem_arr[dem_arr == dem_arr.min()] = np.nan
-    dem_small = cv2.pyrDown(dem_arr)
-    fig = plot_3d(dem_small, title=f"{name} DEM", show=False,
-                  **{'view azi': 130, 'view elev': 10})
-    fig.savefig(str(FIGURES / f"{site_slug}_dem_3d.png"), dpi=100, bbox_inches='tight')
-    plt.close(fig)
-    print(f"  Saved: {site_slug}_dem_3d.png")
-
-    # ── 3. Full-area slope and aspect ─────────────────────────────────────────
-    print("Step 3 — Full-area terrain maps")
-    full_attrs = get_slope_attributes(dem_path, 'slope_degrees', 'aspect')
-    slope_key  = next(k for k in full_attrs if 'slope' in k)
-    aspect_key = next(k for k in full_attrs if 'aspect' in k)
-    fig = show_array(full_attrs[slope_key][::-1, ::-1],  cmap='magma_r',
-                     title=f"{name} — Slope (°)", show=False)
-    fig.savefig(str(FIGURES / f"{site_slug}_slope_full.png"), dpi=150, bbox_inches='tight')
-    plt.close(fig)
-    fig = show_array(full_attrs[aspect_key][::-1, ::-1], cmap='twilight_shifted',
-                     title=f"{name} — Aspect", show=False)
-    fig.savefig(str(FIGURES / f"{site_slug}_aspect_full.png"), dpi=150, bbox_inches='tight')
-    plt.close(fig)
-    print(f"  Saved: {site_slug}_slope_full.png, {site_slug}_aspect_full.png")
-
-    # ── 4. Combined SZ DEM slope map ─────────────────────────────────────────
+    # ── 2. Combined SZ DEM slope map ─────────────────────────────────────────
     sz_dem_path = str(d / cfg['combined_sz_dem'])
     if not Path(sz_dem_path).exists() and cfg.get('combined_sz_kml'):
         crop_tif(dem_path, sz_dem_path, str(d / cfg['combined_sz_kml']))
@@ -1160,7 +1412,7 @@ def analyze_site(cfg: dict) -> None:
                      and Path(p).stem not in exclude_stems]
 
     print(f"\nStep 5 — Per-SZ slope distributions  ({len(sz_dem_files)} zones)")
-    slope_kurtosis = plot_sz_distributions(
+    plot_sz_distributions(
         sz_dem_files,
         attrib=cfg['slope_attr'],
         title=f"{name} — Slope angle distribution",
@@ -1168,7 +1420,7 @@ def analyze_site(cfg: dict) -> None:
     )
 
     print(f"\nStep 6 — Per-SZ aspect distributions")
-    aspect_kurtosis = plot_sz_distributions(
+    plot_sz_distributions(
         sz_dem_files,
         attrib='aspect',
         title=f"{name} — Aspect distribution",
@@ -1192,41 +1444,22 @@ def analyze_site(cfg: dict) -> None:
     avi_counts = avi_df.groupby('HW Path')['Type'].count().rename('Count')
     print(avi_counts.to_string())
 
-    print("\nStep 8 — Avalanche counts vs kurtosis")
-    # Align kurtosis dicts with the analysed zones using the explicit path map
-    analysed_stems  = [Path(p).stem for p in sz_dem_files]
-    aligned_paths   = [avi_path_map.get(s, s) for s in analysed_stems]
-    aligned_counts  = avi_counts.reindex(aligned_paths)
-    aligned_slope_k = [slope_kurtosis.get(s, float('nan')) for s in analysed_stems]
-    aligned_aspect_k = [aspect_kurtosis.get(s, float('nan')) for s in analysed_stems]
-
-    fig, axes = plt.subplots(nrows=3, sharex=True, figsize=(12, 10))
-    axes[0].bar(aligned_paths, aligned_counts.values, color='steelblue')
-    axes[0].set_title(f'{name} — Natural HS & SS counts')
-    axes[0].set_ylabel('Count')
-    axes[1].bar(aligned_paths, aligned_slope_k, width=0.5)
-    axes[1].axhline(0, color='k')
-    axes[1].set_title('Slope kurtosis')
-    axes[2].bar(aligned_paths, aligned_aspect_k, width=0.5)
-    axes[2].axhline(0, color='k')
-    axes[2].set_title('Aspect kurtosis')
-    plt.xticks(rotation=30, ha='right')
-    plt.tight_layout()
-    fig.savefig(str(FIGURES / f"{site_slug}_kurtosis.png"), dpi=150, bbox_inches='tight')
-    plt.close(fig)
-    print(f"  Saved: {site_slug}_kurtosis.png")
-
-    print("\nStep 9 — Extended terrain metrics")
+    print("\nStep 8 — Extended terrain metrics")
     sz_metrics = OrderedDict()
     for p in sz_dem_files:
-        sid     = Path(p).stem
+        sid      = Path(p).stem
         s_attrs  = get_slope_attributes(p, 'slope_degrees')
         a_attrs  = get_slope_attributes(p, 'aspect')
+        slope_arr = s_attrs[list(s_attrs.keys())[0]]
+        valid_count = int(np.sum(~np.isnan(slope_arr) & (slope_arr > 0)))
+        if valid_count == 0:
+            print(f"  [warn] {sid}: no valid slope data — skipping (check KML/DEM overlap)")
+            continue
         dem_arr  = load_tif_as_Array(p).astype(float)
-        dem_arr[dem_arr == dem_arr.min()] = np.nan   # nodata sentinel
+        dem_arr[dem_arr == dem_arr.min()] = np.nan
         curv_arr = _profile_curvature(dem_arr, res=cfg['dem_resolution'])
         sz_metrics[sid] = compute_sz_metrics(
-            s_attrs[list(s_attrs.keys())[0]],
+            slope_arr,
             a_attrs[list(a_attrs.keys())[0]],
             curv_arr=curv_arr,
             resolution_m=cfg['dem_resolution'],
@@ -1333,12 +1566,16 @@ def analyze_site(cfg: dict) -> None:
     _write_report(cfg, site_slug, analysis_df, corr_df, avi_counts, boot_results)
 
     print("\nStep 13 — Nucleation patch map")
-    out_sat = (FIGURES / f"{site_slug}_nucleation_sat.png"
-               if cfg.get('sat_image') and cfg.get('sat_labels') else None)
     plot_nucleation_map(
         cfg, site_slug, sz_dem_files,
         out_fig_hs  = FIGURES / f"{site_slug}_nucleation_hs.png",
-        out_fig_sat = out_sat,
+        out_kml     = FIGURES / f"{site_slug}_nucleation.kml",
+    )
+
+    print("\nStep 14 — Nucleation count vs avalanche frequency")
+    plot_nucleation_vs_avalanches(
+        cfg, site_slug, sz_dem_files, avi_counts,
+        out_fig = FIGURES / f"{site_slug}_nucleation_vs_avis.png",
     )
     print(f"\nAnalysis done — figures and report in {FIGURES}")
 
@@ -1353,9 +1590,9 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='Available sites: ' + ', '.join(SITES),
     )
-    parser.add_argument('--site', choices=list(SITES),
-                        help='Site to process/analyse  (sisters | star_mtn | us550)',
-                        default='sisters')
+    parser.add_argument('--site', choices=list(SITES), default=None,
+                        help='Site to process/analyse (sisters | star_mtn | us550). '
+                             'Omit to run all sites.')
     parser.add_argument('--skip-process', action='store_true',
                         help='Skip the LAZ → DEM processing steps')
     parser.add_argument('--skip-analyze', action='store_true',
@@ -1363,12 +1600,14 @@ def main() -> None:
     args = parser.parse_args()
 
     FIGURES.mkdir(exist_ok=True)
-    cfg = SITES[args.site]
+    sites = [args.site] if args.site else list(SITES)
 
-    if not args.skip_process:
-        process_site(cfg)
-    if not args.skip_analyze:
-        analyze_site(cfg)
+    for site_key in sites:
+        cfg = SITES[site_key]
+        if not args.skip_process:
+            process_site(cfg)
+        if not args.skip_analyze:
+            analyze_site(cfg)
 
 
 if __name__ == '__main__':
