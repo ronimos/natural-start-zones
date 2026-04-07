@@ -639,7 +639,7 @@ def export_nucleation_kml(nucleation_mask: np.ndarray, dem_path: str,
 
 def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
                                    avi_counts: pd.Series, out_fig: Path) -> None:
-    """Nucleation cluster count vs. raw avalanche count, split by slope threshold.
+    """Nucleation cluster count vs. raw avalanche count, split by slope bin.
 
     Nucleation is computed on the FULL site DEM (same as the hillshade map),
     then each SZ KML polygon is rasterised onto the full DEM grid to mask and
@@ -652,16 +652,19 @@ def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
 
     Layout
     ------
-    Row 1 : grouped bar chart — cluster count per SZ at each slope threshold,
-            secondary axis shows raw avalanche count as a line.
-    Row 2 : scatter plots (one per threshold) of cluster count vs. raw
-            avalanche count, with Spearman ρ annotated.
+    Row 1 : stacked bar chart — cluster count per SZ broken into mutually
+            exclusive slope bins (40–45°, 45–50°, >50°); secondary axis shows
+            raw avalanche count as a line.
+    Row 2 : scatter plots (one per bin) of cluster count vs. raw avalanche
+            count, with Spearman ρ annotated.
     """
     from scipy.ndimage import label as nd_label
     from matplotlib.path import Path as MplPath
 
-    THRESHOLDS    = [40, 45, 50]
-    COLORS        = ['#4e8fd4', '#e07b39', '#5cb85c']
+    # Mutually exclusive slope bins: (lo_inclusive, hi_exclusive)
+    BINS   = [(40, 45), (45, 50), (50, 90)]
+    LABELS = ['40–45°', '45–50°', '>50°']
+    COLORS = ['#4e8fd4', '#e07b39', '#5cb85c']
     res           = cfg['dem_resolution']
     avi_map       = cfg.get('sz_avi_path_map', {})
     exclude       = set(cfg.get('exclude_sz_stems', []))
@@ -718,27 +721,32 @@ def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
         display = label.replace('Seven Sister', 'Sister').replace('Star Mtn ', 'Star ')
         row = dict(stem=stem, label=label, display=display)
 
-        for thr in THRESHOLDS:
-            nuc = (slope >= thr) & valid & loaded_zone & convex & sz_mask
+        for (lo, hi), lbl in zip(BINS, LABELS):
+            nuc = (slope >= lo) & (slope < hi) & valid & loaded_zone & convex & sz_mask
             _, n_cl = nd_label(nuc)
-            row[f'clusters_{thr}'] = int(n_cl)
+            row[f'clusters_{lbl}'] = int(n_cl)
         data_rows.append(row)
 
     nuc_df = pd.DataFrame(data_rows).set_index('display')
     nuc_df['avi_count'] = nuc_df['label'].map(avi_counts.to_dict()).fillna(0).astype(int)
 
+    # Add total column (sum of all bins = all clusters ≥40°)
+    bin_cols = [f'clusters_{lbl}' for lbl in LABELS]
+    nuc_df['clusters_total'] = nuc_df[bin_cols].sum(axis=1)
+
     zones = nuc_df.index.tolist()
     x     = np.arange(len(zones))
-    bar_w = 0.25
 
     fig = plt.figure(figsize=(max(10, 3 * len(zones)), 10))
     gs  = fig.add_gridspec(2, 3, hspace=0.55, wspace=0.35)
 
-    # ── Row 1: cluster count bars + avalanche count line ─────────────────────
-    ax1 = fig.add_subplot(gs[0, :])
-    for i, (thr, col) in enumerate(zip(THRESHOLDS, COLORS)):
-        ax1.bar(x + (i - 1) * bar_w, nuc_df[f'clusters_{thr}'], bar_w,
-                label=f'slope >{thr}°', color=col, alpha=0.85)
+    # ── Row 1: stacked bars + avalanche count line ────────────────────────────
+    ax1     = fig.add_subplot(gs[0, :])
+    bottoms = np.zeros(len(zones))
+    for lbl, col in zip(LABELS, COLORS):
+        vals = nuc_df[f'clusters_{lbl}'].values.astype(float)
+        ax1.bar(x, vals, bottom=bottoms, label=f'slope {lbl}', color=col, alpha=0.85)
+        bottoms += vals
     ax1r = ax1.twinx()
     ax1r.plot(x, nuc_df['avi_count'], 'k--o', lw=1.8, ms=7,
               label='Avalanche count', zorder=10)
@@ -748,12 +756,12 @@ def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
     lines1, labs1 = ax1.get_legend_handles_labels()
     lines2, labs2 = ax1r.get_legend_handles_labels()
     ax1.legend(lines1 + lines2, labs1 + labs2, fontsize=8, loc='upper left')
-    ax1.set_title('Nucleation cluster count per start zone')
+    ax1.set_title('Nucleation cluster count per start zone (stacked by slope bin)')
 
-    # ── Row 2: scatter — cluster count vs avi_count, one panel per threshold ─
-    for col_idx, (thr, col) in enumerate(zip(THRESHOLDS, COLORS)):
-        ax = fig.add_subplot(gs[1, col_idx])
-        x_s = nuc_df[f'clusters_{thr}'].values.astype(float)
+    # ── Row 2: scatter — cluster count vs avi_count, one panel per bin ───────
+    for col_idx, (lbl, col) in enumerate(zip(LABELS, COLORS)):
+        ax  = fig.add_subplot(gs[1, col_idx])
+        x_s = nuc_df[f'clusters_{lbl}'].values.astype(float)
         y_s = nuc_df['avi_count'].values.astype(float)
         mask = ~(np.isnan(x_s) | np.isnan(y_s))
         ax.scatter(x_s[mask], y_s[mask], color=col, s=70, zorder=5)
@@ -761,15 +769,15 @@ def plot_nucleation_vs_avalanches(cfg: dict, site_slug: str, sz_dem_files: list,
             ax.annotate(z, (xi, yi), fontsize=7, ha='left', va='bottom')
         if mask.sum() >= 2:
             rho, p = spearmanr(x_s[mask], y_s[mask])
-            ax.set_title(f'slope >{thr}°  |  ρ={rho:.2f}, p={p:.2f}', fontsize=9)
+            ax.set_title(f'slope {lbl}  |  ρ={rho:.2f}, p={p:.2f}', fontsize=9)
         else:
-            ax.set_title(f'slope >{thr}°  |  N<2', fontsize=9)
-        ax.set_xlabel(f'Cluster count >{thr}°')
+            ax.set_title(f'slope {lbl}  |  N<2', fontsize=9)
+        ax.set_xlabel(f'Cluster count ({lbl})')
         ax.set_ylabel('Avalanche count' if col_idx == 0 else '')
 
     fig.suptitle(
         f"{cfg['name']} — Nucleation clusters vs avalanche count\n"
-        f"Criteria: E-face within ~3 m of N→E rollover + convex + steep (threshold varies)",
+        f"Criteria: lee-face within ~3 m of source-face rollover + convex + steep (bin varies)",
         fontsize=11, y=1.01,
     )
     plt.tight_layout()
