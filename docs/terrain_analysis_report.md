@@ -128,7 +128,7 @@ Sisters #3 and #4 have strikingly higher aspect entropy than #1 and #2, reflecti
 
 ![Steepness and curvature proxies](../figures/seven_sisters_steepness_vs_avis.png)
 
-*Figure 2. Max slope 1-cell, loading co-occurrence, and profile curvature P95 against avalanche frequency (Seven Sisters). Note that Sister One has a relatively high number of avalanches for nucleation points. This can be explained by the nucleation points along the path outside its start zone polygon (Figure 1). In fact, the vast majority of the natural slab avalanches from Sister One originated from this area.*
+*Figure 2. Max slope 1-cell, loading co-occurrence, and profile curvature P95 against avalanche frequency (Seven Sisters).*
 
 ### 5.4 Start-zone slope map
 
@@ -146,7 +146,7 @@ Sisters #3 and #4 have strikingly higher aspect entropy than #1 and #2, reflecti
 
 ![Nucleation vs avalanches](../figures/seven_sisters_nucleation_vs_avis.png)
 
-*Figure 5. Number of spatially connected nucleation-candidate clusters per start zone (bars, split by slope threshold) against raw natural avalanche count (line). Sister #4 has the most clusters and the highest avalanche count.*
+*Figure 5. Number of spatially connected nucleation-candidate clusters per start zone (bars, split by slope threshold) against raw natural avalanche count (line). Sister #4 has the most clusters and the highest avalanche count. Note that Sister One has a relatively high number of avalanches for nucleation points. This can be explained by the nucleation points along the path outside its start zone polygon (Figure 4). In fact, the vast majority of the natural slab avalanches from Sister One originated from this area.*
 
 ---
 
