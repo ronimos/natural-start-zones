@@ -1,18 +1,18 @@
 # Terrain-Based Prediction of Natural Avalanche Frequency in Highway Start Zones
-### Seven Sisters and Star Mountain — Preliminary Results
+### Seven Sisters and Star Mountain Preliminary Results
 
 
 ---
 
 ## 1. Motivation
 
-Natural slab avalanches on mountain highway corridors represent a persistent hazard to road users and maintenance crews. While all avalanche start zones on a given corridor share the same regional snowpack and storm exposure, some paths release naturally far more often than others. Understanding *why* — from terrain geometry alone — would improve hazard forecasting, prioritisation of mitigation works, and the physical interpretation of avalanche climate data.
+Natural slab avalanches on mountain highway corridors represent a persistent hazard to road users and maintenance crews. While all avalanche start zones on a given corridor share the same regional snowpack and storm exposure, some paths release naturally far more often than others. Understanding *why* and how terrain geometry affects the frequency of these avalanches can improve hazard forecasting, prioritization of mitigation works, and the physical interpretation of avalanche climate data.
 
 The central question this work addresses is:
 
 > Given two start zones on the same mountain, both already steep enough to release a slab, what terrain features explain why one releases significantly more often than the other?
 
-The answer is not simply "steeper terrain." All zones studied here are pre-selected avalanche terrain with mean slopes well above the 35° slab-release threshold. What distinguishes high- from low-frequency zones must therefore lie in features that control either **snow accumulation** (loading) or **fracture initiation mechanics** — or the spatial coincidence of both.
+The answer is not simply "steeper terrain." All zones studied here are pre-selected avalanche terrain with mean slopes well above the 35° slab-release threshold. What distinguishes high- from low-frequency zones must therefore lie in features that control either snow accumulation (loading) or fracture initiation mechanics, or the spatial coincidence of both.
 
 This work tests three physically motivated hypotheses:
 
@@ -31,7 +31,7 @@ Both sites are along US-550 (the Million Dollar Highway) in the San Juan Mountai
 | **Seven Sisters** | #1, #2, #3, #4 | #6 (wind-scoured convex ridge, different regime) | CAIC 2009–2021 |
 | **Star Mountain** | C, D, E | A, B (different loading pattern) | CAIC 2009–2021 |
 
-Only **natural** hard-slab (HS) and soft-slab (SS) avalanches are used. Human-triggered events are excluded to isolate terrain-controlled release. Avalanche frequency is expressed both as raw count and normalised by start-zone area (events per 10,000 m²) to remove the trivial size effect.
+Only natural hard-slab (HS) and soft-slab (SS) avalanches are used. Human-triggered events are excluded to isolate terrain-controlled release. Avalanche frequency is expressed both as raw count and normalised by start-zone area (events per 10,000 m²) to remove the trivial size effect.
 
 ---
 
@@ -51,7 +51,7 @@ Processing pipeline (PDAL):
 3. SMRF ground segmentation (slope 1.7, window 16 m, threshold 0.45 m) with ELM noise removal and outlier filtering
 4. Ground returns → mean-elevation GeoTIFF
 
-At sub-metre resolution, individual convex rolls and slope breaks — the terrain features most relevant to slab mechanics — are fully resolved. Coarser 10 m DEMs smooth away these features entirely.
+At sub-metre resolution, individual convex rolls and slope breaks (the most relevant terrain features to snow loading and slab mechanics) are fully resolved. Coarser 10 m DEMs smooth away these features entirely.
 
 ### 3.2 Start-zone polygons
 
@@ -124,11 +124,11 @@ Sisters #3 and #4 have strikingly higher aspect entropy than #1 and #2, reflecti
 
 ![Terrain vs avalanche frequency](../figures/seven_sisters_terrain_vs_avis.png)
 
-*Figure 1. Scatter plots of the three strongest terrain predictors against avalanche frequency (Seven Sisters). Each point is one start zone. ρ values are Spearman rank correlations.*
+*Figure 1. Scatter plots of the three strongest terrain predictors against avalanche frequency (Seven Sisters). Each point is one start zone. ρ values are Spearman rank correlations.*   
 
 ![Steepness and curvature proxies](../figures/seven_sisters_steepness_vs_avis.png)
 
-*Figure 2. Max slope 1-cell, loading co-occurrence, and profile curvature P95 against avalanche frequency (Seven Sisters).*
+*Figure 2. Max slope 1-cell, loading co-occurrence, and profile curvature P95 against avalanche frequency (Seven Sisters). Note that Sister One has a relatively high number of avalanches for nucleation points. This can be explained by the nucleation points along the path outside its start zone polygon (Figure 1). In fact, the vast majority of the natural slab avalanches from Sister One originated from this area.*
 
 ### 5.4 Start-zone slope map
 
@@ -226,9 +226,9 @@ The positive signal at Seven Sisters (ρ = +0.60) is physically intuitive — co
 
 For each site, likely crack initiation locations were identified by the simultaneous occurrence of three criteria on the full-area DEM:
 
-1. **Slope ≥ 40°** — sufficient driving shear stress
-2. **Lee face within ~3 m of the source-face rollover** — wind-deposited slab geometry (Seven Sisters: E-facing terrain within ~3 m of a N-facing ridge cap; Star Mountain: same geometry)
-3. **Positive profile curvature** — stress-concentration geometry
+1. **Slope ≥ 40°:** sufficient driving shear stress
+2. **Lee face within ~3 m of the source-face rollover:** wind-deposited slab geometry (Seven Sisters: E-facing terrain within ~3 m of a N-facing ridge cap; Star Mountain: same geometry)
+3. **Positive profile curvature:** stress-concentration geometry
 
 Spatially connected patches meeting all three criteria are treated as independent nucleation candidates (Figure 4, Figure 7). The count of these clusters at three slope thresholds (>40°, >45°, >50°) is compared with the observed avalanche count (Figures 5, 8).
 
