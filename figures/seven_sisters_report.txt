@@ -14,14 +14,14 @@ Seven Sister #6    1
 KEY TERRAIN METRICS PER START ZONE
 ----------------------------------------------------------------------
   pct_40_50              % of SZ cells with slope 40–50° (core release band)
-  slope_max_1cell        max slope of any single cell (≈1.4 m² at 1.2 m res)
+  slope_max_1cell        max slope of any single cell (≈1.0 m² at 1 m res)
                          proxy for peak shear stress / crack initiation
   aspect_entropy         Shannon entropy of aspect distribution over 8
                          octants (0 = single direction, 3 bits = uniform)
   aspect_entropy_steep   entropy computed only on cells ≥35°
                          (high = steep terrain faces many wind directions)
  pct_steep_near_loading % of SZ cells that are both steep (≥40°) AND
-                         within 2 cells (≈2.4 m) of a 225–315°
+                         within 2 cells (≈2 m) of a 225–315°
                          (W–NW) facing cell — co-occurrence proxy.
  profile_curv_p95_steep  95th-percentile profile curvature on steep (≥40°)
                          interior cells (boundary pixels excluded). Positive
@@ -35,35 +35,35 @@ KEY TERRAIN METRICS PER START ZONE
 
                  pct_40_50  slope_max_1cell  aspect_entropy  aspect_entropy_steep  pct_steep_near_loading  profile_curv_p95_steep  area_m2  avi_per_area
 start_zone                                                                                                                                              
-Sister_1_SZ_DEM      0.690           79.240           0.845                 0.845                   0.561                   0.271  3339.36        11.978
-Sister_2_SZ_DEM      0.346           79.523           0.890                 0.890                   5.655                   0.315  4991.04         2.004
-Sister_3_SZ_DEM      0.247           82.771           1.668                 1.668                  45.189                   0.384  4085.28        12.239
-Sister_4_SZ_DEM      0.179           83.681           1.833                 1.833                  28.853                   0.382  2410.56        37.336
+Sister_1_SZ_DEM     34.141           62.825           0.747                 0.797                   0.413                   0.293   1939.0        20.629
+Sister_2_SZ_DEM     46.572           69.881           0.843                 0.831                   0.866                   0.307   2888.0         3.463
+Sister_3_SZ_DEM     56.255           68.333           1.646                 1.641                  33.795                   0.339   2382.0        20.991
+Sister_4_SZ_DEM     48.924           66.477           1.773                 1.779                  18.580                   0.380   1394.0        64.562
 
 SPEARMAN CORRELATIONS
 ----------------------------------------------------------------------
           terrain_metric       outcome  spearman_rho  p_spearman  kendall_tau  p_kendall
-                Slope SD Avis / 10k m²         0.400       0.600        0.333      0.750
-                Slope CV Avis / 10k m²         0.400       0.600        0.333      0.750
-                 % > 35° Avis / 10k m²         0.258       0.742        0.236      0.655
-                 % > 40° Avis / 10k m²         0.800       0.200        0.667      0.333
-                % 40–50° Avis / 10k m²        -0.800       0.200       -0.667      0.333
-        Max slope 1-cell Avis / 10k m²         0.800       0.200        0.667      0.333
+                Slope SD Avis / 10k m²         1.000       0.000        1.000      0.083
+                Slope CV Avis / 10k m²         0.800       0.200        0.667      0.333
+                 % > 35° Avis / 10k m²         0.600       0.400        0.333      0.750
+                 % > 40° Avis / 10k m²         0.600       0.400        0.333      0.750
+                % 40–50° Avis / 10k m²         0.600       0.400        0.333      0.750
+        Max slope 1-cell Avis / 10k m²        -0.400       0.600       -0.333      0.750
           Aspect entropy Avis / 10k m²         0.800       0.200        0.667      0.333
          Aspect circ var Avis / 10k m²         0.800       0.200        0.667      0.333
-        N aspect octants Avis / 10k m²         0.738       0.262        0.548      0.279
+        N aspect octants Avis / 10k m²         0.632       0.368        0.548      0.279
   Aspect entropy (steep) Avis / 10k m²         0.800       0.200        0.667      0.333
    % steep near 225–315° Avis / 10k m²         0.600       0.400        0.333      0.750
-Profile curv P95 (steep) Avis / 10k m²         0.600       0.400        0.333      0.750
+Profile curv P95 (steep) Avis / 10k m²         0.800       0.200        0.667      0.333
 
 BOOTSTRAP 95% CIs  (Spearman ρ · 10,000 resamples)
 ----------------------------------------------------------------------
-  % 40–50°                         vs  Avis/area       ρ=-0.800  [CI: N/A]
-  Max slope 1-cell                 vs  Avis/area       ρ=+0.800  [CI: N/A]
+  % 40–50°                         vs  Avis/area       ρ=+0.600  [CI: N/A]
+  Max slope 1-cell                 vs  Avis/area       ρ=-0.400  [CI: N/A]
   Aspect entropy                   vs  Avis/area       ρ=+0.800  [CI: N/A]
   Aspect entropy (steep)           vs  Avis/area       ρ=+0.800  [CI: N/A]
   % steep near 225–315°            vs  Avis/area       ρ=+0.600  [CI: N/A]
-  Profile curv P95 (steep)         vs  Avis/area       ρ=+0.600  [CI: N/A]
+  Profile curv P95 (steep)         vs  Avis/area       ρ=+0.800  [CI: N/A]
   (N=4 is too small for meaningful bootstrap CIs)
 
 INTERPRETATION
@@ -72,7 +72,7 @@ N = 4 start zones (excluded from analysis: Sister 6).
 All p-values and effect sizes are exploratory at this sample size.
 
 Slope steepness:
-  % cells in the 40–50° core release band (ρ=-0.80) shows no
+  % cells in the 40–50° core release band (ρ=+0.60) shows no
   consistent trend with avalanche frequency. This is expected: all start
   zones were pre-selected as avalanche terrain and already fall within
   the slab release angle range. Raw steepness does not discriminate
@@ -106,7 +106,7 @@ Co-occurrence of loading and steepness:
   snow pillow (wind slab deposition) onto the slope map directly.
 
 Profile curvature (stress concentration):
-  Profile curvature P95 on steep cells (ρ=+0.600).
+  Profile curvature P95 on steep cells (ρ=+0.800).
   Convex rolls (positive profile curvature) concentrate normal stress
   at the base of the slab in the same way a notch concentrates K_I in
   fracture mechanics (Gvirtzman et al. 2025). The 95th-percentile on

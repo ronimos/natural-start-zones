@@ -33,9 +33,9 @@ Raw LiDAR tiles (LAZ)
         │
         ▼  Step 2  optional spatial crop (bounding box)
         │
-        ▼  Step 3  SMRF ground segmentation
+        ▼  Step 3  ground extraction (SMRF, or vendor class 2)
         │
-        ▼  Step 4  ground points → DEM (GeoTIFF, 1.0–1.2 m/pixel)
+        ▼  Step 4  ground points → DEM (GeoTIFF, 1.0 m/pixel)
         │
         ▼  Step 5  optional pixel crop
         │
@@ -52,9 +52,9 @@ Raw LiDAR tiles (LAZ)
 
 ### Why this processing chain?
 
-**LiDAR at 1–1.2 m/pixel.**  Airborne LiDAR gives sub-metre ground elevation even through vegetation.  At this resolution, individual convex rolls and slope breaks — the features most relevant to slab mechanics — are resolved.  Coarser 10 m DEMs smooth away these features entirely.
+**LiDAR at 1 m/pixel.**  Airborne LiDAR gives sub-metre ground elevation even through vegetation.  At this resolution, individual convex rolls and slope breaks — the features most relevant to slab mechanics — are resolved.  Coarser 10 m DEMs smooth away these features entirely.
 
-**SMRF ground filter.**  The Simple Morphological Filter (Pingel et al. 2013) is robust to the dense coniferous canopy and steep rocky ridges found in the San Juans.  We apply ELM (extended local minimum) noise removal and an outlier filter before SMRF, then extract only class-2 (ground) returns.  Parameters: slope 1.7, window 16 m, threshold 0.45 m — tuned for alpine terrain with moderate relief within each filter window.
+**SMRF ground filter.**  The Simple Morphological Filter (Pingel et al. 2013) is robust to the dense coniferous canopy and steep rocky ridges found in the San Juans.  We apply ELM (extended local minimum) noise removal and an outlier filter before SMRF, then extract only class-2 (ground) returns.  Parameters: slope 1.7, window 16 m, threshold 0.45 m — tuned for alpine terrain with moderate relief within each filter window.  Sites with a reliable vendor ground classification can skip SMRF and keep the vendor's class-2 returns (`'vendor_ground': True` in the site config); Seven Sisters does this because SMRF kept tree crowns in its forested gullies as ground.
 
 **Mean-elevation DEM.**  Ground returns within each pixel are averaged.  This is conservative compared to minimum-elevation but reduces sensitivity to isolated rock outcrops and residual noise.
 

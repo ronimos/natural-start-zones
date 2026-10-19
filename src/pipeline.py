@@ -68,14 +68,25 @@ SITES: dict = {
         # Output file names inside data_dir
         'merged_laz': 'Sisters.laz',
         'ground_laz': 'Sisters_ground.laz',
-        # Optional: crop the merged LAZ by EPSG:26913 bounding box before
-        # ground filtering.  Set to None to skip.
+        # Optional: crop the merged LAZ by a bounding box in the source CRS
+        # (EPSG:6428, US survey ft) before ground filtering.  Set to None to skip.
         'spatial_bounds': dict(x_min=2889242.0, x_max=2891136.0,
                                y_min=1670983.0,  y_max=1672982.0),
         'cropped_laz': 'sisters_crop.laz',   # output name after bounds crop
+        # Source LAZ is NAD83(2011) Colorado Central + NAVD88 height, both in
+        # US survey ft.  Reproject to UTM 13N + NAVD88 (m) so that x, y and z
+        # all end up in metres.
+        'out_srs': 'EPSG:26913+5703',
+        # Use the vendor's ground classification (class 2) instead of SMRF.
+        # SMRF keeps tree crowns in the forested gullies as ground, leaving
+        # mounds up to ~20 m high in the DEM.
+        'vendor_ground': True,
         # DEM produced from ground-filtered LAZ
-        'dem_resolution': 1.2,           # metres per pixel
+        'dem_resolution': 1.0,           # metres per pixel
         'dem_name':       'Sisters_crp.tif',
+        # Fill empty DEM cells (no ground returns under dense trees) by IDW from
+        # cells up to this many pixels away.  All gaps here are ≤ 3 px from data.
+        'dem_window_size': 3,
         # Optional: crop the DEM further by a pixel offset window
         # (offset_x, offset_y, size_x, size_y).  Set to None to skip.
         'pixel_crop_window': None,
@@ -91,9 +102,9 @@ SITES: dict = {
         'combined_sz_kml': 'Sisters_SZs.kml',
         'combined_sz_dem': 'Sisters_SZ_DEM.tif',
         # Glob for individual SZ KMLs
-        'sz_kml_glob':  'Sister ? SZ.kml',
+        'sz_kml_glob':  'Sister_?_SZ.kml',
         # Suffix added to KML stem to produce the output TIF name
-        # e.g.  'Sister 1 SZ' + '_DEM' + '.tif' → 'Sister 1 SZ_DEM.tif'
+        # e.g.  'Sister_1_SZ' + '_DEM' + '.tif' → 'Sister_1_SZ_DEM.tif'
         'sz_dem_suffix': '_DEM',
 
         # ── Analysis: visualisation ───────────────────────────────────────────
@@ -103,8 +114,8 @@ SITES: dict = {
         'sat_labels': [(925, 300, '#1'), (840, 420, '#2'), (770, 420, '#3'),
                        (707, 420, '#4'), (450, 160, '#6')],
         # Labels drawn on the cropped SZ slope map
-        'sz_map_labels': [(450, 120, '#1'), (350, 225, '#2'), (280, 225, '#3'),
-                          (220, 225, '#4'), (2,   20,  '#6')],
+        'sz_map_labels': [(405, 85, '#1'), (315, 165, '#2'), (255, 165, '#3'),
+                          (195, 185, '#4'), (30,  25,  '#6')],
         # richdem attribute name for slope histograms
         'slope_attr': 'slope_degrees',
 
@@ -274,18 +285,24 @@ def crop_laz_bounds(in_file: Path, out_file: Path, bounds: dict) -> None:
     pipeline.execute()
 
 
-def ground_filter_laz(in_file: Path, out_file: Path) -> None:
+def ground_filter_laz(in_file: Path, out_file: Path,
+                      out_srs: str = 'EPSG:26913',
+                      vendor_ground: bool = False) -> None:
     """
-    PDAL SMRF ground segmentation:
-      reproject (EPSG:26913) → reset classes → ELM noise removal
+    Extract ground points, reprojected to out_srs.
+
+    vendor_ground=False — PDAL SMRF ground segmentation:
+      reproject → reset classes → ELM noise removal
       → outlier removal → SMRF → extract ground (class 2).
+    vendor_ground=True — keep the classification delivered with the LiDAR:
+      reproject → extract ground (class 2).
     """
-    if _skip_or(out_file, 'smrf'):
+    if _skip_or(out_file, 'vgnd' if vendor_ground else 'smrf'):
         return
-    pipeline_def = {
-        "pipeline": [
-            str(in_file),
-            {"type": "filters.reprojection", "out_srs": "EPSG:26913"},
+    if vendor_ground:
+        filters = []
+    else:
+        filters = [
             {"type": "filters.assign",       "assignment": "Classification[:]=0"},
             {"type": "filters.elm"},
             {"type": "filters.outlier"},
@@ -297,6 +314,12 @@ def ground_filter_laz(in_file: Path, out_file: Path) -> None:
                 "threshold": 0.45,
                 "scalar":    1.2,
             },
+        ]
+    pipeline_def = {
+        "pipeline": [
+            str(in_file),
+            {"type": "filters.reprojection", "out_srs": out_srs},
+            *filters,
             {"type": "filters.range", "limits": "Classification[2:2]"},
             {
                 "type":          "writers.las",
@@ -309,8 +332,13 @@ def ground_filter_laz(in_file: Path, out_file: Path) -> None:
     pdal.Pipeline(json.dumps(pipeline_def)).execute()
 
 
-def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> None:
-    """Convert ground-filtered LAZ to a mean-elevation DEM GeoTIFF."""
+def laz_to_dem(in_file: Path, out_file: Path, resolution: float,
+               window_size: int = 0) -> None:
+    """Convert ground-filtered LAZ to a mean-elevation DEM GeoTIFF.
+
+    window_size > 0 fills empty cells by inverse-distance weighting from
+    populated cells up to that many pixels away (PDAL fallback interpolation).
+    """
     if _skip_or(out_file, 'dem'):
         return
     pipeline_def = {
@@ -322,6 +350,7 @@ def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> None:
                 "gdaldriver":  "GTiff",
                 "output_type": "mean",
                 "resolution":  resolution,
+                "window_size": window_size,
             },
         ]
     }
@@ -407,13 +436,17 @@ def process_site(cfg: dict) -> None:
 
     # 3. SMRF ground filter
     ground_laz = d / cfg['ground_laz']
-    print("\nStep 3 — SMRF ground segmentation")
-    ground_filter_laz(laz_for_ground, ground_laz)
+    vendor_ground = cfg.get('vendor_ground', False)
+    print("\nStep 3 — " + ("Vendor ground classification" if vendor_ground
+                            else "SMRF ground segmentation"))
+    ground_filter_laz(laz_for_ground, ground_laz,
+                      cfg.get('out_srs', 'EPSG:26913'), vendor_ground)
 
     # 4. LAZ → DEM
     dem_tif = d / cfg['dem_name']
     print("\nStep 4 — LAZ → DEM")
-    laz_to_dem(ground_laz, dem_tif, cfg['dem_resolution'])
+    laz_to_dem(ground_laz, dem_tif, cfg['dem_resolution'],
+               cfg.get('dem_window_size', 0))
 
     # 5. Optional pixel crop
     analysis_dem = dem_tif
@@ -1003,7 +1036,7 @@ def _aspect_entropy(aspects_deg: np.ndarray) -> float:
 
 def compute_sz_metrics(slope_arr: np.ndarray, aspect_arr: np.ndarray,
                         curv_arr: np.ndarray | None = None,
-                        resolution_m: float = 1.2,
+                        resolution_m: float = 1.0,
                         loading_az_range: tuple = (225, 315)) -> dict:
     """Terrain variability and crack-initiation metrics for one start zone.
 
@@ -1026,10 +1059,10 @@ def compute_sz_metrics(slope_arr: np.ndarray, aspect_arr: np.ndarray,
                 & (aspect_arr >= 0) & (aspect_arr <= 360))
     s2 = np.where(valid_2d, slope_arr, np.nan)
 
-    # Steepest single cell (≈ resolution_m² ≈ 1.44 m² at 1.2 m)
+    # Steepest single cell (resolution_m² in area)
     slope_max_1cell = float(np.nanmax(s2))
 
-    # Co-occurrence: steep (≥40°) terrain within 2 cells (≈2.4 m) of a
+    # Co-occurrence: steep (≥40°) terrain within 2 cells (2 × resolution_m) of a
     # loading-sector (W/NW) face.
     # NOTE — necessary but not sufficient: a cell can be steep AND near a
     # loaded face without being directly loaded itself.  Use as a proxy only.
@@ -1199,6 +1232,7 @@ def _write_report(cfg: dict, site_slug: str, analysis_df: pd.DataFrame,
     W = 70
 
     lo_az, hi_az = cfg.get('loading_az_range', (225, 315))
+    res          = cfg['dem_resolution']
     key_cols = ['pct_40_50', 'slope_max_1cell',
                 'aspect_entropy', 'aspect_entropy_steep',
                 'pct_steep_near_loading', 'profile_curv_p95_steep',
@@ -1238,14 +1272,14 @@ def _write_report(cfg: dict, site_slug: str, analysis_df: pd.DataFrame,
         'KEY TERRAIN METRICS PER START ZONE',
         '-' * W,
         '  pct_40_50              % of SZ cells with slope 40–50° (core release band)',
-        '  slope_max_1cell        max slope of any single cell (≈1.4 m² at 1.2 m res)',
+        f'  slope_max_1cell        max slope of any single cell (≈{res**2:.1f} m² at {res:g} m res)',
         '                         proxy for peak shear stress / crack initiation',
         '  aspect_entropy         Shannon entropy of aspect distribution over 8',
         '                         octants (0 = single direction, 3 bits = uniform)',
         '  aspect_entropy_steep   entropy computed only on cells ≥35°',
         '                         (high = steep terrain faces many wind directions)',
         f' pct_steep_near_loading % of SZ cells that are both steep (≥40°) AND',
-        f'                         within 2 cells (≈2.4 m) of a {lo_az}–{hi_az}°',
+        f'                         within 2 cells (≈{2 * res:g} m) of a {lo_az}–{hi_az}°',
         '                         (W–NW) facing cell — co-occurrence proxy.',
         ' profile_curv_p95_steep  95th-percentile profile curvature on steep (≥40°)',
         '                         interior cells (boundary pixels excluded). Positive',
