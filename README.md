@@ -187,6 +187,13 @@ Copying in just the DEM (e.g. `Sisters_crp.tif` from OneDrive) is enough —
 the LAZ steps are skipped when their inputs are absent.  Missing inputs are
 reported before anything runs.
 
+A site can instead take a pre-made elevation raster (e.g. a photogrammetry
+DTM) via `source_raster` in its `SITES` entry: it is block-averaged to
+`dem_resolution` and replaces the LAZ steps.  It must be **bare earth** — a
+DSM that includes trees biases slope, aspect and curvature.  Pointing
+`source_raster` at a different file always rebuilds the DEM and everything
+downstream.
+
 Outputs land in `figures/` as PNG figures, a text report, and a KML file.
 
 ### Adding a new site

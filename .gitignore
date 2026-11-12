@@ -5,6 +5,8 @@
 *.las
 *.tif
 *.tiff
+# GDAL cached statistics
+*.aux.xml
 
 # Generated figures (reproducible via pipeline.py)
 figures/
@@ -33,3 +35,6 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Database credentials (sql_util.py legacy location)
+.env

@@ -25,4 +25,7 @@ dependencies:
   - geopandas
   - opencv
   - whitebox
+  - sqlalchemy        # CAIC weather database (src/sql_util.py)
+  - pymysql
+  - python-dotenv
   - pip

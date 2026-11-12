@@ -89,7 +89,21 @@ SITES: dict = {
         'spatial_bounds': dict(x_min=2889242.0, x_max=2891136.0,
                                y_min=1670983.0,  y_max=1672982.0),
         'cropped_laz': 'sisters_crop.laz',   # output name after bounds crop
-        # DEM produced from ground-filtered LAZ
+        # Optional: pre-made elevation raster (e.g. photogrammetry DTM) to
+        # use instead of the LAZ chain.  It is block-averaged to
+        # dem_resolution and written as dem_name; LAZ steps are then skipped.
+        # Must be BARE EARTH — a DSM with canopy biases slope/aspect/curvature.
+        # USGS 3DEP 1 m bare-earth DEM (DRCOG 2020 lidar).  The drone DSM
+        # (260922_Sisters_Full_Ground-DSM.tiff) includes forest canopy.
+        'source_raster':  'USGS_1M_13_x42y440_CO_DRCOG_2020_B20 (1).tif',
+        # Optional crop of source_raster (xmin, ymin, xmax, ymax in its CRS);
+        # here the drone-survey footprint.  None = whole raster.
+        'source_bounds':  (423279.0, 4391930.0, 424179.0, 4392630.0),
+        # Resampling for source_raster → dem_resolution.  'average' suits an
+        # integer ratio (5 cm → 1.2 m); for 1.0 → 1.2 m it leaves a 5-pixel
+        # ripple in curvature (10× spectral spike), which 'cubic' avoids.
+        'source_resample': 'cubic',
+        # DEM produced from ground-filtered LAZ (or resampled source_raster)
         'dem_resolution': 1.2,           # metres per pixel
         'dem_name':       'Sisters_crp.tif',
         # Optional: crop the DEM further by a pixel offset window
@@ -118,9 +132,21 @@ SITES: dict = {
         'sat_slice':  (slice(200, None), slice(200, 1500)),
         'sat_labels': [(925, 300, '#1'), (840, 420, '#2'), (770, 420, '#3'),
                        (707, 420, '#4'), (450, 160, '#6')],
-        # Labels drawn on the cropped SZ slope map
-        'sz_map_labels': [(450, 120, '#1'), (350, 225, '#2'), (280, 225, '#3'),
-                          (220, 225, '#4'), (2,   20,  '#6')],
+        # CAIC database stations {sql_id: [columns]} for src/sql_util.py.
+        # Raw CAIC units: tenths of °F and mph; SNOTEL SWE in HUNDREDTHS of
+        # an inch, depth in tenths (2000 = flag value 2010–14); pcpac changes
+        # scale in 2016 — use SWE for snowfall.  A column may come from
+        # only one station.
+        #   CALVP — CAIC/CDOT Loveland Pass ridge wind station (wind, temp)
+        #   LBAC2 — Loveland Basin SNOTEL (snow depth, SWE, precipitation;
+        #           pcpac = accumulated to 2019-09, pcp1 = hourly from 2019-10)
+        'weather_stations': {
+            'CALVP': ['wspd', 'wdir', 'gust', 'temp', 'rh'],
+            'LBAC2': ['depth', 'snowwater', 'pcpac', 'pcp1'],
+        },
+        # Labels drawn on the cropped SZ slope map: 'auto' places '#N' at each
+        # SZ polygon centroid; or a list of (x, y, text) in plot pixels
+        'sz_map_labels': 'auto',
         # richdem attribute name for slope histograms
         'slope_attr': 'slope_degrees',
 
@@ -294,8 +320,14 @@ def _skip_or(path: Path, action: str, inputs=(), stage: str | None = None) -> bo
             return True
         reason = f"newer input: {_fmt_names(newer)}"
     print(f"  {action:<5} {path.name}  (rebuild — {reason})")
-    path.unlink()
+    _unlink_with_sidecar(path)
     return False
+
+
+def _unlink_with_sidecar(path: Path) -> None:
+    """Delete a raster and its .aux.xml (cached stats would describe the old data)."""
+    path.unlink()
+    Path(str(path) + '.aux.xml').unlink(missing_ok=True)
 
 
 def merge_laz_tiles(laz_dir: Path, laz_glob: str, out_file: Path) -> bool:
@@ -380,6 +412,40 @@ def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> bool:
         ]
     }
     pdal.Pipeline(json.dumps(pipeline_def)).execute()
+    return True
+
+
+def resample_source_raster(src: Path, out_tif: Path, resolution: float,
+                           bounds: tuple | None = None,
+                           alg: str = 'average') -> bool:
+    """
+    Block-average a (finer) elevation raster to `resolution` metres,
+    optionally cropped to `bounds` (xmin, ymin, xmax, ymax in src CRS).
+    Reads full-resolution data (overviews ignored — they may be built with a
+    different resampling), snaps to a resolution-aligned grid, NoData -9999.
+    """
+    # A different source, crop or resolution must always rebuild — a
+    # swapped-in raster can carry an older mtime than the existing DEM and
+    # fool the timestamp check.
+    recipe = f"{src.name}|{bounds}|{resolution}|{alg}"
+    if out_tif.exists():
+        ds = gdal.Open(str(out_tif))
+        prev = ds.GetMetadataItem('SOURCE_RECIPE')
+        ds = None
+        if prev != recipe:
+            print(f"  warp  {out_tif.name}  (rebuild — source changed: "
+                  f"{prev or 'unknown'} → {recipe})")
+            _unlink_with_sidecar(out_tif)
+    if _skip_or(out_tif, 'warp', [src], 'dem'):
+        return False
+    ds = gdal.Warp(str(out_tif), str(src),
+                   outputBounds=bounds,
+                   xRes=resolution, yRes=resolution, targetAlignedPixels=True,
+                   resampleAlg=alg, overviewLevel='NONE', dstNodata=-9999,
+                   multithread=True, warpMemoryLimit=4096,
+                   creationOptions=['COMPRESS=DEFLATE', 'TILED=YES'])
+    ds.SetMetadataItem('SOURCE_RECIPE', recipe)
+    ds = None
     return True
 
 
@@ -492,8 +558,12 @@ def check_inputs(cfg: dict, process: bool, analyze: bool) -> None:
         if cfg['spatial_bounds']:
             chain.append((d / cfg['cropped_laz'], 'laz'))
         chain.append((d / cfg['merged_laz'], 'laz'))
+        if cfg.get('source_raster'):
+            need(d / cfg['source_raster'], 'source_raster')
         have_source = (any(p.exists() and not _forced(s) for p, s in chain)
-                       or any(d.glob(cfg['laz_glob'])))
+                       or any(d.glob(cfg['laz_glob']))
+                       or bool(cfg.get('source_raster')
+                               and (d / cfg['source_raster']).exists()))
         if not have_source:
             usable = [p.name for p, s in chain if not _forced(s)]
             errors.append(
@@ -556,6 +626,15 @@ def process_site(cfg: dict) -> None:
             return True
         return False
 
+    # 0. Optional pre-made elevation raster → DEM (replaces steps 1–4)
+    analysis_built = False
+    if cfg.get('source_raster'):
+        print("Step 0 — Resample source raster")
+        analysis_built = resample_source_raster(
+            d / cfg['source_raster'], dem_tif, cfg['dem_resolution'],
+            cfg.get('source_bounds'), cfg.get('source_resample', 'average'))
+        print()
+
     # 1. Merge raw tiles
     print("Step 1 — Merge LAZ tiles")
     if not no_input(any(d.glob(cfg['laz_glob'])),
@@ -579,8 +658,9 @@ def process_site(cfg: dict) -> None:
 
     # 4. LAZ → DEM
     print("\nStep 4 — LAZ → DEM")
-    analysis_built = False
-    if not no_input(ground_laz.exists() or dem_tif.exists(), final_dem):
+    if cfg.get('source_raster'):
+        print("  skip  (DEM comes from source_raster — step 0)")
+    elif not no_input(ground_laz.exists() or dem_tif.exists(), final_dem):
         analysis_built = laz_to_dem(ground_laz, dem_tif, cfg['dem_resolution'])
 
     # 5. Optional pixel crop
@@ -663,6 +743,49 @@ def _profile_curvature(dem_arr: np.ndarray, res: float = 1.0) -> np.ndarray:
     out = np.full_like(Z, np.nan)
     out[1:-1, 1:-1] = pc
     return out
+
+
+def _full_dem_attributes(dem_path: str, res: float):
+    """Slope (deg), aspect (deg) and profile curvature on the whole DEM."""
+    ds = gdal.Open(str(dem_path))
+    z = ds.GetRasterBand(1).ReadAsArray().astype(float)
+    nd = ds.GetRasterBand(1).GetNoDataValue()
+    z[(z == nd) if nd is not None else (z == z.min())] = np.nan
+    # Keep each MEM dataset referenced until read: chaining
+    # DEMProcessing(...).GetRasterBand(1) lets Python free it first.
+    s_ds = gdal.DEMProcessing('', ds, 'slope', format='MEM', computeEdges=True)
+    a_ds = gdal.DEMProcessing('', ds, 'aspect', format='MEM', computeEdges=True)
+    slope = s_ds.GetRasterBand(1).ReadAsArray().astype(float)
+    aspect = a_ds.GetRasterBand(1).ReadAsArray().astype(float)
+    s_ds = a_ds = None
+    slope[np.isnan(z)] = np.nan
+    aspect[np.isnan(z) | (aspect < 0)] = np.nan     # GDAL flags flat cells −9999
+    curv = _profile_curvature(z, res=res)
+    return slope, aspect, curv, ds.GetGeoTransform(), ds.GetProjection()
+
+
+def _kml_mask(kml_path: Path, shape: tuple, gt: tuple, wkt: str) -> np.ndarray:
+    """Rasterise a KML polygon onto a grid (cell centres inside)."""
+    from osgeo import ogr, osr
+    src = ogr.Open(str(kml_path))
+    dst_srs = osr.SpatialReference(); dst_srs.ImportFromWkt(wkt)
+    dst_srs.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    mem = gdal.GetDriverByName('MEM').Create('', shape[1], shape[0], 1, gdal.GDT_Byte)
+    mem.SetGeoTransform(gt); mem.SetProjection(wkt)
+    vds = ogr.GetDriverByName('Memory').CreateDataSource('')
+    lyr = vds.CreateLayer('z', srs=dst_srs)
+    for slyr in src:
+        s_srs = slyr.GetSpatialRef()
+        if s_srs is not None:
+            s_srs.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+        tf = osr.CoordinateTransformation(s_srs, dst_srs) if s_srs is not None else None
+        for f in slyr:
+            g = f.GetGeometryRef().Clone(); g.FlattenTo2D()
+            if tf is not None:
+                g.Transform(tf)
+            nf = ogr.Feature(lyr.GetLayerDefn()); nf.SetGeometry(g); lyr.CreateFeature(nf)
+    gdal.RasterizeLayer(mem, [1], lyr, burn_values=[1])
+    return mem.GetRasterBand(1).ReadAsArray().astype(bool)
 
 
 def _kml_centroids_lonlat(kml_path: Path) -> tuple[np.ndarray, np.ndarray]:
@@ -1248,6 +1371,15 @@ def compute_sz_metrics(slope_arr: np.ndarray, aspect_arr: np.ndarray,
         slope_pct_gt_40      = float(np.mean(slopes > 40) * 100),
         pct_35_55            = float(np.mean((slopes >= 35) & (slopes <= 55)) * 100),
         pct_40_50            = float(np.mean((slopes >= 40) & (slopes <= 50)) * 100),
+        # ── Weak-layer stress under a uniform vertical load HN ────────────────
+        # τ = ρ g HN sinθ cosθ ;  σ = ρ g HN cos²θ ;  τ/σ = tanθ.
+        # tanθ is the driving (shear/normal) ratio a friction-type failure
+        # criterion compares against; it rises monotonically with slope.
+        # sinθcosθ is shear stress per unit load; it peaks at 45°.
+        tan_mean             = float(np.mean(np.tan(np.radians(slopes)))),
+        tan_p90              = float(np.percentile(np.tan(np.radians(slopes)), 90)),
+        shear_per_load_mean  = float(np.mean(np.sin(np.radians(slopes))
+                                             * np.cos(np.radians(slopes)))),
         # ── Local extremes: crack-initiation proxies ──────────────────────────
         slope_max_1cell      = slope_max_1cell,   # steepest ≈ 1.4 m² patch
         # ── Aspect distribution ──────────────────────────────────────────────
@@ -1573,8 +1705,20 @@ def analyze_site(cfg: dict) -> None:
     im = ax.imshow(sz_attrs[sz_slope_key][::-1, ::-1], cmap='magma_r')
     fig.colorbar(im, ax=ax, fraction=0.026)
     ax.set_title(f"{name} — Start zones slope (°)")
-    for x, y, lbl in cfg.get('sz_map_labels', []):
-        ax.text(x, y, lbl, fontsize=14, color='k')
+    labels = cfg.get('sz_map_labels', [])
+    if labels == 'auto':
+        # Centroid of each SZ polygon → combined-DEM pixel, mirrored like the
+        # [::-1, ::-1] image above.
+        h_px, w_px = sz_attrs[sz_slope_key].shape
+        labels = []
+        for kml, _ in _sz_pairs(cfg):
+            lon, lat = _kml_centroids_lonlat(kml)
+            cols, rows = _lonlat_to_dem_pixels([lon], [lat], sz_dem_path)
+            num = ''.join(ch for ch in kml.stem if ch.isdigit()) or kml.stem
+            labels.append((w_px - 1 - cols[0], h_px - 1 - rows[0], f'#{num}'))
+    for x, y, lbl in labels:
+        ax.text(x, y, lbl, fontsize=14, color='k', ha='center', va='center',
+                bbox=dict(boxstyle='round,pad=0.2', fc='white', alpha=0.7, lw=0))
     plt.tight_layout()
     fig.savefig(str(FIGURES / f"{site_slug}_sz_slope_map.png"), dpi=150, bbox_inches='tight')
     plt.close(fig)
@@ -1627,23 +1771,31 @@ def analyze_site(cfg: dict) -> None:
     print(avi_counts.to_string())
 
     print("\nStep 8 — Extended terrain metrics")
+    # Slope, aspect and curvature come from the FULL DEM and are then masked
+    # to each zone.  Computing them on the clipped SZ DEMs biased edge cells:
+    # their 3×3 windows reach into NoData and get extrapolated (Sister #6's
+    # % > 40° was 31.9 vs 41.9 from the full DEM).
+    full_slope, full_aspect, full_curv, full_gt, full_wkt = _full_dem_attributes(
+        dem_path, cfg['dem_resolution'])
     sz_metrics = OrderedDict()
     for p in sz_dem_files:
         sid      = Path(p).stem
-        s_attrs  = get_slope_attributes(p, 'slope_degrees')
-        a_attrs  = get_slope_attributes(p, 'aspect')
-        slope_arr = s_attrs[list(s_attrs.keys())[0]]
-        valid_count = int(np.sum(~np.isnan(slope_arr) & (slope_arr > 0)))
-        if valid_count == 0:
-            print(f"  [warn] {sid}: no valid slope data — skipping (check KML/DEM overlap)")
+        kml      = d / ((sid[:-len(cfg['sz_dem_suffix'])] if cfg['sz_dem_suffix'] else sid) + '.kml')
+        if not kml.exists():
+            print(f"  [warn] {sid}: {kml.name} not found — skipping")
             continue
-        dem_arr  = load_tif_as_Array(p).astype(float)
-        dem_arr[dem_arr == dem_arr.min()] = np.nan
-        curv_arr = _profile_curvature(dem_arr, res=cfg['dem_resolution'])
+        m = _kml_mask(kml, full_slope.shape, full_gt, full_wkt)
+        if not m.any():
+            print(f"  [warn] {sid}: zone does not overlap the DEM — skipping")
+            continue
+        rows_, cols_ = np.nonzero(m)
+        win = (slice(rows_.min(), rows_.max() + 1), slice(cols_.min(), cols_.max() + 1))
+        def _masked(a):
+            return np.where(m[win], a[win], np.nan)
         sz_metrics[sid] = compute_sz_metrics(
-            slope_arr,
-            a_attrs[list(a_attrs.keys())[0]],
-            curv_arr=curv_arr,
+            _masked(full_slope),
+            _masked(full_aspect),
+            curv_arr=_masked(full_curv),
             resolution_m=cfg['dem_resolution'],
             loading_az_range=cfg.get('loading_az_range', (225, 315)),
         )
@@ -1669,6 +1821,10 @@ def analyze_site(cfg: dict) -> None:
         ('slope_pct_gt_35',         '% > 35°'),
         ('slope_pct_gt_40',         '% > 40°'),
         ('pct_40_50',               '% 40–50°'),
+        # weak-layer stress (uniform load): driving ratio and shear per load
+        ('tan_mean',                'Mean tanθ (τ/σ)'),
+        ('tan_p90',                 'P90 tanθ'),
+        ('shear_per_load_mean',     'Mean sinθcosθ (τ/load)'),
         # local extremes — crack initiation stress proxies
         ('slope_max_1cell',         'Max slope 1-cell'),
         # aspect diversity — wind loading opportunities

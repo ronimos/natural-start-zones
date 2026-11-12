@@ -46,7 +46,10 @@ def load_avalanches_by_patrial_path_name(path,
     df = df[(df['HW Path'].str.contains(path_name)) & (df['Trigger'].isin(av_trigs)) & (df['Type'].isin(av_types))] 
     df = df[df['HW Path'].str.contains('|'.join(path_ids))]
     if path_name == 'Sister':
-        df = df.query('`HW Path` != "Seven Sister #6" or Elev == ">TL"')
+        # Sister #6: drop below-treeline records (runouts misattributed to the
+        # start zone).  Its TL band is alpine terrain, so TL counts with >TL.
+        df = df[(df['HW Path'] != 'Seven Sister #6')
+                | df['Elev'].astype(str).str.strip().isin(['>TL', 'TL'])]
 
     return df
 
