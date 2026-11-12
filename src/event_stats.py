@@ -141,6 +141,8 @@ def main():
     slope = g['slope_deg'].astype(float); res = float(g['res'])
     sl = np.radians(slope); mu = np.tan(np.radians(a.mu_deg))
     shape = np.cos(sl) ** 2 * np.clip(np.tan(sl) - mu, 0, None) * np.clip((60 - slope) / 10, 0, 1)
+    # same as micromet_loading.py: no slab stress within 4 m of forest canopy
+    shape = shape * ~ndi.binary_dilation(g['forest'], iterations=max(1, int(round(4.0 / res))))
     load = np.maximum(float(g['mean_new_snow_mm']) + g['all'].astype(float), 0)
     marg = G * load * shape
     allz = zones.any(axis=0)
@@ -191,6 +193,7 @@ def main():
     for sc, metric, role in (('72h window', 'margin_p99', 'PRIMARY'),
                              ('72h window', 'wind_acc_p90', 'exploratory'),
                              ('72h window', 'swe_new_mm', 'exploratory (snowfall only)'),
+                             ('72h window', 'margin_p99_loaded', 'exploratory (wind-loaded cells only)'),
                              ('since control (all), 5-d settling', 'margin_p99', 'exploratory')):
         r = storm_tests(zd_all[zd_all.scenario == sc], metric)
         tests.append(dict(role=role, scenario=sc, metric=metric, **r))

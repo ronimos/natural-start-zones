@@ -28,7 +28,9 @@ storm weak-layer stress for each start zone.
    forest), the excess deposits.  Accumulation A = deposition − erosion
    [kg m⁻² = mm SWE].  Snow supply for erosion is assumed unlimited.
 
-5. Stress per day (Nov–May) from the load accumulated since the last reset
+5. Cells within 4 m of forest canopy carry no slab stress (tree-anchored,
+   and where the transport model dumps intercepted snow).
+   Stress per day (Nov–May) from the load accumulated since the last reset
    (explosive control on any Sister path, or a natural release on that path),
    with variants: reset only released paths, 5-day settling decay, and a
    fixed 72-h window.  SWE(x) = h(θ)·max(0, SWE_new + A(x)),
@@ -308,6 +310,12 @@ def main():
     ap.add_argument('--window-h', type=int, default=72)
     ap.add_argument('--buffer', type=float, default=1300.0)
     ap.add_argument('--tag', default='', help='suffix for output names (sensitivity runs)')
+    ap.add_argument('--forest-buffer', type=float, default=4.0,
+                    help='cells within this distance (m) of canopy carry no slab stress')
+    ap.add_argument('--landing-mm', type=float, default=5.0,
+                    help='72-h wind deposition (mm SWE) that makes a cell "wind-loaded"')
+    ap.add_argument('--k-scan', default='0,1,2,5,10,20,50',
+                    help='wind-deposition multipliers to test (comma-separated)')
     ap.add_argument('--map-buffer', type=float, default=100.0,
                     help='ring (m) around the zones kept for the nucleation-potential map')
     ap.add_argument('--plot-only', action='store_true',
@@ -423,12 +431,30 @@ def main():
     zt = pd.DataFrame(rows).T
     print("\nWind accumulation per season (kg/m² = mm SWE; saltation only):")
     print(zt.round(1).to_string())
+    # Landing sites: steep (35–55°) cells collecting > 50 mm SWE / season
+    land = {}
+    nf = ndi.binary_dilation(forest, iterations=max(1, int(round(a.forest_buffer / a.res))))
+    for name, m in masks.items():
+        steep = (slope_deg[m] >= 35) & (slope_deg[m] <= 55) & ~nf[m]
+        land[name] = {f'landing_m2 {k}': float(((f[m] / seasons > 50) & steep).sum() * a.res ** 2)
+                      for k, f in (('all', acc_all), ('SW', acc_sec['SW']), ('WNW', acc_sec['WNW']))}
+        land[name]['landing_frac WNW'] = land[name]['landing_m2 WNW'] / (m.sum() * a.res ** 2)
+    land = pd.DataFrame(land).T
+    print("\nLanding sites (steep open cells, > 4 m from canopy, with > 50 mm SWE / season of wind deposition):")
+    print(land.round(2).to_string())
+    land.to_csv(FIGURES / f'{slug}_landing_sites.csv')
 
     # ── Daily load increments at zone cells ───────────────────────────────────
     sl = np.radians(slope_deg)
     mu = np.tan(np.radians(a.mu_deg))
-    shape_term = (np.cos(sl) ** 2 * np.clip(np.tan(sl) - mu, 0, None)
-                  * np.clip((60 - slope_deg) / 10, 0, 1)).ravel()[zc]
+    # Cells within `forest_buffer` m of canopy carry no slab stress: trees
+    # anchor the snowpack, and the transport model dumps the intercepted flux
+    # at the tree line (found while checking Sister #2, whose few extreme
+    # deposition cells — 70 % of its deposition — all sit at forest edges).
+    near_forest = ndi.binary_dilation(forest, iterations=max(1, int(round(a.forest_buffer / a.res))))
+    shape_full = (np.cos(sl) ** 2 * np.clip(np.tan(sl) - mu, 0, None)
+                  * np.clip((60 - slope_deg) / 10, 0, 1)) * ~near_forest
+    shape_term = shape_full.ravel()[zc]
     zone_of = np.full(len(zc), '', dtype=object)
     for name, m in masks.items():
         zone_of[m.ravel()[zc]] = name
@@ -531,13 +557,17 @@ def main():
             for z_, (nsn, wv, ld) in per.items():
                 sel = zsel[z_]
                 mz = G * np.maximum(ld, 0) * shape_term[sel]
+                loaded = wv > a.landing_mm          # wind-loaded cells this window
                 rows.append(dict(day=dd.date(), zone=z_, swe_new_mm=nsn,
                                  wind_acc_p90=float(np.percentile(wv, 90)),
                                  margin_p99=float(np.percentile(mz, 99)),
+                                 margin_p99_loaded=float(np.percentile(mz[loaded], 99)) if loaded.any() else 0.0,
+                                 loaded_hot_m2=float((loaded & (mz > q99)).sum() * a.res ** 2),
                                  area_gt_q95=float((mz > q95).sum() * a.res ** 2),
                                  area_gt_q99=float((mz > q99).sum() * a.res ** 2)))
         zd = pd.DataFrame(rows).merge(ev.drop_duplicates(), on=['day', 'zone'], how='left').fillna({'natural': 0})
-        for col in ('swe_new_mm', 'wind_acc_p90', 'margin_p99', 'area_gt_q95', 'area_gt_q99'):
+        for col in ('swe_new_mm', 'wind_acc_p90', 'margin_p99', 'area_gt_q95', 'area_gt_q99',
+                    'margin_p99_loaded', 'loaded_hot_m2'):
             x = zd[col].values; y = zd.natural.values
             wins = [auc(g[col].values, g.natural.values)
                     for _, g in zd[zd.day.isin(zd.loc[zd.natural == 1, 'day'])].groupby('day')
@@ -556,6 +586,66 @@ def main():
     print(test.pivot_table(index='metric', columns='scenario', values='AUC_all', sort=False).to_string())
     print("\nWithin event days (released path vs the others):")
     print(test.pivot_table(index='metric', columns='scenario', values='AUC_within_day', sort=False).to_string())
+
+    # ── Wind-deposition multiplier scan ──────────────────────────────────────
+    # load = snowfall + k · (modelled wind accumulation).  k = 1 is the model
+    # as built (saltation only); k > 1 asks how much stronger wind loading
+    # must be for the zone pattern to match.  The threshold is recomputed for
+    # each k (pooled P99 of start-zone margins), so only the pattern changes.
+    k_rows = []
+    kd = [dd for i, dd in enumerate(all_days) if eval_mask[i] and valid_day.get(dd, False)]
+    kd_set = set(d.date() for d in kd)
+    obs_k = {z_: int(((ev.zone == z_) & ev.day.isin(kd_set)).sum()) for z_ in masks}
+    ev_pairs = set(zip(ev.day, ev.zone))
+    roll = {}
+    for dd in kd:
+        win_d = pd.date_range(dd - pd.Timedelta(days=2), dd, freq='D')
+        roll[dd] = (float(sum(new_day.get(x, 0.0) for x in win_d)),
+                    sum((A_day.get(x, zero) for x in win_d), zero.copy()))
+    for k in [float(v) for v in a.k_scan.split(',')]:
+        zm = {z_: [] for z_ in masks}; pool = []
+        for dd in kd:
+            nsn, wv = roll[dd]
+            mg = G * np.maximum(nsn + k * wv, 0) * shape_term
+            for z_ in masks:
+                v = mg[zsel[z_]]; zm[z_].append(v); pool.append(v)
+        thr = float(np.percentile(np.concatenate(pool), 99))
+        hot = {z_: 0 for z_ in masks}; exc = {z_: 0.0 for z_ in masks}
+        hot_l = {z_: 0 for z_ in masks}; exc_l = {z_: 0.0 for z_ in masks}
+        rows_k = []
+        for j, dd in enumerate(kd):
+            wv_all = roll[dd][1]
+            for z_ in masks:
+                v = zm[z_][j]; ld_ = wv_all[zsel[z_]] > a.landing_mm
+                hot[z_] += int((v > thr).sum() >= 2)
+                exc[z_] += float(np.clip(v - thr, 0, None).sum()) * a.res ** 2
+                hot_l[z_] += int(((v > thr) & ld_).sum() >= 2)
+                exc_l[z_] += float(np.clip(v[ld_] - thr, 0, None).sum()) * a.res ** 2
+                rows_k.append((int((dd.date(), z_) in ev_pairs), float(np.percentile(v, 99)), dd.date(), z_))
+        y = np.array([r[0] for r in rows_k]); x = np.array([r[1] for r in rows_k])
+        auc_all = auc(x, y)
+        dfk = pd.DataFrame(rows_k, columns=['natural', 'm', 'day', 'zone'])
+        w = [auc(g.m.values, g.natural.values) for _, g in dfk[dfk.day.isin(dfk.loc[dfk.natural == 1, 'day'])].groupby('day')
+             if 0 < g.natural.sum() < len(g)]
+        tot_o = sum(obs_k.values())
+        for basis, raw in (('hotspot days', hot), ('summed excess', exc),
+                           ('hotspot days, wind-loaded cells', hot_l),
+                           ('summed excess, wind-loaded cells', exc_l)):
+            tot_r = sum(raw.values())
+            exp_ = {z_: tot_o * raw[z_] / tot_r if tot_r else np.nan for z_ in masks}
+            # Poisson deviance of observed vs expected (lower = better fit)
+            dev = 2 * sum((o * np.log(o / e) if o > 0 else 0) - (o - e)
+                          for o, e in ((obs_k[z_], max(exp_[z_], 1e-9)) for z_ in masks))
+            rho = float(pd.Series(exp_).corr(pd.Series(obs_k), method='spearman'))
+            k_rows.append(dict(k=k, basis=basis, deviance=round(dev, 1), rho=round(rho, 2),
+                               **{f'E {z_.replace("_SZ", "")}': round(exp_[z_], 1) for z_ in masks},
+                               AUC_all=round(auc_all, 3), AUC_within=round(float(np.nanmean(w)), 3)))
+    kscan = pd.DataFrame(k_rows)
+    print("\nWind-deposition multiplier scan (observed natural days: "
+          + ", ".join(f"{z_.replace('_SZ', '')} {obs_k[z_]}" for z_ in masks) + ")")
+    pd.set_option('display.width', 250)
+    print(kscan.to_string(index=False))
+    kscan.to_csv(FIGURES / f'{slug}_wind_multiplier_scan.csv', index=False)
 
     # ── Nucleation potential (Gvirtzman et al. 2025: rate ∝ τ − τ_thresh) ────
     # Over every evaluated day (72-h load), excess = (margin − thr)⁺ summed per

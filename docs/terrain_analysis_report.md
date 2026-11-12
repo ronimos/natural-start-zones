@@ -5,13 +5,12 @@
 
 ## Summary
 
-- **Storm by storm, a terrain + wind + snowfall stress model predicts natural slab days.** The pre-registered test (72-h load, P99 weak-layer stress margin) gives **AUC 0.73 (95 % CI 0.64–0.83, permutation p = 0.001)** over 32 natural events in 16 seasons. On days with naturals it ranks the released path above the other paths more often than chance (AUC 0.61, p = 0.047).
-- **The result holds out of sample.** The model was built on 2009–2021 data; the 17 natural events of 2021–2026 (a 2026 CAIC export, matched to paths by coordinates) score **AUC 0.81 (0.68–0.91, p = 0.001)**.
-- **Snowfall sets the timing; terrain and wind pick the path.** Snowfall alone predicts natural days nearly as well (AUC 0.71) but is the same for every path, so it cannot say which path releases.
-- **Steepness alone does not explain where naturals happen.** Shear stress per unit load (∝ sinθ cosθ) is almost identical across the five start zones (0.484–0.490, all near 45°), so differences in shear stress must come from differences in load — wind deposition.
-- **Wind loading separates the zones, but the transport model is too weak.** Both loading models put Sister #1 and #6 as the most wind-loaded zones (the MicroMet ranking never changes across sensitivity runs), and Sister #6's naturals follow SW-dominated transport (58 % of flux vs 31 % for #1–#4). But MicroMet's saltation-only deposition is small next to direct snowfall, so its zone-level *expected* release counts badly miss Sister #6 (8 observed vs ≈ 1 expected) and Sister #2 (1 vs 8–12).
-- **Hotspots match field observations.** On Sister #1, modelled deposition and nucleation potential concentrate on the west (skier's-left) side of the gully, where natural releases have been seen to start in windy periods; the 2020–2026 release points inside start zones sit at above-median potential within their zone (mean 62nd percentile, n = 5, p = 0.18).
-- **Zone-level correlations remain non-significant** (five zones; minimum attainable p = 0.017). The storm-level and out-of-sample results are the strongest evidence; the zone-level loading magnitude is the main open problem.
+- **Loading, not terrain, separates the paths.** Shear stress per unit load (∝ sinθ cosθ) is almost identical across the five start zones (0.484–0.490), and zone steepness does not track natural releases (ρ = 0.2). What differs is where wind-transported snow can land.
+- **Wind landing sites match the release record and field observation.** Sisters #1, #3, #4 and #6 have steep open cells where W–NW (and, for #1 and #6, SW) winds deposit snow; **Sister #2 has none** (0 m² of W–NW landing area), as observed in the field — and it has one natural slab in 17 seasons.
+- **A terrain + wind + snowfall stress model reproduces the zone pattern.** Expected natural-release days per zone (from days with a stress hotspot above threshold) are 6.4 / 1.8 / 9.0 / 4.0 / 10.9 against 8 / 1 / 12 / 3 / 8 observed (Sisters #1 / #2 / #3 / #4 / #6; ρ = 0.82), stable across model settings.
+- **Storm by storm, the same model predicts natural slab days and which path releases.** The pre-registered test (72-h load, P99 weak-layer stress margin) gives **AUC 0.76 (95 % CI 0.67–0.84, p = 0.001)** over 32 natural events in 16 seasons, and on natural days it ranks the released path above the others (**AUC 0.74, p < 0.001**). Snowfall sets the timing (AUC 0.71 alone) but cannot pick the path; wind loading does.
+- **The 2021–2026 events score as well as the development period** (AUC 0.82). Two model changes — a redrawn Sister #6 start zone and a forest-edge correction — were made after those events were available, though not tuned on them; before the changes the 2021–2026 AUC was already 0.81.
+- **Remaining caveats:** five zones (no zone-level correlation reaches significance), modelled rather than measured loading, and saltation-only transport. A snow-on drone survey is the most valuable next step.
 
 ---
 
@@ -28,13 +27,13 @@ Natural slab avalanches on the Seven Sisters paths threaten US-6 over Loveland P
 - shear stress τ = g·SWE·sinθ cosθ, normal stress σ = g·SWE·cos²θ, so τ/σ = tanθ;
 - for a friction-type weak layer (τ > c + μσ), the stress margin is **g·SWE·cos²θ·(tanθ − μ)**, used throughout with μ = tan 30°.
 
-Load raises the margin only where tanθ > μ, and steepness sets how much each unit of load counts. Because sinθ cosθ is nearly flat between ~37° and 45°, **differences in shear stress between these zones must come mostly from differences in load — that is, from wind deposition.**
+Load raises the margin only where tanθ > μ. Because sinθ cosθ is nearly flat between ~37° and 45°, **differences in shear stress between these zones must come mostly from differences in load — that is, from wind deposition.**
 
 ---
 
 ## 2. Site
 
-Seven Sisters is a set of avalanche paths on the north side of the ridge above US-6, west of the Loveland Pass summit (start zones ≈ 39.677° N, 105.891° W, 3,460–3,600 m). CDOT controls the paths with explosives (hand charges and Avalauncher); every mission includes all paths. Five start zones are analysed: Sisters #1, #2, #3, #4 and #6, which are all the active paths. There is no Sister #5 on the ground (the two CAIC records under that name are presumably misattributions), and Sister #7 is not an active path. Sisters #2–#4 start among spruce forest; Sisters #1 and #6 start in open alpine terrain (Figure 1).
+Seven Sisters is a set of avalanche paths on the north side of the ridge above US-6, west of the Loveland Pass summit (start zones ≈ 39.677° N, 105.891° W, 3,460–3,620 m). CDOT controls the paths with explosives (hand charges and Avalauncher); every mission includes all paths. Five start zones are analysed: Sisters #1, #2, #3, #4 and #6, which are all the active paths. There is no Sister #5 on the ground (the two CAIC records under that name are presumably misattributions), and Sister #7 is not an active path. Sisters #2–#4 start among spruce forest; Sisters #1 and #6 start in open alpine terrain (Figure 1).
 
 | Zone | Area (m²) | Natural HS/SS 2009–2026 | per 10,000 m² | Slab on control days (2009–2021) |
 |---|---|---|---|---|
@@ -42,11 +41,13 @@ Seven Sisters is a set of avalanche paths on the north side of the ridge above U
 | Sister #2 | 2,884 | 1 | 3.5 | 45 % |
 | Sister #3 | 2,384 | 12 | 50.3 | 61 % |
 | Sister #4 | 1,416 | 4 | 28.2 | 55 % |
-| Sister #6 | 584 | 9 | 154.1 | 53 % |
+| Sister #6 | 3,840 | 9 | 23.4 | 53 % |
 
 *Control-day column: share of the 198 recorded control days on which explosives released a slab on that path.*
 
 Because all paths are shot on every mission, mitigation affects the paths equally, so natural counts are comparable across paths.
+
+**Field observations.** Sister #1's naturals have been seen to start on the west (skier's-left) side of the gully below the top of the start zone, during windy periods. Sister #2 is exposed mainly to W–NW winds with no place for wind-transported snow to land, and sits too low on the slope to be affected by SW winds; Sisters #1, #3 and #4 have locations where W–NW winds can load.
 
 ![Start-zone slope](../figures/seven_sisters_sz_slope_map.png)
 
@@ -60,12 +61,12 @@ Because all paths are shot on every mission, mitigation affects the paths equall
 
 > Averaging 1 m data onto a 1.2 m grid leaves a periodic 5-pixel ripple in curvature (a 10× spectral spike); cubic resampling removes it. Per-zone slope is computed on the full DEM and then masked: computing it on clipped zone DEMs biases edge cells low.
 
-**Start zones.** Hand-digitised KML polygons; Sister #1 was re-digitised in November 2026 (now 2,901 m², centred 40 m further north, i.e. downslope, overlapping the old polygon by 1,126 m²). The combined start-zone polygon is the union of the per-zone polygons.
+**Start zones.** Hand-digitised KML polygons. Sister #1 was re-digitised in November 2026 (now 2,901 m², centred 40 m further north, i.e. downslope, overlapping the old polygon by 1,126 m²). **Sister #6 was redrawn in November 2026** (now 3,840 m², up from 579 m²; it contains the old polygon and extends ~31 m north and ~15 m west, taking in the upper west edge where SW loading concentrates). The combined start-zone polygon is the union of the per-zone polygons.
 
 **Avalanches.** Natural (N) hard and soft slabs (HS, SS), from two sources:
 
 - the named CAIC highway observer export, 2009 – 2021-05-04 (re-exported 2026);
-- a 2026 CAIC export of natural slabs with coordinates but no path names (2020 – 2026-03). Records were matched to paths by tracing each start zone downhill on the 3DEP DEM and assigning each record to the nearest traced corridor within 40 m (ties → the path aligned across the slope). In the overlap period, every record found in both exports had the same path, size and type. 24 records matched the Sisters; 19 were new and were added (`src/assign_avalanche_paths.py`, `src/merge_avalanche_records.py`). Two overlapping events are logged as explosive-triggered in the highway export and natural in the 2026 export (2020-11-14 Sister #6, 2021-02-06 Sister #1); the highway export's trigger is kept.
+- a 2026 CAIC export of natural slabs with coordinates but no path names (2020 – 2026-03). Records were matched to paths by tracing each start zone downhill on the 3DEP DEM and assigning each record to the nearest traced corridor within 40 m (ties → the path aligned across the slope). In the overlap period, every record found in both exports had the same path, size and type. 24 records matched the Sisters; 19 were new and were added (`src/assign_avalanche_paths.py`, `src/merge_avalanche_records.py`). Two overlapping events are logged as explosive-triggered in the highway export and natural in the 2026 export (2020-11-14 Sister #6, 2021-02-06 Sister #1); they are kept as explosive-triggered pending verification, since each would add one natural to a small dataset.
 
 Below-treeline records on Sister #6 are excluded as likely runout misattributions; Sister #6's TL band is alpine and counts with >TL. The 2026 export contains naturals only, so control missions are known only to 2021-05-04.
 
@@ -88,27 +89,28 @@ Transport hours at CALVP: wind ≥ 15 mph (6.7 m/s), air temperature below 0 °C
 
 ### 4.3 Fetch (Winstral)
 
-For each wind direction: Winstral's upwind shelter index Sx (100 m search, ±15° sector) and the upwind source area of each zone — rays marched up to 1 km upwind, stopping at a slope-break snow trap (Sb > 15°, 50 m separation), at forest, or at the data edge (traps within 50 m of the zone ignored: a zone just below a crest is loaded through that crest's own lee break). **Fetch ratio** = source area / zone area.
+For each wind direction: Winstral's upwind shelter index Sx (100 m search, ±15° sector) and the upwind source area of each zone — rays marched up to 1 km upwind, stopping at a slope-break snow trap (Sb > 15°, 50 m separation), at forest, or at the data edge (traps within 50 m of the zone ignored). **Fetch ratio** = source area / zone area.
 
 ### 4.4 MicroMet terrain winds and saltation transport
 
 1. **Terrain winds** (Liston & Elder 2006): W = 1 + 0.5·Ωs + 0.5·Ωc (Ωs slope in the wind direction, Ωc curvature over η = 30 m, each scaled to ±0.5); local speed = CALVP speed × W(cell) / W(station).
 2. **Threshold** (10-m speed): 5 m/s with ≥ 2.5 mm SWE in the previous 24 h; otherwise Li & Pomeroy (1997) dry snow, 9.43 + 0.18T + 0.0033T² m/s; no transport above 0 °C.
-3. **Capacity**: Pomeroy & Gray (1990) saltation flux. **Suspension is omitted, so deposition is a lower bound in strong winds.**
+3. **Capacity**: Pomeroy & Gray (1990) saltation flux (suspension omitted).
 4. **Erosion / deposition**: downwind marching; flux relaxes toward rising capacity over Lf = 100 m and deposits where capacity falls (lees, gully floors, forest).
 
 Every hour of record is run (kg/m² = mm SWE). Sensitivity: η = 15, 60 m and Lf = 50, 200 m.
 
-### 4.5 Stress hotspots and nucleation potential
+### 4.5 Landing sites, stress hotspots and nucleation potential
 
-Stress margin per cell with load = snowfall + wind deposition, reduced to zero between 50° and 60° (snow does not build slabs on very steep rock).
-
-- **Hotspots**: top 5 % of margin among all start-zone cells pooled (1 %, 10 % as checks), in connected patches; two loading variants — the fetch-index geometry (deposition weighted equally with snowfall) and MicroMet season-average loading.
-- **Nucleation potential** (following the paper, rate ∝ τ − τ_thresh): for every day, the 72-h stress margin minus a threshold (P99 of start-zone margins; P95 as a check), positive part, summed over all days and expressed per season. **Expected release days** per zone are proportional to the zone's days with a hotspot patch above threshold or to its summed excess, scaled to the observed total. Forest cells are masked in the map.
+- **Landing sites**: steep (35–55°) open cells collecting more than 50 mm SWE per season of wind deposition, by wind sector.
+- **Stress margin** per cell with load = snowfall + wind deposition, reduced to zero between 50° and 60° (snow does not build slabs on very steep rock). **Cells within 4 m of forest canopy carry no slab stress**: trees anchor the snowpack, and the transport model dumps the intercepted flux at the tree line. *(This correction was found while investigating Sister #2: its few extreme-deposition cells, holding 70 % of its deposition, all sat at forest edges — not open slab terrain.)*
+- **Hotspots**: top 5 % of margin among all start-zone cells pooled, in connected patches (MicroMet season-average loading; a fetch-index geometry is a robustness check).
+- **Nucleation potential** (following the paper, rate ∝ τ − τ_thresh): for every day, the 72-h stress margin minus a threshold (P99 of start-zone margins; P95 as a check), positive part, summed over all days per season. **Expected release days** per zone are proportional to the zone's days with a hotspot patch (≥ 2 cells above threshold) or to its summed excess, scaled to the observed total.
+- **Wind-deposition multiplier**: load = snowfall + k · wind deposition, k = 0–50, threshold recomputed for each k — does the zone pattern need stronger (or no) wind loading?
 
 ### 4.6 Storm-by-storm test
 
-For every day November–May, each zone's load is snowfall plus MicroMet wind accumulation in the preceding 72 h (variants: load since the last control mission, evaluated only to 2021-05-04, with and without 5-day settling). Outcome: a natural slab on that path that day. **Primary test, chosen before the results:** 72-h window, P99 stress margin. Statistics: AUC with a cluster bootstrap 95 % CI (event days and seasons resampled), a date-shift permutation test (event days moved ±10–60 days within the season), a within-day permutation test (is the released path ranked above the other paths that day?), and an **out-of-sample split**: 2009–2021 (development) vs 2021–2026 events, which played no part in building the model. Zone-level correlations use exact permutation p-values (minimum two-sided p 0.017 with N = 5, 0.083 with N = 4).
+For every day November–May, each zone's load is snowfall plus MicroMet wind accumulation in the preceding 72 h (variants: load since the last control mission, evaluated only to 2021-05-04, with and without 5-day settling; stress on wind-loaded cells only). Outcome: a natural slab on that path that day. **Primary test, chosen before the results:** 72-h window, P99 stress margin. Statistics: AUC with a cluster bootstrap 95 % CI (event days and seasons resampled), a date-shift permutation test (event days moved ±10–60 days within the season), a within-day permutation test (is the released path ranked above the other paths that day?), and a period split: 2009–2021 (development) vs 2021–2026. Zone-level correlations use exact permutation p-values (minimum two-sided p 0.017 with N = 5).
 
 ---
 
@@ -122,9 +124,9 @@ For every day November–May, each zone's load is snowfall plus MicroMet wind ac
 | Sister #2 | 40.6° | 52.2 | 0.865 | 0.490 |
 | Sister #3 | 44.7° | 79.9 | 1.010 | 0.490 |
 | Sister #4 | 45.1° | 78.9 | 1.035 | 0.487 |
-| Sister #6 | 38.9° | 41.9 | 0.813 | 0.484 |
+| Sister #6 | 40.5° | 56.4 | 0.862 | 0.488 |
 
-Shear stress per unit load varies by about 1 % between zones. Steepness tracks natural releases poorly: mean tanθ vs natural count gives ρ = 0.4 for Sisters #1–#4 and 0.2 with Sister #6 (exact p ≥ 0.75). Sister #4's steepness is mostly small-scale relief (smoothed to 20 m its share of cells > 40° drops from 79 % to 55 %), and Sister #6 — the least steep zone — has nine naturals.
+Shear stress per unit load varies by about 1 % between zones, and steepness does not track natural releases (mean tanθ vs count: ρ = 0.2, exact p = 0.78). Sister #2 is as steep as Sisters #1 and #6 yet has one natural against their 10 and 9. Sister #4's steepness is mostly small-scale relief (smoothed to 20 m its share of cells > 40° drops from 79 % to 55 %).
 
 ### 5.2 Transport winds and the weather before naturals
 
@@ -138,19 +140,19 @@ Before Sister #6's naturals (10 events), **58 %** of transport flux came from th
 
 ### 5.3 Loading
 
-**Fetch.** Fetch ratios rank #6 (59) ≫ #1 (11) > #3 (3.5) ≈ #2 (3.1) > #4 (1.3), robust to the trap / grace / length settings tested (only the order is interpreted).
+**Fetch.** Fetch ratios rank #6 (16) > #1 (11) > #3 (3.5) ≈ #2 (3.1) > #4 (1.3) (order robust to the trap / grace / length settings; magnitudes are not).
 
 **MicroMet.**
 
 | Zone | Wind accumulation, mm SWE / season (mean) | of which SW | of which W–NW | 90th percentile |
 |---|---|---|---|---|
-| Sister #1 | **+88** | +78 | +12 | +358 |
-| Sister #6 | **+23** | +31 | −8 | +212 |
-| Sister #2 | −55 | −8 | −44 | −23 |
-| Sister #3 | −77 | −20 | −54 | +96 |
-| Sister #4 | −94 | −33 | −57 | +1 |
+| Sister #1 | **+85** | +75 | +11 | +354 |
+| Sister #6 | **+40** | +53 | −12 | +227 |
+| Sister #2 | −52 | −6 | −43 | −19 |
+| Sister #3 | −79 | −20 | −56 | +107 |
+| Sister #4 | −86 | −25 | −58 | +24 |
 
-Across sensitivity runs (η 15/30/60 m, Lf 50/100/200 m) the order **#1 > #6 > #2 > #3 > #4 never changes**. In the model, forest upwind of Sisters #2–#4 intercepts drifting snow (the imagery confirms these zones start among trees). On Sister #1, deposition concentrates in a band along the **west side of the gully**, under both SW and W–NW winds; Sister #6 is loaded along its west edge by SW winds.
+Across sensitivity runs (η 15/30/60 m, Lf 50/100/200 m) the order **#1 > #6 > #2 > #3 > #4 never changes**. Zone means hide the pockets that matter: Sisters #3 and #4 are net-eroded but have positive upper percentiles (§5.4).
 
 ![Loading patterns](../figures/seven_sisters_loading_patterns.png)
 
@@ -160,71 +162,95 @@ Across sensitivity runs (η 15/30/60 m, Lf 50/100/200 m) the order **#1 > #6 > #
 
 *Figure 4. Close-ups of Sister #1 and Sister #6 by wind sector (north up; top of each start zone at the bottom).*
 
-### 5.4 Stress hotspots
+### 5.4 Landing sites — why Sister #2 is quiet
 
-| Zone | Fetch-index load: hotspot area / patches | MicroMet load: hotspot area / patches | Naturals |
+| Zone | W–NW landing area | share of zone | SW landing area | Naturals |
+|---|---|---|---|---|
+| Sister #1 | 540 m² | 19 % | 1,056 m² | 10 |
+| Sister #6 | 312 m² | 8 % | 1,428 m² | 9 |
+| Sister #3 | 140 m² | 6 % | 260 m² | 12 |
+| Sister #4 | 24 m² | 2 % | 72 m² | 4 |
+| **Sister #2** | **0 m²** | **0 %** | 136 m² | **1** |
+
+*Steep (35–55°) open cells (> 4 m from canopy) collecting > 50 mm SWE / season.*
+
+The model independently reproduces the field description: **Sister #2 has no W–NW landing sites** (zero in four of five sensitivity runs), while Sisters #1, #3 and #4 do. The model does give Sister #2 some SW landing area (136 m²), whereas the field observation is that it sits too low on the slope for SW winds — the model may overstate SW exposure at that elevation. Before the forest-edge correction, Sister #2's apparent deposition came from five forest-edge cells; with them excluded its open slab terrain is scoured, not loaded.
+
+### 5.5 Stress hotspots
+
+| Zone | MicroMet load: hotspot area / patches | Fetch-index load: hotspot area / patches | Naturals |
 |---|---|---|---|
-| Sister #3 | 124 m² / 4 | 140 m² / 2 | 12 |
-| Sister #1 | 295 m² / 11 | 284 m² / 4 | 10 |
-| Sister #6 | 26 m² / 2 | 16 m² / 1 | 9 |
-| Sister #4 | 17 m² / 3 | 24 m² / 1 | 4 |
-| Sister #2 | 4 m² / 1 | 20 m² / 1 | 1 |
+| Sister #3 | 132 m² / 1 | 105 m² / 3 | 12 |
+| Sister #1 | 276 m² / 5 | 251 m² / 9 | 10 |
+| Sister #6 | 228 m² / 4 | 266 m² / 8 | 9 |
+| Sister #4 | 12 m² / 1 | 9 m² / 1 | 4 |
+| Sister #2 | 0 | 0 | 1 |
 
-With fetch-index loading, hotspot area orders the zones like the natural counts (ρ = 0.90, exact p = 0.083); with MicroMet loading the correlation is weaker (ρ = 0.60, p = 0.35), because MicroMet's deposition is small relative to direct snowfall, so its hotspots mostly follow slope.
-
-**Field check — Sister #1.** In both versions Sister #1's hotspots lie on the west side of the gully (88 % and 99 % of hotspot area in the west half), matching where its naturals have been seen to start. This is consistent but not discriminating: most zones have most of their hotspots on their west side, as expected for prevailing W–WNW winds loading east-facing walls.
+Both loading variants put Sister #2 at zero hotspot area and Sister #4 near zero; hotspot area vs natural count gives ρ = 0.70 (exact p = 0.23, N = 5). **Field check — Sister #1:** 99 % of its hotspot area lies in the west half of the zone, matching where its naturals have been seen to start. (Most zones have their hotspots on the west side, as expected for W–WNW winds loading east-facing walls, so this is consistent rather than discriminating.)
 
 ![Stress hotspots](../figures/seven_sisters_stress_hotspots.png)
 
 *Figure 5. Fetch-index deposition (left) and stress margin with top-5 % hotspot patches in red (right). North up.*
 
-### 5.5 Nucleation potential and observed vs expected
+### 5.6 Nucleation potential and observed vs expected
 
-The nucleation-potential map (Figure 6) sums the excess stress above threshold over every day of record. Within start zones it is highest along the west side of Sister #1, on the west side of Sister #3 and at the top and west edge of Sister #6. Of the 2020–2026 release points, five lie inside start zones; they sit at the 51st–81st percentile of potential within their zone (mean 62nd; random placement would give 50th, p = 0.18; two pairs share coordinates, so they are not fully independent).
+| | Sister #1 | Sister #2 | Sister #3 | Sister #4 | Sister #6 |
+|---|---|---|---|---|---|
+| Observed natural days (with weather data) | 8 | 1 | 12 | 3 | 8 |
+| Expected — hotspot days | 6.4 | 1.8 | 9.0 | 4.0 | 10.9 |
+| Expected — summed excess | 7.5 | 3.9 | 8.3 | 2.8 | 9.5 |
 
-At the zone level, **expected counts from MicroMet-based potential do not match observations** (ρ = −0.36 to 0.31): Sister #6 has 8 observed natural days against ≈ 0.6–2 expected, and Sister #2 has 1 against 7–12. Sister #2 is large and moderately steep, so a slope-dominated model expects many releases; Sister #6 is small and less steep, so it expects few. The observations say the opposite — the wind-loading contrast (Sister #2 forest-sheltered, Sister #6 a SW-fed lee) matters more than the MicroMet saltation model credits.
+*P99 threshold; expected values scaled to the observed total of 32. Hotspot-days fit: Poisson deviance 2.8, ρ = 0.82; across sensitivity runs deviance 2.5–5.1, ρ 0.82–0.97, Sister #2 expected 1.5–2.6.*
+
+Every observed count lies within its expected value's Poisson range. This was not true before the two November corrections: with the old Sister #6 polygon and forest-edge cells counted, the model expected about one natural day on Sister #6 (8 observed) and 6–12 on Sister #2 (1 observed).
+
+**Wind multiplier.** With no wind term (k = 0, snowfall × terrain only) the zone pattern fits worse (deviance 7.4–13.3 for the two main bases; restricting stress to wind-loaded cells, which already uses where the wind deposits, fits well even at k = 0, deviance 3.3); with the model's wind deposition as built (k = 1) it fits well (deviance 2.8), and doubling it (k = 2) fits about equally (1.9). Storm-level path picking also peaks at k ≈ 1–2 (within-day AUC 0.64 at k = 0, 0.74 at k = 1–2). The modelled wind loading is therefore roughly the right strength — not an order of magnitude too weak — once deposition is restricted to open slab terrain.
+
+**Release points.** Seven 2020–2026 release points fall inside start zones; they sit at the 0th–81st percentile of potential within their zone (median 58th). One Sister #6 point lies on a zero-potential cell, so this check is inconclusive.
 
 ![Nucleation potential](../figures/seven_sisters_nucleation_potential.png)
 
-*Figure 6. Left: nucleation potential (Σ excess stress above the P99 threshold per season; forest masked) on NAIP imagery, with natural release points (stars inside start zones, circles on tracks). Right: observed natural-release days (95 % Poisson CI) vs expected from hotspot days and from summed excess, scaled to the observed total.*
+*Figure 6. Left: nucleation potential (Σ excess stress above the P99 threshold per season; forest and forest-edge cells masked) on NAIP imagery, with natural release points (stars inside start zones, circles on tracks). Right: observed natural-release days on days with weather data — 32 of the 36 naturals; four (2018-04-03 on #1, #4 and #6, and 2018-11-19 on #1) fall in weather-data gaps — with 95 % Poisson CIs, against expected days from hotspot days and from summed excess, scaled to the observed total.*
 
-### 5.6 Storm-by-storm skill
+### 5.7 Storm-by-storm skill
 
 | Test | Events | AUC (95 % CI) | Date-shift p | Within-day AUC (p) |
 |---|---|---|---|---|
-| **Primary: 72-h, P99 stress margin** | 32 | **0.73 (0.64–0.83)** | **0.001** | **0.61 (0.047)** |
-| Primary, 2009–2021 (development) | 15 | 0.65 (0.53–0.79) | 0.074 | 0.60 (0.14) |
-| **Primary, 2021–2026 (out of sample)** | 17 | **0.81 (0.68–0.91)** | **0.001** | 0.62 (0.11) |
+| **Primary: 72-h, P99 stress margin** | 32 | **0.76 (0.67–0.84)** | **0.001** | **0.74 (< 0.001)** |
+| Primary, 2009–2021 | 15 | 0.70 (0.58–0.82) | 0.046 | 0.78 (0.002) |
+| Primary, 2021–2026 | 17 | 0.82 (0.69–0.91) | 0.002 | 0.70 (0.017) |
 | 72-h snowfall only | 32 | 0.71 (0.62–0.80) | < 0.001 | 0.50 (—) |
-| 72-h wind accumulation only | 32 | 0.57 (0.42–0.71) | 0.80 | 0.61 (0.059) |
-| Since control, 5-d settling (to 2021) | 15 | 0.65 (0.52–0.79) | 0.019 | 0.58 (0.21) |
+| 72-h wind accumulation only | 32 | 0.58 (0.44–0.72) | 0.63 | 0.62 (0.033) |
+| Stress on wind-loaded cells only | 32 | 0.73 (0.64–0.82) | 0.002 | 0.70 (0.001) |
+| Since control, 5-d settling (to 2021) | 15 | 0.69 (0.58–0.82) | 0.015 | 0.70 (0.018) |
 
-*Sensitivity runs: primary AUC 0.730–0.736.*
+*Sensitivity runs: primary AUC 0.75–0.77, within-day 0.72–0.74.*
 
-- **Natural days are predictable from the 72-h stress margin**, and the skill holds on data that played no part in building the model.
-- **Timing is mostly snowfall; path selection needs terrain and wind.** On natural days the stress margin and wind accumulation both rank the released path above the others; snowfall alone cannot.
+- **Natural days are predictable from the 72-h stress margin, and so is the path.** Snowfall alone identifies natural days nearly as well but cannot pick the path; adding terrain and wind loading picks the released path on 74 % of comparisons.
+- **The 2021–2026 events score as well as 2009–2021.** They were not used to fit any parameter, but two model changes (the redrawn Sister #6 polygon and the forest-edge rule) were made after they were in hand. Before those changes, the 2021–2026 AUC was 0.81 (within-day 0.62), so the timing skill does not depend on them; the improvement in path picking does.
 - **Recent loading matters.** Load accumulated since the last control mission without settling does worse; with 5-day settling it is comparable. Natural releases follow loading from the last few days, consistent with older load gaining strength and with the paper's excess-stress / time-to-failure relation.
 
 ---
 
 ## 6. Limitations
 
-- **Zone count.** Five zones, all the active Sisters paths; no zone-level correlation can be strongly significant and none observed is below 0.08. More zones must come from other sites.
+- **Zone count.** Five zones, all the active Sisters paths; no zone-level correlation reaches significance (best p = 0.08–0.23). More zones must come from other sites.
+- **Post-hoc corrections.** The Sister #6 polygon was redrawn and the forest-edge rule added after the zone-level mismatch was seen. Both have physical grounds (the release area as known in the field; trees anchoring snow), but they were not pre-specified.
 - **Avalanche record.** Many natural dates are estimated. Control missions without results are not recorded, and none are available after 2021-05-04. Records from 2020–2026 are assigned to paths by coordinates (observer-placed points, not exact release locations).
 - **Snow data.** SNOTEL SWE resolves 2.5 mm steps; one station represents the whole site; water year 2011 is missing.
-- **Wind and transport model.** MicroMet is empirical; saltation only (suspension omitted); unlimited erodible snow; no wind-direction diversion in the transport direction; faint streak artefacts along the wind direction. The zone order is robust to model parameters, but the deposition magnitude is too weak to reproduce zone-level release counts.
+- **Wind and transport model.** MicroMet is empirical; saltation only (suspension omitted); unlimited erodible snow; no wind-direction diversion in the transport direction; faint streak artefacts along the wind direction. The zone order is robust to model parameters; absolute amounts are not. The model may overstate SW exposure for the lower zones (Sister #2).
 - **Deposition not validated against snow.** The canopy mask (drone-derived) affects Sisters #2–#4.
-- **Thresholds.** μ = tan 30°, the 50–60° holding cap, the P99 threshold and hotspot percentiles are assumptions; alternatives are reported where tested.
+- **Thresholds.** μ = tan 30°, the 50–60° holding cap, the 4 m forest buffer, the P99 threshold and hotspot percentiles are assumptions; alternatives are reported where tested.
 
 ---
 
 ## 7. Next steps
 
-1. **Snow-on drone survey** after a W–NW storm and after a SW storm: snow depth = snow-on minus snow-off, processed with the same GCPs and vertical datum (the drone products sit ~11.9 m below 3DEP). Priority targets: Sister #1's west wall and Sister #6's lee. This measures the load directly and calibrates the transport model.
-2. **Add suspension transport** (e.g. Pomeroy & Male 1992 or SnowTran-3D); this is what the observed-vs-expected mismatch points to.
-3. **WindNinja** runs for a few key storms to check MicroMet's terrain winds near the start zones.
+1. **Snow-on drone survey** after a W–NW storm and after a SW storm: snow depth = snow-on minus snow-off, processed with the same GCPs and vertical datum (the drone products sit ~11.9 m below 3DEP). Targets: Sister #1's west wall, Sister #6's upper west edge, and Sister #2 (to confirm it has no landing sites). This measures the load directly.
+2. **Add suspension transport** (e.g. Pomeroy & Male 1992 or SnowTran-3D) and check whether the zone pattern holds.
+3. **WindNinja** runs for a few key storms to check MicroMet's terrain winds near the start zones, especially SW exposure of the lower zones.
 4. **More zones**: extend the analysis to other controlled paths with ridge wind stations.
-5. **Control-mission log** from CDOT (including shots with no result, and after 2021) for the since-control analysis.
+5. **Verify the two trigger conflicts** (2020-11-14 Sister #6, 2021-02-06 Sister #1) and, if possible, obtain the CDOT control-mission log after 2021.
 6. **Pipeline**: replace the legacy nucleation-candidate map with the nucleation-potential model.
 
 ---
@@ -243,11 +269,11 @@ python src/pipeline.py --site sisters                             # DEM, zone cl
 python src/wind_exposure.py --site sisters                        # Sx, fetch (§4.3)
 python src/storm_analysis.py --site sisters                       # weather before each natural
 python src/stress_hotspots.py --site sisters                      # fetch-index hotspots
-python src/micromet_loading.py --site sisters                     # MicroMet, potential, storm test
-python src/event_stats.py --site sisters                          # bootstrap / permutation / out-of-sample
+python src/micromet_loading.py --site sisters                     # MicroMet, landing sites, potential, storm test
+python src/event_stats.py --site sisters                          # bootstrap / permutation / period split
 ```
 
-Profile curvature (an earlier "stress concentration" hypothesis) is still computed by the pipeline but is not used here; aspect entropy has been dropped, as explicit wind modelling now addresses the loading question it was a proxy for.
+The NAIP image (`data/Sisters/NAIP_sisters.tif`) comes from the USGS National Map `USGSNAIPImagery` ImageServer (exportImage, bbox 423100,4391800,424300,4392800, EPSG:26913, 0.6 m). Profile curvature (an earlier "stress concentration" hypothesis) is still computed by the pipeline but is not used here; aspect entropy has been dropped.
 
 ## References
 

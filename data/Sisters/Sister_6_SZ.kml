@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>Sister 6 SZ.kml</name>
-	<StyleMap id="m_ylw-pushpin00">
+	<name>Sister_6_SZ.kml</name>
+	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
 			<styleUrl>#s_ylw-pushpin</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
 	<Style id="s_ylw-pushpin">
@@ -20,14 +20,11 @@
 			</Icon>
 			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
 		</IconStyle>
-		<LineStyle>
-			<color>ffff0000</color>
-		</LineStyle>
 		<PolyStyle>
-			<color>660000ff</color>
+			<color>640000ff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="s_ylw-pushpin_hl0">
+	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
 			<scale>1.3</scale>
 			<Icon>
@@ -35,27 +32,24 @@
 			</Icon>
 			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
 		</IconStyle>
-		<LineStyle>
-			<color>ffff0000</color>
-		</LineStyle>
 		<PolyStyle>
-			<color>660000ff</color>
+			<color>640000ff</color>
 		</PolyStyle>
 	</Style>
 	<Placemark>
-		<name>Sister 6 SZ</name>
-		<snippet></snippet>
-		<styleUrl>#m_ylw-pushpin00</styleUrl>
+		<name>Sister_6_SZ</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
 		<Polygon>
 			<tessellate>1</tessellate>
 			<outerBoundaryIs>
 				<LinearRing>
 					<coordinates>
-						-105.8872375344718,39.67569090314991,0 -105.887334222553,39.6759007373354,0 -105.887378310918,39.67591969919733,0 -105.8874730007227,39.67572725807647,0 -105.8874474895943,39.67565958623926,0 -105.8873666580636,39.6756678612709,0 -105.8873361972094,39.6755803580038,0 -105.8873319092481,39.67556142592259,0 -105.8873300774393,39.67554029039446,0 -105.8873246857847,39.67552362066355,0 -105.8873241843636,39.67551398138112,0 -105.8873062741827,39.67550317104102,0 -105.8872861079413,39.67548804941765,0 -105.8872800007054,39.6754861800306,0 -105.8872225790241,39.67549282522542,0 -105.8871898583761,39.67553185669617,0 -105.8872070440411,39.67559262871621,0 -105.8872215410246,39.67565776296668,0 -105.8872206075909,39.67566856426061,0 -105.8872375344718,39.67569090314991,0 
+						-105.8871516001626,39.67551863488886,0 -105.8871284239708,39.67569133320703,0 -105.8872329007507,39.6758942837691,0 -105.8873928147145,39.67611294979626,0 -105.8874973144534,39.67637497819527,0 -105.8875625591226,39.67646747203337,0 -105.8875830138353,39.67657146050317,0 -105.8876936519782,39.67656448410607,0 -105.8877783724179,39.67634603094017,0 -105.8878777907855,39.67602483322364,0 -105.8877932332095,39.67593541508845,0 -105.8876225249547,39.67586464680784,0 -105.8875500555321,39.67575544159346,0 -105.8875070276634,39.67559422274078,0 -105.8874818173516,39.67553682322568,0 -105.8874523883441,39.67548849703413,0 -105.8872710100071,39.67543564114557,0 -105.8871516001626,39.67551863488886,0 
 					</coordinates>
 				</LinearRing>
 			</outerBoundaryIs>
 		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
 	</Placemark>
 </Document>
 </kml>
