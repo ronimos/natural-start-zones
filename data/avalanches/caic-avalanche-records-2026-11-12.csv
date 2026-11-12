@@ -1,0 +1,143 @@
+﻿Observation ID,Date,Date Known,Landmark,Longitude,latitude,#,Elevation,Aspect,Type,Trigger,Secondary Trigger,Relative Size,Destructive Size,Accident,Area,Location,Description,Comments,Sliding Sfc,Status,Locked,Weak Layer,Avg Width,Width Units,Avg Vertical,Vertical Units,Avg Crown,Crown Units,Terminus
+-,2026-03-15T16:00:00Z,Known,Loveland Pass,-105.8920092,39.6782048,1,TL,E,SS,N,u,R2,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2026-03-11T19:48:00Z,Estimated,Berthoud Pass West,-105.7600428,39.8378036,1,&#60;TL,E,SS,N,-,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2026-03-07T19:00:00Z,Estimated,Berthoud Pass East,-105.7641659,39.7599878,1,&#62;TL,NE,SS,N,-,R2,D2,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-12-06T19:30:00Z,Known,Berthoud Pass West,-105.7573293,39.8433287,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-03-23T21:33:00Z,Known,Loveland Pass,-105.8920092,39.6782048,1,TL,N,SS,N,-,R1,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-03-04T15:56:00Z,Estimated,Berthoud Pass East,-105.8065685,39.7855454,1,&#62;TL,SE,HS,N,u,R3,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-03-04T13:22:00Z,Known,Loveland Pass,-105.8903786,39.6780672,1,&#60;TL,N,SS,N,u,R3,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-22T19:05:00Z,Estimated,Berthoud Pass East,-105.8047186,39.7636941,1,TL,E,HS,N,-,R4,D2.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-21T16:00:00Z,Known,Berthoud Pass East,-105.7641659,39.7599878,1,&#62;TL,N,HS,N,-,R4,D3,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-17T19:10:00Z,Known,Berthoud Pass West,-105.7714303,39.8156288,1,&#60;TL,SE,SS,N,-,R2,D1,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-17T13:00:00Z,Known,Loveland Pass,-105.8894874,39.6783105,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-15T03:00:00Z,Known,Loveland Pass,-105.8903786,39.6780672,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-15T02:10:00Z,Known,Loveland Pass,-105.8875201,39.6780811,1,TL,N,HS,N,-,R2,D2,Yes,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-14T19:00:00Z,Known,Berthoud Pass West,-105.7587582,39.8343,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-14T15:35:00Z,Estimated,Eisenhower Tunnel,-105.8710536,39.7050829,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-13T20:45:00Z,Known,Berthoud Pass West,-105.7582386,39.8393029,1,&#62;TL,E,SS,N,-,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-13T20:45:00Z,Known,Berthoud Pass West,-105.7582423,39.8372717,1,&#60;TL,E,SS,N,-,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-13T20:45:00Z,Known,Berthoud Pass West,-105.7581135,39.8379675,1,&#60;TL,E,SS,N,-,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-13T18:47:00Z,Estimated,Berthoud Pass West,-105.7580072,39.8416694,1,&#60;TL,E,SS,N,u,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-02-13T18:39:00Z,Estimated,Berthoud Pass West,-105.7593729,39.8398258,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-01-28T18:39:00Z,Estimated,Eisenhower Tunnel,-105.875777,39.7065662,1,&#62;TL,SE,HS,N,-,R1,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2025-01-02T19:23:00Z,Estimated,Berthoud Pass East,-105.7641863,39.7599844,1,&#62;TL,NE,HS,N,-,R1,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-12-29T21:00:00Z,Known,Loveland Pass,-105.8820501,39.6762307,1,&#60;TL,E,SS,N,u,R3,D1,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-12-29T18:30:00Z,Known,Loveland Pass,-105.8817621,39.6729858,1,&#60;TL,E,SS,N,u,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-12-27T16:03:00Z,Known,Eisenhower Tunnel,-105.8747275,39.7055819,1,&#62;TL,SE,SS,N,-,R1,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-11-27T06:01:00Z,Known,Berthoud Pass West,-105.775646,39.8075792,1,&#60;TL,N,SS,N,-,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-11-27T06:00:00Z,Known,Berthoud Pass West,-105.7751388,39.807435,1,&#60;TL,N,SS,N,-,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-05-07T23:03:00Z,Estimated,Loveland Pass,-105.8904877,39.6769887,1,&#60;TL,N,SS,N,-,R3,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-05-07T22:00:00Z,Estimated,Loveland Pass,-105.8920355,39.6763135,1,TL,N,SS,N,-,R2,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-26T18:09:00Z,Estimated,Berthoud Pass,-105.7650939,39.7619882,1,&#62;TL,E,HS,N,-,R3,D2.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-16T00:30:00Z,Known,Berthoud Pass,-105.7744018,39.8064256,1,&#60;TL,E,SS,N,-,R2,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-14T11:01:00Z,Known,Loveland Pass,-105.8715571,39.6752447,1,&#62;TL,SW,SS,N,-,R3,D2,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-14T07:48:00Z,Known,Berthoud Pass,-105.7764176,39.8072739,1,&#60;TL,N,HS,N,-,R3,D2.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-14T07:39:00Z,Known,Loveland Pass,-105.8897384,39.6774915,1,TL,N,SS,N,-,R2,D2,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-14T07:39:00Z,Known,Loveland Pass,-105.8904886,39.6774978,1,TL,N,SS,N,-,R2,D2,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-07T17:05:00Z,Estimated,Eisenhower Tunnel,-105.8763263,39.7077647,1,&#62;TL,SE,SS,N,c,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-03-04T05:30:00Z,Known,Loveland Pass,-105.8920434,39.6778253,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-02-19T15:56:00Z,Known,Eisenhower Tunnel,-105.8755325,39.7058957,1,&#62;TL,SE,SS,N,-,R1,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-02-17T14:02:00Z,Known,Berthoud Pass,-105.7678529,39.7600256,1,&#62;TL,E,HS,N,-,R2,D2,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-02-03T16:00:00Z,Estimated,Berthoud Pass,-105.8068273,39.784387,1,-,SE,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-02-03T15:59:00Z,Estimated,Berthoud Pass,-105.8070403,39.7859207,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-02-03T15:56:00Z,Estimated,Berthoud Pass,-105.8066282,39.7865459,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-20T21:15:00Z,Known,Berthoud Pass,-105.7593307,39.8322142,1,&#60;TL,SE,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-18T19:01:00Z,Estimated,Loveland Pass,-105.8720307,39.6753312,1,TL,SW,HS,N,-,R3,D2,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-16T22:11:00Z,Estimated,Eisenhower Tunnel,-105.7900181,39.680086,1,-,NE,HS,N,-,R1,D2,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-16T20:17:00Z,Estimated,Berthoud Pass,-105.7665572,39.7598974,1,&#62;TL,NW,HS,N,-,R2,D2.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-15T19:00:00Z,Known,Berthoud Pass,-105.7576661,39.8336598,1,&#60;TL,SE,SS,N,-,R3,D2,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-14T18:00:00Z,Known,Berthoud Pass,-105.7839651,39.7971479,1,&#60;TL,S,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-13T21:18:00Z,Known,Loveland Pass,-105.8904877,39.6769887,1,&#60;TL,N,SS,N,u,-,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T19:20:00Z,Estimated,Berthoud Pass,-105.7762801,39.8070201,1,&#60;TL,NE,SS,N,-,-,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T18:17:00Z,Estimated,Eisenhower Tunnel,-105.8726027,39.7089116,1,-,E,SS,N,-,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T18:04:00Z,Estimated,Loveland Pass,-105.8925397,39.6699909,1,-,E,HS,N,-,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T18:03:00Z,Estimated,Loveland Pass,-105.8942645,39.6678798,1,-,SE,HS,N,-,-,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T18:01:00Z,Estimated,Loveland Pass,-105.8950385,39.6644175,1,-,E,HS,N,-,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-10T17:59:00Z,Estimated,Loveland Pass,-105.8952598,39.6653356,1,&#62;TL,E,HS,N,-,R3,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2024-01-09T19:16:00Z,Estimated,Berthoud Pass,-105.8052092,39.7864514,1,&#62;TL,S,SS,N,-,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-28T15:10:00Z,Known,Berthoud Pass,-105.8069812,39.7838412,1,&#62;TL,SE,HS,N,-,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-26T05:30:00Z,Estimated,Loveland Pass,-105.8875991,39.6778803,1,&#60;TL,N,SS,N,-,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-26T05:30:00Z,Known,Loveland Pass,-105.8904587,39.6773015,1,&#60;TL,N,SS,N,u,R1,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-25T19:00:00Z,Estimated,Loveland Pass,-105.8814361,39.6611563,1,&#62;TL,E,SS,N,u,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T23:12:00Z,Known,Loveland Pass,-105.8720769,39.6751359,1,TL,W,SS,N,-,R2,D1,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:21:00Z,Known,Berthoud Pass,-105.7752082,39.8014854,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:18:00Z,Known,Berthoud Pass,-105.7732095,39.8059894,1,&#60;TL,NE,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:18:00Z,Known,Berthoud Pass,-105.7749394,39.8077822,1,&#60;TL,NE,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:09:00Z,Known,Berthoud Pass,-105.7578233,39.8414086,1,&#60;TL,E,SS,N,-,R3,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:05:00Z,Known,Berthoud Pass,-105.7572552,39.8406678,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:04:00Z,Known,Berthoud Pass,-105.7581427,39.8346192,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-03T20:01:00Z,Known,Berthoud Pass,-105.7585118,39.8329641,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-12-02T12:25:57Z,Known,Loveland Pass,-105.8877381,39.6768671,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-04-02T07:08:00Z,Known,Eisenhower Tunnel,-105.8752287,39.7064265,1,&#62;TL,SE,HS,N,-,R3,D3,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-04-01T16:42:00Z,Known,Eisenhower Tunnel,-105.8712091,39.7079355,1,&#62;TL,SE,HS,N,-,R3,D2.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-03-23T01:30:00Z,Known,Loveland Pass,-105.8815929,39.6731953,1,-,E,SS,N,-,R2,D1,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-03-16T19:01:00Z,Known,Berthoud Pass,-105.7579038,39.8375101,1,&#60;TL,E,SS,N,-,R2,D1.5,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2023-03-12T15:00:00Z,Known,Loveland Pass,-105.8920956,39.6766553,1,TL,N,SS,N,-,R1,D1,-,Front Range,-,-,-,S,approved,Yes,-,-,-,-,-,-,-,-
+e73a5324-80d8-4352-a189-5afa8ecc12ef,2023-02-09T07:00:00Z,Known,-,-105.8824754,39.6480965,1,&#62;TL,S,HS,N,-,R1,D1.5,-,Front Range,-,"Near the top of the Widowmaker path, South aspect, roughly 12,000 ft. Reported by A-Basin on Feb 9, 2023.",-,-,approved,Yes,-,-,ft,-,ft,-,in,TP
+7d91442b-3a56-4fb2-a95c-80b06e19e931,2023-01-05T07:00:00Z,Estimated,-,-105.76276,39.76558,1,TL,E,SS,N,-,R1,D1.5,-,Front Range,West chute of Disney Slide path,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,-
+91b4ca04-976e-41e4-b868-fe218875d16a,2023-01-05T07:00:00Z,Estimated,-,-105.8032233,39.7604388,1,TL,N,SS,N,-,R1,D1.5,-,Front Range,Berthoud Falls,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,-
+-,2022-12-22T20:58:00Z,Known,Loveland Pass,-105.8874215,39.6857506,1,&#60;TL,E,HS,N,u,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+a763d8ff-0cf2-4a69-a20c-54fb779216b7,2022-12-22T16:00:00Z,Known,-,-105.894776,39.6638642,1,&#62;TL,E,HS,N,-,R2,D2,-,Front Range,-,-,"I'm guessing natural, but ran during mitigation in the banks, so maybe remote.",-,approved,Yes,-,-,ft,-,ft,-,in,BP
+45351f8d-fd8c-4000-bc37-e4872d1dccf3,2022-12-22T07:00:00Z,Estimated,-,-105.8790596,39.6488821,1,&#62;TL,SE,SS,N,-,R2,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,-
+-,2022-12-14T13:00:00Z,Known,Cameron Pass,-105.8980356,40.5058669,1,TL,E,SS,N,u,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-12-14T11:30:00Z,Known,Loveland Pass,-105.8903592,39.6786791,1,-,N,HS,N,u,-,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-12-06T20:31:00Z,Known,Berthoud Pass,-105.8067684,39.7848152,1,&#62;TL,SE,SS,N,-,R1,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-12-06T20:28:00Z,Estimated,Berthoud Pass,-105.8066129,39.7860591,1,&#62;TL,SE,SS,N,-,R1,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-12-06T14:23:00Z,Estimated,Loveland Pass,-105.895331,39.6655646,1,&#62;TL,E,HS,N,-,R2,D2,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-12-06T14:22:00Z,Estimated,Loveland Pass,-105.8957462,39.663949,1,&#62;TL,E,HS,N,-,R2,D2,-,Front Range,-,-,-,G,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-11-28T09:26:00Z,Known,Loveland Pass,-105.8875631,39.6762324,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-11-28T08:00:00Z,Known,Berthoud Pass,-105.8064914,39.7841584,1,&#62;TL,SE,SS,N,-,R1,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-11-07T18:00:00Z,Known,Loveland Pass,-105.8709368,39.6753358,1,&#62;TL,SW,HS,N,-,R1,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-04-14T19:35:00Z,Known,Eisenhower Tunnel,-105.8758767,39.707379,1,&#62;TL,S,SS,N,-,R1,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2022-03-14T19:29:00Z,Estimated,Eisenhower Tunnel,-105.8750415,39.7054819,1,&#62;TL,SE,SS,N,-,R1,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+21896dc6-1f57-4de6-9f90-d18b57735207,2022-03-12T07:00:00Z,Estimated,-,-105.8575827,39.6328912,1,&#62;TL,NW,HS,N,-,R1,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,TP
+-,2022-02-21T11:00:00Z,Estimated,Berthoud Pass,-105.7685005,39.7601572,1,&#62;TL,E,HS,N,-,R2,D2.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+bf9a90b2-2ed8-4db6-a56c-9d57f4bf187d,2022-02-11T07:00:00Z,Estimated,-,-105.882588,39.6478486,1,&#62;TL,S,HS,N,-,R1,D1,-,Front Range,-,-,Reported by ABSP. Ran overnight on Feb 10/11.,-,approved,Yes,-,-,ft,-,ft,-,in,-
+-,2022-01-06T10:30:00Z,Known,Berthoud Pass,-105.7987032,39.7782839,1,&#62;TL,SE,HS,N,-,U,D2,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+-,2021-12-25T06:00:00Z,Known,Loveland Pass,-105.8938086,39.6794119,1,&#60;TL,N,HS,N,-,R3,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2021-12-24T16:27:00Z,Known,Berthoud Pass,-105.7755915,39.8016087,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,30,ft,100,ft,1,in,-
+-,2021-12-10T19:22:00Z,Estimated,Berthoud Pass,-105.8079245,39.7950193,1,&#62;TL,E,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2021-12-10T19:22:00Z,Estimated,Berthoud Pass,-105.8010568,39.8004637,1,&#62;TL,E,SS,N,-,R1,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,-,-,-,-,-,-
+-,2021-03-15T19:30:00Z,Known,Berthoud Pass,-105.7625891,39.7810177,1,&#62;TL,S,SS,N,-,R2,D2,-,Front Range,-,-,-,I,saved,Yes,-,-,-,-,-,-,-,-
+8c91d637-b5ab-4d9e-a3a0-1d046b451ccf,2021-03-15T19:30:00Z,Known,-,-105.77688,39.79815,1,&#62;TL,NE,SS,N,-,R2,D2,-,Front Range,-,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,MP
+8c91d637-b5ab-4d9e-a3a0-1d046b451ccf,2021-03-15T19:30:00Z,Known,-,-105.77688,39.79815,1,&#62;TL,S,SS,N,-,R2,D2,-,Front Range,-,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,MP
+-,2021-03-15T19:30:00Z,Known,Berthoud Pass,-105.7650234,39.7630235,1,&#62;TL,N,SS,N,-,R2,D2,-,Front Range,-,-,-,I,saved,Yes,-,-,-,-,-,-,-,-
+-,2021-03-15T19:30:00Z,Known,Berthoud Pass,-105.8039683,39.7830224,1,&#62;TL,SE,SS,N,-,R3,D2.5,-,Front Range,-,-,-,-,saved,Yes,-,-,-,-,-,-,-,-
+8c91d637-b5ab-4d9e-a3a0-1d046b451ccf,2021-03-15T19:30:00Z,Known,-,-105.77688,39.79815,1,&#62;TL,SE,SS,N,-,R3,D2.5,-,Front Range,-,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,BP
+aa598860-62b5-4595-aa4d-c0ea84e9492f,2021-02-11T07:00:00Z,Known,-,-106.07693,39.59163,1,&#62;TL,SE,HS,N,-,R2,D2,-,Front Range,Bethel,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,BP
+068136cf-d149-4397-bfd1-ce237164c7f8,2021-02-06T17:10:00Z,Known,-,-105.77688,39.79815,1,&#60;TL,E,SS,N,-,R2,D1,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,-
+-,2021-02-06T13:46:00Z,Known,Loveland Pass,-105.8905024,39.6789649,1,TL,N,HS,N,-,R2,D2,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+-,2021-02-06T11:00:00Z,Known,Loveland Pass,-105.8920748,39.6791922,1,TL,NW,HS,N,-,R2,D2.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+456ec45f-e266-4811-8716-eacdf55d0f89,2021-02-06T07:00:00Z,Known,-,-105.87878,39.66375,1,TL,N,HS,N,-,R2,D2,-,Front Range,-,-,-,O,approved,Yes,-,-,ft,-,ft,-,in,BP
+456ec45f-e266-4811-8716-eacdf55d0f89,2021-02-06T07:00:00Z,Known,-,-105.87878,39.66375,1,TL,N,SS,N,-,R2,D2.5,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,BP
+99d3f669-4a49-4d59-95ad-92540aaa7f59,2021-01-24T07:00:00Z,Estimated,-,-105.88739,39.67548,1,&#62;TL,E,HS,N,-,R3,D2.5,-,Front Range,Little Professor east side and wrapping around the corner a bit.,-,-,G,approved,Yes,-,-,ft,-,ft,-,in,MP
+4b359d11-528e-4752-994f-585b2ee86afd,2021-01-14T07:25:00Z,Known,-,-105.77688,39.79815,1,&#60;TL,N,HS,N,-,R3,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,BP
+-,2021-01-14T07:25:00Z,Known,Berthoud Pass,-105.7755415,39.8078714,1,&#60;TL,N,HS,N,-,R3,D2,-,Front Range,-,-,-,O,saved,Yes,-,-,-,-,-,-,-,-
+9fa5ce5f-d0d4-45a1-bc00-b5908ecdccdd,2021-01-14T07:00:00Z,Estimated,-,-105.87878,39.66375,1,&#62;TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,MP
+9fa5ce5f-d0d4-45a1-bc00-b5908ecdccdd,2021-01-14T07:00:00Z,Estimated,-,-105.87878,39.66375,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,MP
+7bdb28e2-e9fd-4443-8d71-25a88c799f4b,2020-12-20T07:00:00Z,Estimated,-,-105.93735,39.67816,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,Bethel,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,MP
+52e1cc3c-805a-4c4a-a77e-8873d9fee8f9,2020-12-19T07:00:00Z,Estimated,-,-105.87878,39.66375,1,&#62;TL,SE,SS,N,-,R2,D1.5,-,Front Range,Shockleys on ridge to the east of the Summit of the Pass.,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,-
+9bb92954-5366-434d-b9a3-30c7e84175d6,2020-12-19T07:00:00Z,Estimated,-,-105.77688,39.79815,2,&#62;TL,E,SS,N,-,R1,D1,-,Front Range,Mt Russel east face,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,-
+9bb92954-5366-434d-b9a3-30c7e84175d6,2020-12-19T07:00:00Z,Known,-,-105.77688,39.79815,1,&#62;TL,SE,SS,N,-,R2,D2,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,MP
+-,2020-12-16T09:35:00Z,Known,Loveland Pass,-105.8878111,39.6791232,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,U,approved,Yes,-,-,-,-,-,-,-,-
+073dab63-3df0-465c-9f14-63ab1e544e15,2020-12-16T09:30:00Z,Known,-,-105.87878,39.66375,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,I,approved,Yes,Interface,-,ft,-,ft,-,in,BP
+bc8ce1b0-6db0-4fd3-8e01-17c60a92e018,2020-12-16T07:00:00Z,Estimated,-,-105.77688,39.79815,1,&#60;TL,E,SS,N,-,R1,D1,-,Front Range,Bank between 80s and the summit near MM242.,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,BP
+bc8ce1b0-6db0-4fd3-8e01-17c60a92e018,2020-12-16T07:00:00Z,Estimated,-,-105.77688,39.79815,1,&#62;TL,SE,SS,N,-,R1,D1.5,-,Front Range,-,-,Debris stopped at bench in lower start zone.,-,approved,Yes,-,-,ft,-,ft,-,in,TP
+3a9d92a5-bee2-4eac-92e4-b3bc9cd3b6a3,2020-12-12T07:00:00Z,Estimated,-,-106.07693,39.59163,1,&#62;TL,NW,SS,N,-,R1,D1,-,Front Range,West Portal,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,MP
+-,2020-11-14T16:55:00Z,Known,Loveland Pass,-105.8879109,39.6789108,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,O,approved,Yes,-,-,-,-,-,-,-,-
+f8326eed-4baa-42b2-ab9b-4e1475ccbbf5,2020-11-14T16:55:00Z,Known,-,-105.87878,39.66375,1,TL,N,SS,N,-,R1,D1.5,-,Front Range,-,-,-,-,approved,Yes,-,-,ft,-,ft,-,in,BP
+e4376cbc-cf77-41ab-926a-de2030fa460b,2020-05-03T06:00:00Z,Estimated,-,-106.07693,39.59163,1,&#62;TL,NW,HS,N,-,R3,D2,-,Front Range,West Portal,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,-
+7cb12fc5-20f3-4517-98a4-57c5889de5f1,2020-04-17T06:00:00Z,Estimated,-,-106.07693,39.59163,1,&#62;TL,SE,HS,N,-,R3,D2.5,-,Front Range,Bethel,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,MP
+c226f487-9336-4b4c-be1d-514703cdf61b,2020-04-17T06:00:00Z,Estimated,-,-105.77688,39.79815,1,&#62;TL,NE,SS,N,-,R2,D2,-,Front Range,-,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,BP
+-,2020-03-22T19:30:00Z,Known,Loveland Pass,-105.8872587,39.6755335,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,-,-,-,-,-,-
+47e0eb81-d7f2-4874-9733-adec9b87273a,2020-03-22T19:30:00Z,Known,-,-105.87878,39.66375,1,TL,N,SS,N,-,R2,D1.5,-,Front Range,-,-,-,I,approved,Yes,-,-,ft,-,ft,-,in,BP
+71ee5734-0982-464a-b23a-6fd069609091,2020-02-25T07:00:00Z,Estimated,-,-105.87878,39.66375,1,&#62;TL,SE,HS,N,-,R3,D2,-,Front Range,NW side of Little Prof,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,U
+71ee5734-0982-464a-b23a-6fd069609091,2020-02-25T07:00:00Z,Estimated,-,-105.87878,39.66375,1,&#62;TL,E,HS,N,-,R3,D2,-,Front Range,Pass Lake,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,-
+13e59341-2f2c-4790-9c6b-7de1f2077618,2020-02-17T10:15:00Z,Known,-,-106.07693,39.59163,1,TL,N,SS,N,-,R3,D2,-,Front Range,West Portal 1,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,-
+0e17b83b-2549-460c-8cf0-21d94bd582f9,2020-02-17T07:00:00Z,Known,-,-105.87878,39.66375,1,&#62;TL,E,HS,N,-,R3,D2.5,-,Front Range,South end of Pass Lake/Kitchen Wall towards the Littel Professor,-,-,G,approved,Yes,-,-,ft,-,ft,60,in,MP
+-,2020-02-11T03:00:00Z,Known,Eisenhower Tunnel,-105.7868337,39.6928413,1,&#62;TL,NE,HS,N,-,R3,D3,-,Front Range,-,-,-,G,saved,Yes,-,-,-,-,-,-,-,-
+1c7ce5be-f592-4dbe-a8d3-cbc7aee9e65f,2020-02-10T15:00:00Z,Known,-,-106.07693,39.59163,1,&#62;TL,NE,HS,N,-,R4,D3,-,Front Range,-,-,Last time this path ran to this extent was in March of 2003.,G,approved,Yes,-,-,ft,-,ft,-,in,BP
+-,2020-02-02T19:00:00Z,Known,Berthoud Pass,-105.758861,39.8323687,1,&#60;TL,SE,SS,N,-,R2,D1,-,Front Range,-,-,-,O,saved,Yes,-,-,-,-,-,-,-,-
+8eea0526-19fb-47a1-bd77-1a44cb0bbd57,2020-01-26T12:00:00Z,Known,-,-105.87878,39.66375,1,&#60;TL,SE,SS,N,-,R2,D1,-,Front Range,-,-,-,O,approved,Yes,-,-,ft,-,ft,-,in,BP
+2abb9dd1-ddb1-4e06-998f-903e2b02a096,2020-01-14T07:00:00Z,Estimated,-,-106.07693,39.59163,1,&#62;TL,SE,HS,N,-,R3,D2,-,Front Range,Bethel,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,TP
+2abb9dd1-ddb1-4e06-998f-903e2b02a096,2020-01-14T07:00:00Z,Estimated,-,-106.07693,39.59163,1,&#62;TL,SE,HS,N,-,R2,D1.5,-,Front Range,Bethel,-,-,-,approved,Yes,-,-,ft,-,ft,-,cm,TP

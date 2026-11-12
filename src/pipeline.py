@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from osgeo import gdal
+from osgeo import gdal, osr
 from osgeo.gdalconst import GA_Update
 from scipy import stats
 from scipy.ndimage import binary_dilation, binary_erosion, gaussian_filter
@@ -129,6 +129,11 @@ SITES: dict = {
         # ── Analysis: visualisation ───────────────────────────────────────────
         # Optional satellite image (relative to data_dir)
         'sat_image':  'SatImg.jpg',
+        # Georeferenced RGB(+NIR) image used as the background of map figures
+        # (USGS NAIP 0.6 m, acquired 2019-09-22, from the National Map
+        # USGSNAIPImagery service).  None = 3DEP hillshade.
+        'basemap':       'NAIP_sisters.tif',
+        'basemap_label': 'NAIP 2019-09-22',
         'sat_slice':  (slice(200, None), slice(200, 1500)),
         'sat_labels': [(925, 300, '#1'), (840, 420, '#2'), (770, 420, '#3'),
                        (707, 420, '#4'), (450, 160, '#6')],
@@ -151,9 +156,15 @@ SITES: dict = {
         'slope_attr': 'slope_degrees',
 
         # ── Analysis: avalanche data ──────────────────────────────────────────
-        # Set avalanche_csv to None to skip avalanche correlation steps
+        # Set avalanche_csv to None to skip avalanche correlation steps.
+        # Merged file = the named CAIC highway export (2009 – 2021-05-04)
+        # + Sisters natural slabs from the 2026 CAIC export (2020 – 2026-03),
+        # matched to paths by coordinates (src/assign_avalanche_paths.py,
+        # src/merge_avalanche_records.py).  The 2026 export has naturals
+        # only, so control-mission (explosive) records end on 2021-05-04.
         'avalanche_csv':    ROOT / 'data' / 'avalanches' /
-                            'CAIC_HWY_avalanches_2009-01-01_2021-05-04.csv',
+                            'CAIC_HWY_avalanches_2009-2026_sisters_merged.csv',
+        'control_records_end': '2021-05-04',
         'avalanche_filter': 'Sister',    # substring matched against 'HW Path'
         # Explicit DEM-stem → CAIC 'HW Path' mapping for joining avalanche counts
         'sz_avi_path_map': {
@@ -743,6 +754,83 @@ def _profile_curvature(dem_arr: np.ndarray, res: float = 1.0) -> np.ndarray:
     out = np.full_like(Z, np.nan)
     out[1:-1, 1:-1] = pc
     return out
+
+
+def _plot_sz_slope_map(cfg: dict, dem_path: str, out_png: Path,
+                       margin_m: float = 90.0, contour_m: float = 10.0) -> None:
+    """North-up map: hillshade + contours, slope inside the start zones,
+    zone outlines and labels, north arrow and scale bar (map coordinates)."""
+    ds = gdal.Open(str(dem_path))
+    gt, wkt = ds.GetGeoTransform(), ds.GetProjection()
+    z = ds.GetRasterBand(1).ReadAsArray().astype(float)
+    nd = ds.GetRasterBand(1).GetNoDataValue()
+    if nd is not None:
+        z[z == nd] = np.nan
+    hs_ds = gdal.DEMProcessing('', ds, 'hillshade', format='MEM', computeEdges=True)
+    hs = hs_ds.GetRasterBand(1).ReadAsArray().astype(float); hs_ds = None
+    slope, _, _, _, _ = _full_dem_attributes(dem_path, abs(gt[1]))
+
+    zones = [(kml, _kml_mask(kml, z.shape, gt, wkt)) for kml, _ in _sz_pairs(cfg)]
+    allz = np.zeros(z.shape, bool)
+    for _, m in zones:
+        allz |= m
+    pad = int(margin_m / abs(gt[1]))
+    rr, cc = np.nonzero(allz)
+    r0, r1 = max(rr.min() - pad, 0), min(rr.max() + pad, z.shape[0])
+    c0, c1 = max(cc.min() - pad, 0), min(cc.max() + pad, z.shape[1])
+    win = (slice(r0, r1), slice(c0, c1))
+    x0, y0 = gt[0] + c0 * gt[1], gt[3] + r0 * gt[5]
+    x1, y1 = gt[0] + c1 * gt[1], gt[3] + r1 * gt[5]
+    ext = (x0, x1, y1, y0)                       # left, right, bottom, top
+
+    fig, ax = plt.subplots(figsize=(11, 8))
+    basemap = cfg.get('basemap')
+    bm_path = cfg['data_dir'] / basemap if basemap else None
+    if bm_path is not None and bm_path.exists():
+        bm = gdal.Warp('', str(bm_path), format='MEM', outputBounds=(x0, y1, x1, y0),
+                       width=c1 - c0, height=r1 - r0, dstSRS=wkt, resampleAlg='bilinear')
+        rgb = np.dstack([bm.GetRasterBand(b).ReadAsArray().astype(float) for b in (1, 2, 3)])
+        lo, hi = np.percentile(rgb, [1, 99])
+        ax.imshow(np.clip((rgb - lo) / (hi - lo), 0, 1), extent=ext)
+        base_label, cont_col, slope_alpha = cfg.get('basemap_label', basemap), 'white', .65
+    else:
+        ax.imshow(hs[win], cmap='gray', extent=ext, vmin=0, vmax=255)
+        base_label, cont_col, slope_alpha = '3DEP hillshade', 'saddlebrown', .85
+    zw = z[win]
+    xs = np.linspace(x0, x1, zw.shape[1]); ys = np.linspace(y0, y1, zw.shape[0])
+    lv = np.arange(np.floor(np.nanmin(zw) / contour_m) * contour_m, np.nanmax(zw), contour_m)
+    cs = ax.contour(xs, ys, zw, levels=lv, colors=cont_col, linewidths=.4, alpha=.5)
+    major = lv[(lv % (5 * contour_m)) == 0]
+    ax.contour(xs, ys, zw, levels=major, colors=cont_col, linewidths=.9, alpha=.75)
+    ax.clabel(cs, levels=major, fmt='%d m', fontsize=7, inline=True, colors=cont_col)
+    im = ax.imshow(np.ma.masked_where(~allz[win], slope[win]), cmap='magma_r',
+                   vmin=25, vmax=60, extent=ext, alpha=slope_alpha)
+    for kml, m in zones:
+        ax.contour(xs, ys, m[win].astype(float), levels=[.5], colors='cyan', linewidths=1.5)
+        rr_, cc_ = np.nonzero(m[win])
+        num = ''.join(ch for ch in kml.stem if ch.isdigit()) or kml.stem
+        ax.text(xs[int(cc_.mean())], ys[rr_.min()] + 12, f'#{num}', fontsize=12, ha='center',
+                va='bottom', bbox=dict(boxstyle='round,pad=0.2', fc='white', alpha=.85, lw=0))
+    fig.colorbar(im, ax=ax, fraction=.03, label='slope (°)')
+    # scale bar and north arrow
+    sb = 100.0
+    bx, by = x0 + .05 * (x1 - x0), y1 + .05 * (y0 - y1)
+    ax.plot([bx, bx + sb], [by, by], 'k-', lw=4, solid_capstyle='butt')
+    ax.plot([bx, bx + sb], [by, by], 'w-', lw=2, solid_capstyle='butt')
+    ax.text(bx + sb / 2, by + .015 * (y0 - y1), f'{sb:.0f} m', ha='center', fontsize=9,
+            bbox=dict(fc='white', alpha=.8, lw=0))
+    ax.annotate('N', xy=(x1 - .05 * (x1 - x0), y1 + .17 * (y0 - y1)),
+                xytext=(x1 - .05 * (x1 - x0), y1 + .06 * (y0 - y1)),
+                arrowprops=dict(arrowstyle='-|>', color='k', lw=2), ha='center', fontsize=12,
+                fontweight='bold', bbox=dict(boxstyle='round,pad=0.2', fc='white', alpha=.85, lw=0))
+    epsg = osr.SpatialReference(wkt=wkt).GetAuthorityCode(None)
+    ax.set_xlabel(f'Easting (m, EPSG:{epsg})'); ax.set_ylabel('Northing (m)')
+    ax.ticklabel_format(useOffset=False, style='plain')
+    ax.tick_params(labelsize=7)
+    ax.set_title(f"{cfg['name']} — start-zone slope on {base_label} "
+                 f"({contour_m:.0f} m contours from 3DEP, north up)")
+    fig.savefig(str(out_png), dpi=150, bbox_inches='tight')
+    plt.close(fig)
 
 
 def _full_dem_attributes(dem_path: str, res: float):
@@ -1698,29 +1786,8 @@ def analyze_site(cfg: dict) -> None:
                         [Path(dem_path), combined_kml], 'sz'):
             crop_tif(dem_path, sz_dem_path, str(combined_kml))
 
-    print("Step 4 — Combined SZ DEM")
-    sz_attrs     = get_slope_attributes(sz_dem_path, 'slope_degrees')
-    sz_slope_key = list(sz_attrs.keys())[0]
-    fig, ax = plt.subplots()
-    im = ax.imshow(sz_attrs[sz_slope_key][::-1, ::-1], cmap='magma_r')
-    fig.colorbar(im, ax=ax, fraction=0.026)
-    ax.set_title(f"{name} — Start zones slope (°)")
-    labels = cfg.get('sz_map_labels', [])
-    if labels == 'auto':
-        # Centroid of each SZ polygon → combined-DEM pixel, mirrored like the
-        # [::-1, ::-1] image above.
-        h_px, w_px = sz_attrs[sz_slope_key].shape
-        labels = []
-        for kml, _ in _sz_pairs(cfg):
-            lon, lat = _kml_centroids_lonlat(kml)
-            cols, rows = _lonlat_to_dem_pixels([lon], [lat], sz_dem_path)
-            num = ''.join(ch for ch in kml.stem if ch.isdigit()) or kml.stem
-            labels.append((w_px - 1 - cols[0], h_px - 1 - rows[0], f'#{num}'))
-    for x, y, lbl in labels:
-        ax.text(x, y, lbl, fontsize=14, color='k', ha='center', va='center',
-                bbox=dict(boxstyle='round,pad=0.2', fc='white', alpha=0.7, lw=0))
-    plt.tight_layout()
-    fig.savefig(str(FIGURES / f"{site_slug}_sz_slope_map.png"), dpi=150, bbox_inches='tight')
+    print("Step 4 — Start-zone slope map (north up)")
+    _plot_sz_slope_map(cfg, dem_path, FIGURES / f"{site_slug}_sz_slope_map.png")
     plt.close(fig)
     print(f"  Saved: {site_slug}_sz_slope_map.png")
 
