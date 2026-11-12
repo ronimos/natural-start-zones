@@ -562,6 +562,10 @@ def main():
                                  wind_acc_p90=float(np.percentile(wv, 90)),
                                  margin_p99=float(np.percentile(mz, 99)),
                                  margin_p99_loaded=float(np.percentile(mz[loaded], 99)) if loaded.any() else 0.0,
+                                 # highest and 2nd-highest cell: a hotspot patch (>= 2 cells)
+                                 # exceeds threshold t exactly when margin_2nd > t
+                                 margin_max=float(mz.max()),
+                                 margin_2nd=float(np.sort(mz)[-2]) if mz.size > 1 else 0.0,
                                  loaded_hot_m2=float((loaded & (mz > q99)).sum() * a.res ** 2),
                                  area_gt_q95=float((mz > q95).sum() * a.res ** 2),
                                  area_gt_q99=float((mz > q99).sum() * a.res ** 2)))

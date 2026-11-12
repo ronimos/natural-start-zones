@@ -10,6 +10,8 @@
 - **A terrain + wind + snowfall stress model reproduces the zone pattern.** Expected natural-release days per zone (from days with a stress hotspot above threshold) are 6.4 / 1.8 / 9.0 / 4.0 / 10.9 against 8 / 1 / 12 / 3 / 8 observed (Sisters #1 / #2 / #3 / #4 / #6; ρ = 0.82), stable across model settings.
 - **Storm by storm, the same model predicts natural slab days and which path releases.** The pre-registered test (72-h load, P99 weak-layer stress margin) gives **AUC 0.76 (95 % CI 0.67–0.84, p = 0.001)** over 32 natural events in 16 seasons, and on natural days it ranks the released path above the others (**AUC 0.74, p < 0.001**). Snowfall sets the timing (AUC 0.71 alone) but cannot pick the path; wind loading does.
 - **The 2021–2026 events score as well as the development period** (AUC 0.82). Two model changes — a redrawn Sister #6 start zone and a forest-edge correction — were made after those events were available, though not tuned on them; before the changes the 2021–2026 AUC was already 0.81.
+- **The record implies a stress threshold, and the release rate grows with the excess above it — the paper's pattern.** The threshold that best separates natural days is ≈ 30 Pa of added stress margin from 72-h loading (95 % CI 26–67 Pa; ≈ 14 mm SWE of new load on a 45° slope). 29 of 32 naturals occurred on a day their path had a hotspot above it, and per-path hotspot days rank like natural counts (ρ = 0.82). Naturals are ~20× more frequent at > 80 Pa than below 30 Pa (+20 % odds per 10 Pa). Exceeding the threshold is close to necessary but far from sufficient (only 0.2–0.6 % of hotspot days release) — weak-layer state, not in the model, is the likely missing factor.
+- **Larger naturals follow higher hotspot stress, weakly.** Median hotspot stress rises from 39 Pa (D1) to 69 Pa (D1.5) and 93 Pa (D2); ρ = 0.32 with D size (p = 0.07), 0.43 (p = 0.015) without one wind-loaded D2.5 outlier.
 - **Remaining caveats:** five zones (no zone-level correlation reaches significance), modelled rather than measured loading, and saltation-only transport. A snow-on drone survey is the most valuable next step.
 
 ---
@@ -111,6 +113,10 @@ Every hour of record is run (kg/m² = mm SWE). Sensitivity: η = 15, 60 m and Lf
 ### 4.6 Storm-by-storm test
 
 For every day November–May, each zone's load is snowfall plus MicroMet wind accumulation in the preceding 72 h (variants: load since the last control mission, evaluated only to 2021-05-04, with and without 5-day settling; stress on wind-loaded cells only). Outcome: a natural slab on that path that day. **Primary test, chosen before the results:** 72-h window, P99 stress margin. Statistics: AUC with a cluster bootstrap 95 % CI (event days and seasons resampled), a date-shift permutation test (event days moved ±10–60 days within the season), a within-day permutation test (is the released path ranked above the other paths that day?), and a period split: 2009–2021 (development) vs 2021–2026. Zone-level correlations use exact permutation p-values (minimum two-sided p 0.017 with N = 5).
+
+### 4.7 Stress threshold and avalanche size
+
+A zone has a **hotspot day** at threshold t when its 2nd-highest cell stress margin (72-h load) exceeds t — a patch of ≥ 2 cells, about critical-crack-length scale. Scanning t from 5 to 400 Pa gives the hit rate H = P(hotspot | natural day), the false-alarm rate F = P(hotspot | other days) and the Peirce skill H − F; the threshold maximising it is the record's estimate of τ_thresh, with a season-block bootstrap CI. The stress is the margin *added* by the last 72 h of loading, so the threshold is an increment, not the weak layer's total strength; it is also expressed as the equivalent new SWE on a 45° slope, t / (g·cos²θ·(tanθ − μ)). Release rates are tabulated by hotspot-stress bin, with a logistic trend. Avalanche size (destructive D and relative R) is compared with the release day's hotspot stress, area above the P95 stress threshold, new snow and wind deposition (Spearman, permutation p).
 
 ---
 
@@ -230,6 +236,52 @@ Every observed count lies within its expected value's Poisson range. This was no
 - **The 2021–2026 events score as well as 2009–2021.** They were not used to fit any parameter, but two model changes (the redrawn Sister #6 polygon and the forest-edge rule) were made after they were in hand. Before those changes, the 2021–2026 AUC was 0.81 (within-day 0.62), so the timing skill does not depend on them; the improvement in path picking does.
 - **Recent loading matters.** Load accumulated since the last control mission without settling does worse; with 5-day settling it is comparable. Natural releases follow loading from the last few days, consistent with older load gaining strength and with the paper's excess-stress / time-to-failure relation.
 
+### 5.8 What stress threshold does the record imply?
+
+The model's working threshold (pooled P99 of start-zone stress) is 76 Pa, ≈ 37 mm SWE of new load in 72 h on a 45° slope. Scanning thresholds, the one that best separates natural days is **≈ 30 Pa (95 % CI 26–67 Pa), ≈ 14 mm SWE in 72 h on a 45° slope (12–32 mm)**: hit rate 0.91, false-alarm rate 0.50, Peirce skill 0.41. The skill curve is broad and flat between ~25 and 70 Pa, hence the wide interval.
+
+| Path | Hotspot days / season (> 30 Pa) | Natural days | Naturals on a hotspot day |
+|---|---|---|---|
+| Sister #6 | 133 | 8 | 8 of 8 |
+| Sister #3 | 122 | 12 | 11 of 12 |
+| Sister #1 | 117 | 8 | 7 of 8 |
+| Sister #4 | 79 | 3 | 3 of 3 |
+| Sister #2 | 50 | 1 | 0 of 1 |
+
+- **Exceeding the threshold is close to necessary**: 29 of 32 naturals occurred on a day their path had a hotspot above it, and hotspot days per path rank like the natural counts (ρ = 0.82 for any threshold from 15 to 140 Pa).
+- **It is far from sufficient**: at 30 Pa a path has a hotspot on about half of all winter days, and only 0.2–0.6 % of hotspot days produce a natural.
+
+| Hotspot stress | Zone-days | Naturals | per 1,000 zone-days (95 % CI) |
+|---|---|---|---|
+| < 15 Pa | 4,889 | 2 | 0.4 (0.05–1.5) |
+| 15–30 Pa | 3,295 | 1 | 0.3 (0.01–1.7) |
+| 30–45 Pa | 2,661 | 9 | 3.4 (1.6–6.4) |
+| 45–60 Pa | 1,896 | 3 | 1.6 (0.3–4.6) |
+| 60–80 Pa | 1,587 | 4 | 2.5 (0.7–6.5) |
+| 80–110 Pa | 1,203 | 9 | 7.5 (3.4–14.2) |
+| > 110 Pa | 594 | 4 | 6.7 (1.8–17.2) |
+
+**The release rate shows the paper's pattern: an onset at a threshold, then a rate that grows with the excess stress.** Naturals are rare below 30 Pa and about 20 times more frequent above 80 Pa; a logistic trend gives +20 % odds of a natural per additional 10 Pa (95 % CI 12–28 %; zone-days treated as independent, so the interval is optimistic).
+
+Why exceedance is not sufficient: (1) the paper's threshold is location- and state-dependent, while the model uses one fixed value — the presence and strength of a weak layer, not modelled here, is probably the main missing factor; (2) control missions are fired on the most heavily loaded days and remove slabs before they can release naturally (testable only to 2021, when control records end); (3) the stress counts only the last 72 h of loading.
+
+![Threshold analysis](../figures/seven_sisters_threshold_analysis.png)
+
+*Figure 7. Left: hit rate, false-alarm rate and Peirce skill against the stress-margin threshold (72-h loading; top axis: equivalent new SWE on a 45° slope); grey band = 95 % CI of the best threshold. Right: hotspot days per season above 30 Pa and natural slab days per path (labels: naturals on a hotspot day / all naturals).*
+
+### 5.9 Avalanche size
+
+| | Hotspot stress | Area above 44 Pa | 72-h new snow |
+|---|---|---|---|
+| D1 (n = 8) | 39 Pa | 2 m² | 8 mm |
+| D1.5 (n = 17) | 69 Pa | 88 m² | 9 mm |
+| D2 (n = 6) | 93 Pa | 248 m² | 21 mm |
+| D2.5 (n = 1) | 34 Pa | 0 m² | 0 mm |
+
+*Medians on the release day.*
+
+Larger naturals follow higher hotspot stress and more stressed area, but weakly: Spearman ρ with D size = 0.32 for hotspot stress (permutation p = 0.07), 0.24 for stressed area (p = 0.19) and 0.27 for new snow (p = 0.13); wind deposition alone shows no relation. The single D2.5 event — 2021-01-24 on Sister #6, a hard slab after WSW winds to 28 mph with almost no new snow, from a coordinate-assigned record with an estimated date — is the model's largest miss (34 Pa); without it, ρ = 0.43 for hotspot stress (p = 0.015) and 0.39 for new snow (p = 0.03). That event looks like wind loading the saltation-only model under-represents. The paper would predict that nucleation follows local excess stress while size follows the extent of stressed slab; hotspot stress and stressed area are driven by the same loading and are strongly correlated here, so these data cannot separate the two. Size also depends on the path itself (median D1 on Sister #1, D2 on Sister #4), and the size classes are coarse.
+
 ---
 
 ## 6. Limitations
@@ -240,7 +292,8 @@ Every observed count lies within its expected value's Poisson range. This was no
 - **Snow data.** SNOTEL SWE resolves 2.5 mm steps; one station represents the whole site; water year 2011 is missing.
 - **Wind and transport model.** MicroMet is empirical; saltation only (suspension omitted); unlimited erodible snow; no wind-direction diversion in the transport direction; faint streak artefacts along the wind direction. The zone order is robust to model parameters; absolute amounts are not. The model may overstate SW exposure for the lower zones (Sister #2).
 - **Deposition not validated against snow.** The canopy mask (drone-derived) affects Sisters #2–#4.
-- **Thresholds.** μ = tan 30°, the 50–60° holding cap, the 4 m forest buffer, the P99 threshold and hotspot percentiles are assumptions; alternatives are reported where tested.
+- **Thresholds.** μ = tan 30°, the 50–60° holding cap, the 4 m forest buffer, the P99 threshold and hotspot percentiles are assumptions; alternatives are reported where tested. The data-derived threshold (§5.8) is an increment from 72-h loading, assumes one value for all zones and days, and has a wide interval.
+- **Weak-layer state is not modelled.** This is the most likely reason exceeding the stress threshold rarely produces a natural (§5.8).
 
 ---
 
@@ -251,7 +304,9 @@ Every observed count lies within its expected value's Poisson range. This was no
 3. **WindNinja** runs for a few key storms to check MicroMet's terrain winds near the start zones, especially SW exposure of the lower zones.
 4. **More zones**: extend the analysis to other controlled paths with ridge wind stations.
 5. **Verify the two trigger conflicts** (2020-11-14 Sister #6, 2021-02-06 Sister #1) and, if possible, obtain the CDOT control-mission log after 2021.
-6. **Pipeline**: replace the legacy nucleation-candidate map with the nucleation-potential model.
+6. **Weak-layer information**: add a snowpack indicator (e.g. persistent weak layer present, from CAIC observations or a snowpack model such as SNOWPACK driven by CALVP/LBAC2) to the threshold analysis — the step most likely to turn "threshold exceeded" into "release likely".
+7. **Control days as censoring** (to 2021): drop zone-days with a control mission within 24 h from the threshold and size analyses.
+8. **Pipeline**: replace the legacy nucleation-candidate map with the nucleation-potential model.
 
 ---
 
@@ -271,6 +326,7 @@ python src/storm_analysis.py --site sisters                       # weather befo
 python src/stress_hotspots.py --site sisters                      # fetch-index hotspots
 python src/micromet_loading.py --site sisters                     # MicroMet, landing sites, potential, storm test
 python src/event_stats.py --site sisters                          # bootstrap / permutation / period split
+python src/threshold_analysis.py --site sisters                   # stress threshold, release rate, size (§5.8–5.9)
 ```
 
 The NAIP image (`data/Sisters/NAIP_sisters.tif`) comes from the USGS National Map `USGSNAIPImagery` ImageServer (exportImage, bbox 423100,4391800,424300,4392800, EPSG:26913, 0.6 m). Profile curvature (an earlier "stress concentration" hypothesis) is still computed by the pipeline but is not used here; aspect entropy has been dropped.
