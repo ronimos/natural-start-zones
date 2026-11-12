@@ -263,7 +263,9 @@ The model's working threshold (pooled P99 of start-zone stress) is 76 Pa, ≈ 37
 
 **The release rate shows the paper's pattern: an onset at a threshold, then a rate that grows with the excess stress.** Naturals are rare below 30 Pa and about 20 times more frequent above 80 Pa; a logistic trend gives +20 % odds of a natural per additional 10 Pa (95 % CI 12–28 %; zone-days treated as independent, so the interval is optimistic).
 
-Why exceedance is not sufficient: (1) the paper's threshold is location- and state-dependent, while the model uses one fixed value — the presence and strength of a weak layer, not modelled here, is probably the main missing factor; (2) control missions are fired on the most heavily loaded days and remove slabs before they can release naturally (testable only to 2021, when control records end); (3) the stress counts only the last 72 h of loading.
+Why exceedance is not sufficient: (1) the paper's threshold is location- and state-dependent, while the model uses one fixed value — the presence and strength of a weak layer, not modelled here, is probably the main missing factor; (2) control missions are fired on the most heavily loaded days and remove slabs before they can release naturally; (3) the stress counts only the last 72 h of loading.
+
+**Control missions cannot be treated as simple censoring.** Of the 15 natural zone-days in 2009–2021 (control records end 2021-05-04), 10 fall on a control day or the day after. Crews go out after storms — when natural cycles happen — and that is also when observers are on site to see and log naturals. Removing control days therefore removes most of the naturals too (the remaining 5 all fall on hotspot days, H = 1.0, but that is too few to interpret). This also suggests the natural record is tied to observer presence: naturals between missions are likely logged late, with estimated dates, or not at all.
 
 ![Threshold analysis](../figures/seven_sisters_threshold_analysis.png)
 
@@ -288,7 +290,7 @@ Larger naturals follow higher hotspot stress and more stressed area, but weakly:
 
 - **Zone count.** Five zones, all the active Sisters paths; no zone-level correlation reaches significance (best p = 0.08–0.23). More zones must come from other sites.
 - **Post-hoc corrections.** The Sister #6 polygon was redrawn and the forest-edge rule added after the zone-level mismatch was seen. Both have physical grounds (the release area as known in the field; trees anchoring snow), but they were not pre-specified.
-- **Avalanche record.** Many natural dates are estimated. Control missions without results are not recorded, and none are available after 2021-05-04. Records from 2020–2026 are assigned to paths by coordinates (observer-placed points, not exact release locations).
+- **Avalanche record.** Many natural dates are estimated, and two-thirds of 2009–2021 naturals were logged on a control day or the day after, so detection depends on when observers are out. Control missions without results are not recorded, and none are available after 2021-05-04. Records from 2020–2026 are assigned to paths by coordinates (observer-placed points, not exact release locations).
 - **Snow data.** SNOTEL SWE resolves 2.5 mm steps; one station represents the whole site; water year 2011 is missing.
 - **Wind and transport model.** MicroMet is empirical; saltation only (suspension omitted); unlimited erodible snow; no wind-direction diversion in the transport direction; faint streak artefacts along the wind direction. The zone order is robust to model parameters; absolute amounts are not. The model may overstate SW exposure for the lower zones (Sister #2).
 - **Deposition not validated against snow.** The canopy mask (drone-derived) affects Sisters #2–#4.
@@ -305,7 +307,7 @@ Larger naturals follow higher hotspot stress and more stressed area, but weakly:
 4. **More zones**: extend the analysis to other controlled paths with ridge wind stations.
 5. **Verify the two trigger conflicts** (2020-11-14 Sister #6, 2021-02-06 Sister #1) and, if possible, obtain the CDOT control-mission log after 2021.
 6. **Weak-layer information**: add a snowpack indicator (e.g. persistent weak layer present, from CAIC observations or a snowpack model such as SNOWPACK driven by CALVP/LBAC2) to the threshold analysis — the step most likely to turn "threshold exceeded" into "release likely".
-7. **Control days as censoring** (to 2021): drop zone-days with a control mission within 24 h from the threshold and size analyses.
+7. **Observation timing**: two-thirds of naturals were logged on a control day or the day after, so the record is tied to when crews are out. A CDOT mission log (including missions without results, and after 2021) would let control be modelled properly — as both a slab-removal and an observation process — instead of as simple censoring (§5.8).
 8. **Pipeline**: replace the legacy nucleation-candidate map with the nucleation-potential model.
 
 ---

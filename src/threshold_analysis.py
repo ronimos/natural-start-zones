@@ -25,6 +25,9 @@ slope:  SWE = t / (g · cos²θ · (tanθ − μ)).
 4. Avalanche size (D, R) vs hotspot stress, stressed area, new snow and
    wind deposition on the release day, with and without the one D2.5
    outlier (2021-01-24 Sister #6, coordinate-assigned, little new snow).
+5. Control missions as censoring (to 2021-05-04): the threshold and stress
+   trend recomputed without zone-days on, or the day after, a control
+   mission (explosives remove slabs before they can release naturally).
 
 Usage:  python src/threshold_analysis.py --site sisters
 """
@@ -203,6 +206,38 @@ def main():
     med['n'] = ev.groupby('D').size()
     print("\nMedian loading by destructive size:"); print(med.to_string())
     size_tab.to_csv(FIGURES / f'{slug}_size_vs_stress.csv', index=False)
+
+    # ── 5. Control missions as censoring (control records end 2021-05-04) ────
+    # Explosive control removes slabs on heavily loaded days, so those days
+    # cannot produce naturals.  Compare the threshold and stress trend with
+    # and without zone-days on, or the day after, a control mission.
+    raw = pd.read_csv(cfg['avalanche_csv'], usecols=['Date', 'HW Path', 'Trigger'], dtype=str)
+    raw = raw[raw['HW Path'].fillna('').str.contains(cfg['avalanche_filter'])
+              & raw['Trigger'].fillna('').str.strip().isin(['AA', 'AB', 'AE', 'AH', 'AL', 'AP', 'AX'])]
+    ctrl_days = set(pd.to_datetime(raw['Date'], format='mixed').dt.normalize())
+    ctrl = ctrl_days | {d + pd.Timedelta(days=1) for d in ctrl_days}
+    end = pd.Timestamp(cfg.get('control_records_end', '2021-05-04'))
+    early = zd[zd['day'] <= end]
+    cens_rows = []
+    for label, sub in (('2009–2021, all zone-days', early),
+                       ('2009–2021, control day or day after removed', early[~early['day'].isin(ctrl)])):
+        pss = [(t,) + contingency(sub, t)[4:] for t in grid]
+        bt, bH, bF = max(pss, key=lambda r: (r[1] - r[2]) if np.isfinite(r[1] - r[2]) else -9)
+        Xs = sm.add_constant(np.clip(sub['margin_2nd'].values, 0, None) / 10)
+        f_ = sm.Logit(sub['natural'].values, Xs).fit(disp=0)
+        h30 = contingency(sub, 30.0)
+        cens_rows.append(dict(set=label, zone_days=len(sub), naturals=int(sub['natural'].sum()),
+                              best_t_Pa=bt, H=round(bH, 2), F=round(bF, 2), PSS=round(bH - bF, 2),
+                              F_at_30Pa=round(h30[5], 2),
+                              odds_per_10Pa=round(float(np.exp(f_.params[1])), 2),
+                              odds_CI=f"{np.exp(f_.conf_int()[1][0]):.2f}–{np.exp(f_.conf_int()[1][1]):.2f}"))
+    cens = pd.DataFrame(cens_rows)
+    nat_days = early.loc[early['natural'] == 1, 'day']
+    print(f"\nControl missions as censoring ({len(ctrl_days)} control days to {end.date()}; "
+          f"{int(nat_days.isin(ctrl).sum())} of {len(nat_days)} natural zone-days fall on a control day "
+          f"or the day after):")
+    print(cens.to_string(index=False))
+    cens.to_csv(FIGURES / f'{slug}_threshold_control_censoring.csv', index=False)
 
     ref.to_csv(FIGURES / f'{slug}_threshold_per_path_P99.csv', index=False)
     opt_tab.to_csv(FIGURES / f'{slug}_threshold_per_path_optimal.csv', index=False)
