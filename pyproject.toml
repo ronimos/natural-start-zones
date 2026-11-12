@@ -19,8 +19,8 @@ dependencies = [
     "opencv-python",
     "whitebox",
     "pdal",
-    # GDAL version must match the system library — see requirements.txt
-    "GDAL==3.12.3",
+    # Native libs (GDAL, PDAL) are provided by the conda env — see environment.yml
+    "GDAL",
 ]
 
 [tool.setuptools.package-dir]

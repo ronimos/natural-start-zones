@@ -147,21 +147,45 @@ Correlations use **Spearman ρ** (rank-based, robust to non-normality and small 
 
 ## Running the pipeline
 
+### Setup
+
+GDAL and PDAL need full native builds (GeoTIFF, KML, PROJ), so the
+environment comes from conda-forge via [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+
 ```bash
-# Install dependencies (requires Python 3.10+)
-uv sync          # or: pip install -r requirements.txt
-
-# Full run for a site
-python src/pipeline.py sisters
-python src/pipeline.py star_mtn
-python src/pipeline.py us550
-
-# Skip the LAZ processing if DEMs already exist
-python src/pipeline.py sisters --skip-process
-
-# Skip analysis (processing only)
-python src/pipeline.py sisters --skip-analyze
+micromamba create -p ./.conda -f environment.yml   # once
+source .envrc                                      # each new shell (automatic with direnv)
 ```
+
+In VS Code, select `.conda/bin/python` as the interpreter.
+
+### Running
+
+```bash
+# Full run for a site (all sites if --site is omitted)
+python src/pipeline.py --site sisters
+python src/pipeline.py --site star_mtn
+
+# Analysis only — uses existing DEMs, warns if any SZ clip is stale
+python src/pipeline.py --site sisters --skip-process
+
+# Processing only
+python src/pipeline.py --site sisters --skip-analyze
+```
+
+Processing steps are skipped when their output is newer than all of its
+inputs, so editing a start-zone KML re-clips just that zone and a new DEM
+re-clips everything downstream.  To rebuild regardless of timestamps:
+
+```bash
+python src/pipeline.py --site sisters --force-from sz    # re-clip all SZs
+python src/pipeline.py --site sisters --force-from dem   # DEM onward (keeps SMRF output)
+python src/pipeline.py --site sisters --force            # everything, from the LAZ tiles
+```
+
+Copying in just the DEM (e.g. `Sisters_crp.tif` from OneDrive) is enough —
+the LAZ steps are skipped when their inputs are absent.  Missing inputs are
+reported before anything runs.
 
 Outputs land in `figures/` as PNG figures, a text report, and a KML file.
 

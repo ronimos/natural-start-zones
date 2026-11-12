@@ -3,12 +3,25 @@ Unified avalanche start-zone terrain pipeline.
 
 Usage
 -----
-    python scripts/pipeline.py <site> [--skip-process] [--skip-analyze]
+    python src/pipeline.py [--site SITE] [--skip-process] [--skip-analyze]
+                           [--force | --force-from {laz,dem,sz}]
 
-    python scripts/pipeline.py sisters
-    python scripts/pipeline.py star_mtn
-    python scripts/pipeline.py sisters --skip-process   # analysis only
-    python scripts/pipeline.py star_mtn --skip-analyze  # processing only
+    python src/pipeline.py --site sisters
+    python src/pipeline.py --site star_mtn
+    python src/pipeline.py --site sisters --skip-process   # analysis only
+    python src/pipeline.py --site star_mtn --skip-analyze  # processing only
+    python src/pipeline.py --site sisters --force-from sz  # re-clip all SZs
+    python src/pipeline.py --site sisters --force          # rebuild everything
+
+Rebuilds
+--------
+Each processing step is skipped when its output exists AND is newer than
+all of its inputs (make-style).  Editing a start-zone KML therefore
+re-clips just that SZ; a rebuilt DEM re-clips everything downstream.
+Stages, in order:  laz (merge/crop/SMRF) → dem (DEM, pixel crop, gap fill,
+terrain attributes) → sz (start-zone clips).  --force-from STAGE rebuilds
+that stage and every later one regardless of timestamps; --force is
+--force-from laz.
 
 Adding a new site
 -----------------
@@ -39,6 +52,9 @@ import pdal
 
 matplotlib.rcParams['figure.figsize'] = (12, 12)
 warnings.filterwarnings('ignore')
+# Raise on GDAL errors instead of returning None — otherwise a failed
+# Warp/Translate looks like success and leaves no output behind.
+gdal.UseExceptions()
 
 ROOT    = Path(__file__).resolve().parent.parent
 FIGURES = ROOT / 'figures'
@@ -91,9 +107,9 @@ SITES: dict = {
         'combined_sz_kml': 'Sisters_SZs.kml',
         'combined_sz_dem': 'Sisters_SZ_DEM.tif',
         # Glob for individual SZ KMLs
-        'sz_kml_glob':  'Sister ? SZ.kml',
+        'sz_kml_glob':  'Sister_?_SZ.kml',
         # Suffix added to KML stem to produce the output TIF name
-        # e.g.  'Sister 1 SZ' + '_DEM' + '.tif' → 'Sister 1 SZ_DEM.tif'
+        # e.g.  'Sister_1_SZ' + '_DEM' + '.tif' → 'Sister_1_SZ_DEM.tif'
         'sz_dem_suffix': '_DEM',
 
         # ── Analysis: visualisation ───────────────────────────────────────────
@@ -238,19 +254,54 @@ SITES: dict = {
 # Shared processing functions
 # =============================================================================
 
-def _skip_or(path: Path, action: str) -> bool:
-    """Print skip/action message; return True if file already exists."""
-    if path.exists():
-        print(f"  skip  {path.name}  (already exists)")
-        return True
-    print(f"  {action:<5} {path.name}")
+# Processing stages, in pipeline order.  --force-from STAGE rebuilds that
+# stage and every later one.
+STAGES = ('laz', 'dem', 'sz')
+_FORCE_FROM: str | None = None
+
+
+def _forced(stage: str | None) -> bool:
+    return (stage is not None and _FORCE_FROM is not None
+            and STAGES.index(stage) >= STAGES.index(_FORCE_FROM))
+
+
+def _stale_inputs(out: Path, inputs) -> list[Path]:
+    """Inputs that exist and were modified after `out`."""
+    out_mtime = out.stat().st_mtime
+    return [p for p in inputs if p.exists() and p.stat().st_mtime > out_mtime]
+
+
+def _fmt_names(paths: list[Path], n: int = 3) -> str:
+    names = ', '.join(p.name for p in paths[:n])
+    return names + (f' +{len(paths) - n} more' if len(paths) > n else '')
+
+
+def _skip_or(path: Path, action: str, inputs=(), stage: str | None = None) -> bool:
+    """
+    Return True (and print 'skip') when `path` exists, its stage is not
+    forced, and it is newer than every file in `inputs`.  Otherwise print
+    why it is being (re)built, delete any stale copy, and return False.
+    """
+    if not path.exists():
+        print(f"  {action:<5} {path.name}")
+        return False
+    if _forced(stage):
+        reason = f"forced from '{_FORCE_FROM}'"
+    else:
+        newer = _stale_inputs(path, inputs)
+        if not newer:
+            print(f"  skip  {path.name}  (up to date)")
+            return True
+        reason = f"newer input: {_fmt_names(newer)}"
+    print(f"  {action:<5} {path.name}  (rebuild — {reason})")
+    path.unlink()
     return False
 
 
-def merge_laz_tiles(laz_dir: Path, laz_glob: str, out_file: Path) -> None:
+def merge_laz_tiles(laz_dir: Path, laz_glob: str, out_file: Path) -> bool:
     """Merge LAZ tiles matching laz_glob inside laz_dir into out_file."""
-    if _skip_or(out_file, 'merge'):
-        return
+    if _skip_or(out_file, 'merge', sorted(laz_dir.glob(laz_glob)), 'laz'):
+        return False
     pattern  = str(laz_dir / laz_glob)
     pipeline = (
         pdal.Reader.las(filename=pattern)
@@ -258,12 +309,13 @@ def merge_laz_tiles(laz_dir: Path, laz_glob: str, out_file: Path) -> None:
         | pdal.Writer.las(str(out_file))
     )
     pipeline.execute()
+    return True
 
 
-def crop_laz_bounds(in_file: Path, out_file: Path, bounds: dict) -> None:
+def crop_laz_bounds(in_file: Path, out_file: Path, bounds: dict) -> bool:
     """Spatially crop a LAZ file to an EPSG:26913 bounding box."""
-    if _skip_or(out_file, 'crop'):
-        return
+    if _skip_or(out_file, 'crop', [in_file], 'laz'):
+        return False
     b         = bounds
     bound_str = f"([{b['x_min']},{b['x_max']}],[{b['y_min']},{b['y_max']}])"
     pipeline  = (
@@ -272,16 +324,17 @@ def crop_laz_bounds(in_file: Path, out_file: Path, bounds: dict) -> None:
         | pdal.Writer.las(str(out_file))
     )
     pipeline.execute()
+    return True
 
 
-def ground_filter_laz(in_file: Path, out_file: Path) -> None:
+def ground_filter_laz(in_file: Path, out_file: Path) -> bool:
     """
     PDAL SMRF ground segmentation:
       reproject (EPSG:26913) → reset classes → ELM noise removal
       → outlier removal → SMRF → extract ground (class 2).
     """
-    if _skip_or(out_file, 'smrf'):
-        return
+    if _skip_or(out_file, 'smrf', [in_file], 'laz'):
+        return False
     pipeline_def = {
         "pipeline": [
             str(in_file),
@@ -307,12 +360,13 @@ def ground_filter_laz(in_file: Path, out_file: Path) -> None:
         ]
     }
     pdal.Pipeline(json.dumps(pipeline_def)).execute()
+    return True
 
 
-def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> None:
+def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> bool:
     """Convert ground-filtered LAZ to a mean-elevation DEM GeoTIFF."""
-    if _skip_or(out_file, 'dem'):
-        return
+    if _skip_or(out_file, 'dem', [in_file], 'dem'):
+        return False
     pipeline_def = {
         "pipeline": [
             str(in_file),
@@ -326,24 +380,31 @@ def laz_to_dem(in_file: Path, out_file: Path, resolution: float) -> None:
         ]
     }
     pdal.Pipeline(json.dumps(pipeline_def)).execute()
+    return True
 
 
-def crop_dem_pixels(in_tif: Path, out_tif: Path, window: tuple) -> None:
+def crop_dem_pixels(in_tif: Path, out_tif: Path, window: tuple) -> bool:
     """Crop a GeoTIFF by pixel window (offset_x, offset_y, size_x, size_y)."""
-    if _skip_or(out_tif, 'crop'):
-        return
+    if _skip_or(out_tif, 'crop', [in_tif], 'dem'):
+        return False
     gdal.Translate(str(out_tif), str(in_tif), srcWin=list(window))
+    return True
 
 
 def fill_dem_gaps(tif_path: Path, sigma: float = 2.0, truncate: float = 4.0) -> None:
     """
     Fill NoData gaps via Gaussian-weighted interpolation (in-place).
     Uses dual convolution to avoid underestimation near gap boundaries.
+
+    Only call this on a freshly built DEM: process_site() runs it solely in
+    the same run that (re)created the file, so it is never applied twice.
     """
     print(f"  fill  {tif_path.name}")
-    ds  = gdal.Open(str(tif_path), GA_Update)
-    dem = np.array(ds.GetRasterBand(1).ReadAsArray(), dtype=float)
-    dem[dem == dem.min()] = np.nan
+    ds   = gdal.Open(str(tif_path), GA_Update)
+    band = ds.GetRasterBand(1)
+    dem  = np.array(band.ReadAsArray(), dtype=float)
+    nodata = band.GetNoDataValue()
+    dem[dem == (nodata if nodata is not None else dem.min())] = np.nan
     valid  = np.where(np.isnan(dem), 0.0, dem)
     weight = np.where(np.isnan(dem), 0.0, 1.0)
     filled = (gaussian_filter(valid,  sigma=sigma, truncate=truncate) /
@@ -358,7 +419,7 @@ def compute_terrain_attrs(dem_tif: Path) -> None:
     ds = gdal.Open(str(dem_tif))
     for attr in ('slope', 'aspect', 'hillshade', 'TRI', 'Roughness'):
         out = dem_tif.parent / f'{dem_tif.stem}_{attr.capitalize()}.tif'
-        if _skip_or(out, 'attr'):
+        if _skip_or(out, 'attr', [dem_tif], 'dem'):
             continue
         result = gdal.DEMProcessing(str(out), ds, attr, computeEdges=True)
         result = None
@@ -367,7 +428,7 @@ def compute_terrain_attrs(dem_tif: Path) -> None:
 
 def clip_tif_to_kml(in_tif: Path, out_tif: Path, kml: Path) -> None:
     """Clip a GeoTIFF to the polygon boundary defined in a KML file."""
-    if _skip_or(out_tif, 'clip'):
+    if _skip_or(out_tif, 'clip', [in_tif, kml], 'sz'):
         return
     print(f"        x {kml.name} -> {out_tif.name}")
     ds = gdal.Warp(
@@ -381,6 +442,94 @@ def clip_tif_to_kml(in_tif: Path, out_tif: Path, kml: Path) -> None:
 
 
 # =============================================================================
+# Pre-flight input check
+# =============================================================================
+
+def _analysis_dem(cfg: dict) -> Path:
+    return cfg['data_dir'] / (cfg['crp_dem_name'] or cfg['dem_name'])
+
+
+def _sz_pairs(cfg: dict) -> list[tuple[Path, Path]]:
+    """(kml, sz_dem) for every individual start-zone KML."""
+    d = cfg['data_dir']
+    return [(kml, d / (kml.stem + cfg['sz_dem_suffix'] + '.tif'))
+            for kml in sorted(d.glob(cfg['sz_kml_glob']))]
+
+
+def check_inputs(cfg: dict, process: bool, analyze: bool) -> None:
+    """
+    Verify every input the requested steps need is present, before any
+    processing starts.  Exits with a list of problems if not; prints
+    warnings for outputs that are stale but will not be rebuilt.
+    """
+    d = cfg['data_dir']
+    errors, warnings_ = [], []
+
+    def rel(p: Path) -> str:
+        try:
+            return str(p.relative_to(ROOT))
+        except ValueError:
+            return str(p)
+
+    def need(path: Path, what: str):
+        if not path.exists():
+            errors.append(f"{what}: {rel(path)} not found")
+
+    # ── Start-zone polygons ──────────────────────────────────────────────────
+    if cfg['combined_sz_kml']:
+        need(d / cfg['combined_sz_kml'], 'combined SZ KML')
+    if not _sz_pairs(cfg):
+        errors.append(f"no start-zone KMLs match '{cfg['sz_kml_glob']}' "
+                      f"in {rel(d)}")
+
+    # ── Elevation source ─────────────────────────────────────────────────────
+    analysis_dem = _analysis_dem(cfg)
+    if process:
+        # Walk the chain from the finished DEM back to the raw tiles; the
+        # first file that exists (and whose stage is not forced) is enough.
+        chain = [(analysis_dem, 'dem'), (d / cfg['dem_name'], 'dem'),
+                 (d / cfg['ground_laz'], 'laz')]
+        if cfg['spatial_bounds']:
+            chain.append((d / cfg['cropped_laz'], 'laz'))
+        chain.append((d / cfg['merged_laz'], 'laz'))
+        have_source = (any(p.exists() and not _forced(s) for p, s in chain)
+                       or any(d.glob(cfg['laz_glob'])))
+        if not have_source:
+            usable = [p.name for p, s in chain if not _forced(s)]
+            errors.append(
+                f"no elevation data in {rel(d)} — add LAZ tiles "
+                f"matching '{cfg['laz_glob']}'"
+                + (f" or one of: {', '.join(dict.fromkeys(usable))}" if usable else ''))
+    elif analyze:
+        need(analysis_dem, 'DEM (required with --skip-process)')
+        for kml, sz_dem in _sz_pairs(cfg):
+            if not sz_dem.exists():
+                warnings_.append(f"{sz_dem.name} missing — that SZ will be "
+                                 f"left out (drop --skip-process to build it)")
+            else:
+                newer = _stale_inputs(sz_dem, [kml, analysis_dem])
+                if newer:
+                    warnings_.append(f"{sz_dem.name} is older than "
+                                     f"{_fmt_names(newer)} — analysing a stale "
+                                     f"clip (drop --skip-process to rebuild)")
+
+    # ── Analysis-only inputs ─────────────────────────────────────────────────
+    if analyze:
+        if cfg.get('sat_image'):
+            need(d / cfg['sat_image'], 'satellite image')
+        if cfg.get('avalanche_csv'):
+            need(Path(cfg['avalanche_csv']), 'avalanche CSV')
+
+    for w in warnings_:
+        print(f"  [warn] {w}")
+    if errors:
+        print(f"\nCannot run {cfg['name']} — missing inputs:")
+        for e in errors:
+            print(f"  ✗ {e}")
+        sys.exit(1)
+
+
+# =============================================================================
 # Processing pipeline
 # =============================================================================
 
@@ -390,45 +539,68 @@ def process_site(cfg: dict) -> None:
     print(f"  Processing: {cfg['name']}")
     print(f"{'='*60}\n")
 
+    merged_laz  = d / cfg['merged_laz']
+    cropped_laz = d / cfg['cropped_laz'] if cfg['spatial_bounds'] else None
+    ground_laz  = d / cfg['ground_laz']
+    dem_tif     = d / cfg['dem_name']
+    final_dem   = _analysis_dem(cfg)
+
+    def no_input(inp_exists: bool, *downstream: Path | None) -> bool:
+        """True when a step's input is absent but a later product exists
+        (e.g. only the DEM was copied in) — so the step can be skipped."""
+        if inp_exists:
+            return False
+        have = next((p for p in downstream if p is not None and p.exists()), None)
+        if have is not None:
+            print(f"  skip  (input absent — using existing {have.name})")
+            return True
+        return False
+
     # 1. Merge raw tiles
-    merged_laz = d / cfg['merged_laz']
     print("Step 1 — Merge LAZ tiles")
-    merge_laz_tiles(d, cfg['laz_glob'], merged_laz)
+    if not no_input(any(d.glob(cfg['laz_glob'])),
+                    cropped_laz, ground_laz, dem_tif, final_dem):
+        merge_laz_tiles(d, cfg['laz_glob'], merged_laz)
 
     # 2. Optional spatial crop
     laz_for_ground = merged_laz
-    if cfg['spatial_bounds']:
+    if cropped_laz is not None:
         print("\nStep 2 — Spatial bounds crop")
-        cropped_laz    = d / cfg['cropped_laz']
-        crop_laz_bounds(merged_laz, cropped_laz, cfg['spatial_bounds'])
+        if not no_input(merged_laz.exists(), ground_laz, dem_tif, final_dem):
+            crop_laz_bounds(merged_laz, cropped_laz, cfg['spatial_bounds'])
         laz_for_ground = cropped_laz
     else:
         print("\nStep 2 — Spatial bounds crop  [skipped — not configured]")
 
     # 3. SMRF ground filter
-    ground_laz = d / cfg['ground_laz']
     print("\nStep 3 — SMRF ground segmentation")
-    ground_filter_laz(laz_for_ground, ground_laz)
+    if not no_input(laz_for_ground.exists(), dem_tif, final_dem):
+        ground_filter_laz(laz_for_ground, ground_laz)
 
     # 4. LAZ → DEM
-    dem_tif = d / cfg['dem_name']
     print("\nStep 4 — LAZ → DEM")
-    laz_to_dem(ground_laz, dem_tif, cfg['dem_resolution'])
+    analysis_built = False
+    if not no_input(ground_laz.exists() or dem_tif.exists(), final_dem):
+        analysis_built = laz_to_dem(ground_laz, dem_tif, cfg['dem_resolution'])
 
     # 5. Optional pixel crop
     analysis_dem = dem_tif
     if cfg['pixel_crop_window']:
         print("\nStep 5 — Pixel crop")
         crp_dem     = d / cfg['crp_dem_name']
-        crop_dem_pixels(dem_tif, crp_dem, cfg['pixel_crop_window'])
+        analysis_built = crop_dem_pixels(dem_tif, crp_dem, cfg['pixel_crop_window'])
         analysis_dem = crp_dem
     else:
         print("\nStep 5 — Pixel crop  [skipped — not configured]")
 
-    # 6. Optional gap fill
+    # 6. Optional gap fill — in-place, so only on a DEM built in this run
+    #    (re-filling an already-filled DEM would corrupt it).
     if cfg['fill_gaps']:
         print("\nStep 6 — Fill DEM gaps")
-        fill_dem_gaps(analysis_dem)
+        if analysis_built:
+            fill_dem_gaps(analysis_dem)
+        else:
+            print(f"  skip  {analysis_dem.name}  (filled when it was built)")
     else:
         print("\nStep 6 — Fill DEM gaps  [skipped — not configured]")
 
@@ -450,8 +622,7 @@ def process_site(cfg: dict) -> None:
 
     # 9. Individual SZ DEMs
     print("\nStep 9 — Clip individual SZ DEMs")
-    for kml in sorted(d.glob(cfg['sz_kml_glob'])):
-        out_tif = d / (kml.stem + cfg['sz_dem_suffix'] + '.tif')
+    for kml, out_tif in _sz_pairs(cfg):
         clip_tif_to_kml(analysis_dem, out_tif, kml)
 
     print(f"\nProcessing done — {d}")
@@ -1389,8 +1560,11 @@ def analyze_site(cfg: dict) -> None:
 
     # ── 2. Combined SZ DEM slope map ─────────────────────────────────────────
     sz_dem_path = str(d / cfg['combined_sz_dem'])
-    if not Path(sz_dem_path).exists() and cfg.get('combined_sz_kml'):
-        crop_tif(dem_path, sz_dem_path, str(d / cfg['combined_sz_kml']))
+    if cfg.get('combined_sz_kml'):
+        combined_kml = d / cfg['combined_sz_kml']
+        if not _skip_or(Path(sz_dem_path), 'clip',
+                        [Path(dem_path), combined_kml], 'sz'):
+            crop_tif(dem_path, sz_dem_path, str(combined_kml))
 
     print("Step 4 — Combined SZ DEM")
     sz_attrs     = get_slope_attributes(sz_dem_path, 'slope_degrees')
@@ -1605,10 +1779,26 @@ def main() -> None:
                         help='Skip the LAZ → DEM processing steps')
     parser.add_argument('--skip-analyze', action='store_true',
                         help='Skip the terrain analysis steps')
+    force = parser.add_mutually_exclusive_group()
+    force.add_argument('--force', action='store_const', const='laz',
+                       dest='force_from',
+                       help='Rebuild every processing output (same as --force-from laz)')
+    force.add_argument('--force-from', choices=STAGES, default=None,
+                       help='Rebuild this stage and all later ones regardless of '
+                            'timestamps: laz (merge/crop/SMRF), dem (DEM, crop, '
+                            'fill, attributes), sz (start-zone clips)')
     args = parser.parse_args()
+
+    global _FORCE_FROM
+    _FORCE_FROM = args.force_from
 
     FIGURES.mkdir(exist_ok=True)
     sites = [args.site] if args.site else list(SITES)
+
+    # Check every site up front so a missing file fails fast, not mid-run.
+    for site_key in sites:
+        check_inputs(SITES[site_key], process=not args.skip_process,
+                     analyze=not args.skip_analyze)
 
     for site_key in sites:
         cfg = SITES[site_key]

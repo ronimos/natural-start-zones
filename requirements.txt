@@ -1,12 +1,14 @@
 # ---------------------------------------------------------------
-# Full setup (Ubuntu/WSL2 — do this once, outside the venv):
+# Recommended setup is the conda env in environment.yml, which
+# provides full GDAL/PDAL builds:
 #
-#   sudo apt-get install -y libgdal-dev pdal
+#   micromamba create -p ./.conda -f environment.yml
+#   source .envrc
 #
-# Then activate the venv and install:
-#
-#   source .venv/bin/activate
-#   pip install -r requirements.txt
+# This file is only for a plain pip/venv install, which needs
+# system GDAL + PDAL dev packages with GeoTIFF and KML support
+# (e.g. Ubuntu: sudo apt-get install -y libgdal-dev pdal).
+# Rocky/RHEL 9 AppStream GDAL lacks those drivers — use conda.
 # ---------------------------------------------------------------
 
 numpy
@@ -22,6 +24,5 @@ whitebox
 pdal
 
 # GDAL pip package must match the system library version.
-# Check yours with:  gdal-config --version
-# Ubuntu 24.04 ships 3.8.4:
-GDAL==3.8.4
+# Check yours with:  gdal-config --version   (e.g. GDAL==3.8.4)
+GDAL

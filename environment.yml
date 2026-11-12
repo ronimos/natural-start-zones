@@ -1,0 +1,28 @@
+# Conda environment for the start-zone pipeline.
+#
+# GDAL and PDAL come from conda-forge because they need full native builds
+# (GeoTIFF, KML, PROJ).  Distro packages are often stripped down — Rocky 9's
+# AppStream GDAL has no GeoTIFF or KML driver at all.
+#
+# Create (in the repo, next to the code):
+#   micromamba create -p ./.conda -f environment.yml
+# Then activate with:   source .envrc
+name: natural-start-zones
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - gdal=3.12
+  - pdal
+  - python-pdal
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - tqdm
+  - shapely
+  - geopandas
+  - opencv
+  - whitebox
+  - pip
