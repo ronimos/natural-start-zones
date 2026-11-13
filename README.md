@@ -1,208 +1,132 @@
-# Natural Avalanche Start-Zone Terrain Analysis
+# Natural Avalanche Start Zones
 
-## What we are trying to achieve
+Why do some avalanche paths release naturally far more often than their neighbours, when all of them share the same storms and are controlled together?  This project combines high-resolution terrain, modelled wind transport and station weather to answer that question for the **Seven Sisters** paths above US-6 on Loveland Pass, Colorado, and to locate where within each start zone a slab is most likely to start.
 
-Natural slab avalanches on highway corridors are responsible for road closures and fatalities, yet the terrain features that make one start zone release more frequently than a neighbouring one are not well quantified.  This project asks: **given two start zones on the same mountain, both already steep enough to release an avalanche, what terrain features explain why one releases far more often than the other?**
-
-The answer is not simply "it is steeper" — all start zones in the dataset are pre-selected steep terrain.  We are looking for the finer-scale geometry that controls where a wind slab accumulates and where that slab is most likely to crack.
-
-A secondary goal is to locate the most probable **crack nucleation sites** within each start zone — the small patches where a fracture is most likely to initiate and then propagate into a full slab release.
+The full write-up — methods, results, limitations and next steps — is the research note **[docs/terrain_analysis_report.md](docs/terrain_analysis_report.md)**.  This README covers what the code does and how to run it.
 
 ---
 
-## Study sites
+## Approach in brief
 
-All three sites are along US-550 (the Million Dollar Highway) in the San Juan Mountains of Colorado.  Prevailing storm winds arrive from the W–NW (225–315°).
+The working hypothesis comes from Gvirtzman et al. (2025, *Nature*), a laboratory study of frictional ruptures: a rupture nucleates wherever the **local** shear stress exceeds a threshold, and the nucleation rate grows with the excess stress.  The paper is not about snow; applying it to slab avalanches is this project's analogy.  If it holds, what matters is how often, and by how much, small patches of a start zone exceed a weak-layer stress threshold — not the zone's average steepness.
 
-| Site | Start zones | Data source |
+1. **Terrain.** USGS 3DEP 1 m bare-earth lidar, resampled to 1.2 m (start-zone analysis) and 2 m (wind models).  Start zones are hand-digitised KML polygons.
+2. **Wind loading.** MicroMet-style terrain winds (Liston & Elder 2006) driven by the CALVP ridge station, with Pomeroy & Gray (1990) saltation and a downwind erosion/deposition march, run for every hour of the 2009–2026 record.  Forest (from a drone canopy surface) traps snow; cells within 4 m of canopy carry no slab stress.
+3. **Stress.** Load = SNOTEL snowfall (LBAC2) + modelled wind deposition; weak-layer stress margin = g·SWE·cos²θ·(tanθ − μ), μ = tan 30°.
+4. **Nucleation potential.** Per cell, the excess 72-h stress margin above a threshold, summed over each season.  Patches of high potential are the most likely nucleation sites.
+5. **Tests.** Observed vs expected natural-release days per path, a storm-by-storm test (does the model pick the days, and the path, that release?), and the stress threshold implied by the record.
+
+**Headline results** (see the report for numbers and caveats): steepness alone does not separate the paths; wind landing sites do — Sister #2, the quiet path, has no W–NW landing area.  The stress model predicts natural-slab days (AUC 0.76) and which path releases on those days (0.74), and the record implies a threshold of ≈ 30 Pa of added stress (≈ 14 mm SWE in 72 h on a 45° slope), with the release rate rising about 20-fold well above it.
+
+---
+
+## Data
+
+| Data | Source | Location |
 |---|---|---|
-| **Seven Sisters** | #1, #2, #3, #4, #6 | USGS 3DEP LiDAR + CAIC |
-| **Star Mountain** | A, B, C, D, E | USGS 3DEP LiDAR + CAIC |
-| **US-550** | Eagle, Muleshoe, Porcupine, Telescope | USGS 3DEP LiDAR + CAIC |
+| Bare-earth DEM | USGS 3DEP 1 m, DRCOG 2020 lidar | `data/Sisters/` (`source_raster` in `SITES`) |
+| Canopy | Drone photogrammetry DSM minus 3DEP (2026) | `data/Sisters/260922_Sisters_Full_Ground-DSM.tiff` |
+| Imagery | USGS NAIP 0.6 m, 2019-09-22 | `data/Sisters/NAIP_sisters.tif` |
+| Start zones | Hand-digitised KML | `data/Sisters/Sister_?_SZ.kml`, `Sisters_SZs.kml` |
+| Avalanches | CAIC highway export 2009–2021 + CAIC coordinate export 2020–2026, merged | `data/avalanches/` |
+| Weather | CAIC database: CALVP (wind, temperature), LBAC2 SNOTEL (SWE) | `data/weather/sisters.csv` (fetched by `sql_util.py`) |
 
-Avalanche records come from the Colorado Avalanche Information Center (CAIC) highway observer database, 2009–2021.  Only **natural** hard-slab (HS) and soft-slab (SS) avalanches are used.  Human-triggered events are excluded to isolate terrain-controlled release.
+Only **natural (N) hard and soft slabs (HS, SS)** are analysed.  Five start zones: Sisters #1, #2, #3, #4 and #6 — all the active paths (there is no Sister #5 on the ground, and #7 is inactive).
 
----
-
-## Data pipeline
-
-```
-Raw LiDAR tiles (LAZ)
-        │
-        ▼  Step 1  merge tiles
-        │
-        ▼  Step 2  optional spatial crop (bounding box)
-        │
-        ▼  Step 3  SMRF ground segmentation
-        │
-        ▼  Step 4  ground points → DEM (GeoTIFF, 1.0–1.2 m/pixel)
-        │
-        ▼  Step 5  optional pixel crop
-        │
-        ▼  Step 6  optional Gaussian gap-fill
-        │
-        ▼  Step 7  terrain attributes (slope, aspect, hillshade, TRI, roughness)
-        │
-        ▼  Steps 8–9  clip to start-zone polygons (KML)
-        │
-        ▼  Steps 10–12  compute metrics, correlate with avalanche frequency
-        │
-        ▼  Step 13  nucleation patch map + KML export
-```
-
-### Why this processing chain?
-
-**LiDAR at 1–1.2 m/pixel.**  Airborne LiDAR gives sub-metre ground elevation even through vegetation.  At this resolution, individual convex rolls and slope breaks — the features most relevant to slab mechanics — are resolved.  Coarser 10 m DEMs smooth away these features entirely.
-
-**SMRF ground filter.**  The Simple Morphological Filter (Pingel et al. 2013) is robust to the dense coniferous canopy and steep rocky ridges found in the San Juans.  We apply ELM (extended local minimum) noise removal and an outlier filter before SMRF, then extract only class-2 (ground) returns.  Parameters: slope 1.7, window 16 m, threshold 0.45 m — tuned for alpine terrain with moderate relief within each filter window.
-
-**Mean-elevation DEM.**  Ground returns within each pixel are averaged.  This is conservative compared to minimum-elevation but reduces sensitivity to isolated rock outcrops and residual noise.
-
-**Per-start-zone clipping.**  Each start zone boundary is drawn in a KML file by hand against ortho imagery.  The full-area DEM is then clipped to each polygon so that metrics are computed only on the terrain actually included in the start zone, not the surrounding runout or terrain traps.
+Star Mountain (`star_mtn`) is configured for the terrain pipeline only; it has no weather or wind-loading analysis yet.  A US-550 site entry is kept, commented out, in `SITES`.
 
 ---
 
-## Terrain metrics
+## Setup
 
-All metrics are computed per start zone from the clipped DEM.
-
-### Slope distribution
-
-| Metric | What it measures |
-|---|---|
-| `slope_mean`, `slope_std`, `slope_cv` | Central tendency and spread of the slope distribution |
-| `pct_40_50` | Fraction of cells in the 40–50° core slab release band |
-| `slope_max_1cell` | Steepest single cell (≈1–1.4 m²) — proxy for peak driving stress |
-
-**Why slope alone is not enough.**  All start zones were selected as existing avalanche paths, so every zone already has substantial area above 35°.  Raw steepness does not discriminate high- from low-frequency zones; the correlation between `pct_40_50` and avalanche frequency is near zero or negative.  We need metrics that capture *how* steep terrain interacts with wind loading and terrain geometry.
-
-### Aspect diversity
-
-| Metric | What it measures |
-|---|---|
-| `aspect_entropy` | Shannon entropy (bits) of aspect over 8 compass octants across all cells |
-| `aspect_entropy_steep` | Same, restricted to cells ≥35° |
-| `aspect_circ_var` | Circular variance of aspect (0 = unimodal, 1 = uniform) |
-
-**Why aspect entropy is the key metric.**  Wind from W–NW loads north- and east-facing lee slopes.  A start zone whose steep cells face only one direction accumulates a slab primarily during storms from that single direction.  A start zone whose steep cells face *multiple* directions accumulates wind slabs from many storm tracks.  Shannon entropy captures this: a high-entropy start zone is exposed to loading from more directions, increasing the probability that some combination of snowpack and wind will produce a natural release.
-
-On the Seven Sisters, `aspect_entropy_steep` is the strongest terrain predictor of avalanche frequency (Spearman ρ = +0.80).  Sisters #4 and #3 — the most complex terrain with aspects ranging from N through E — are also the most active paths.
-
-### Profile curvature (stress concentration)
-
-| Metric | What it measures |
-|---|---|
-| `profile_curv_p95_steep` | 95th-percentile profile curvature on steep (≥40°) interior cells |
-
-Profile curvature describes how the slope is changing in the downslope direction.  A **positive** (convex) value means the slope is steepening as you look downhill — a convex roll.
-
-This geometry is directly analogous to a notch in fracture mechanics: it concentrates the normal stress at the base of the slab, lowering the energy required to initiate a mode-II (shear) crack.  Gvirtzman et al. (2025, *Nature*) showed that convex terrain features are the preferred nucleation geometry for dry-snow slab fractures.  We use the 95th percentile on interior cells (boundary pixels within 2 cell-lengths of NoData are excluded) to capture the most extreme stress-concentration sites while avoiding DEM edge artifacts.
-
-### Co-occurrence of loading and steepness
-
-`pct_steep_near_loading` — the fraction of start-zone cells that are both steep (≥40°) AND within ~2.4 m of a W–NW-facing cell.
-
-This metric is a proxy for the spatial coincidence of wind-loaded faces and steep terrain.  A high score means that loaded faces and steep release terrain are geographically interleaved, increasing the chance that a wind slab deposited on a loaded face sits directly on a steep slope where driving stress is high.
-
-**Caveat:** this metric is a necessary but not sufficient condition for co-occurrence.  A start zone can score high on both steepness and loading metrics independently without those conditions coinciding in the same cells.  The metric should be interpreted as a spatial proximity proxy, not a direct measurement of wind slab deposition.
-
----
-
-## Crack nucleation analysis
-
-Beyond per-zone statistics, we map the most likely **crack nucleation sites** — the specific square metres where a fracture is most likely to initiate.
-
-A nucleation site requires all three of:
-
-1. **Steep** — slope ≥ 40° (driving shear stress high enough to overcome weak layer strength)
-2. **Wind-loaded lee face** — cell is E-facing (45–135°) AND within ~3 m of N-facing terrain (315–45°)
-3. **Convex** — positive profile curvature (stress concentration)
-
-### Why E-facing, near N-facing terrain?
-
-Wind from W–NW (the dominant storm direction here) accelerates over N-facing ridges and deposits snow on the **lee** (east-facing) slope immediately behind the ridgeline.  The critical zone is the **N→E rollover** — the convex break where a N-facing ridge transitions to an E-facing slope.  This is where:
-
-- Snow transport stops and deposition begins (wind shadow)
-- The slope steepens from the ridge cap into the face
-- Profile curvature peaks (the geometric notch)
-
-The `loaded_zone` mask is computed as E-facing cells within 2 cell-lengths (~2.4 m) of a N-facing cell, ensuring we capture terrain right at the rollover rather than the broader E-facing slope below it.
-
-### Output
-
-- **`figures/{site}_nucleation_hs.png`** — hillshade map with nucleation candidates (red) and two-of-three-criteria cells (yellow) overlaid on start-zone boundaries
-- **`figures/{site}_nucleation.kml`** — KML placemarks at the centroid of each connected cluster, with mean slope and aspect on click, for overlay in Google Earth or similar tools
-
----
-
-## Statistical approach
-
-Avalanche frequency is normalised by start-zone area (avalanches per 10,000 m²) to remove the trivial size effect — a larger zone has more terrain and should produce more avalanches by chance.
-
-Correlations use **Spearman ρ** (rank-based, robust to non-normality and small N) and **Kendall τ** (more conservative, appropriate when N < 10).  Bootstrap 95% confidence intervals are computed with 10,000 resamples.
-
-**Important limitation:** N = 4 at Seven Sisters (Sister #6 is excluded — it has a different loading regime as a convex wind-scoured ridge rather than a lee-loading face).  All p-values are exploratory; effect sizes are reported rather than hypothesis tests.
-
----
-
-## Running the pipeline
-
-### Setup
-
-GDAL and PDAL need full native builds (GeoTIFF, KML, PROJ), so the
-environment comes from conda-forge via [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+GDAL and PDAL need full native builds, so the environment comes from conda-forge via [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
 
 ```bash
 micromamba create -p ./.conda -f environment.yml   # once
 source .envrc                                      # each new shell (automatic with direnv)
 ```
 
-In VS Code, select `.conda/bin/python` as the interpreter.
+In VS Code, select `.conda/bin/python` as the interpreter.  `sql_util.py` needs access to the CAIC MySQL database (localhost).
 
-### Running
+---
 
-```bash
-# Full run for a site (all sites if --site is omitted)
-python src/pipeline.py --site sisters
-python src/pipeline.py --site star_mtn
+## Running the Seven Sisters analysis
 
-# Analysis only — uses existing DEMs, warns if any SZ clip is stale
-python src/pipeline.py --site sisters --skip-process
-
-# Processing only
-python src/pipeline.py --site sisters --skip-analyze
-```
-
-Processing steps are skipped when their output is newer than all of its
-inputs, so editing a start-zone KML re-clips just that zone and a new DEM
-re-clips everything downstream.  To rebuild regardless of timestamps:
+In order (each step reads the previous steps' outputs from `figures/`):
 
 ```bash
-python src/pipeline.py --site sisters --force-from sz    # re-clip all SZs
-python src/pipeline.py --site sisters --force-from dem   # DEM onward (keeps SMRF output)
-python src/pipeline.py --site sisters --force            # everything, from the LAZ tiles
+source .envrc
+python src/assign_avalanche_paths.py data/avalanches/caic-avalanche-records-2026-11-12.csv
+python src/merge_avalanche_records.py \
+    data/avalanches/CAIC_HWY_avalanches_2009-01-01_2021-05-04.csv \
+    figures/seven_sisters_new_records_assigned.csv \
+    data/avalanches/CAIC_HWY_avalanches_2009-2026_sisters_merged.csv
+python src/sql_util.py --site sisters --end 2026-06-01   # weather (slow: ~5 min)
+python src/pipeline.py --site sisters                    # DEM, zone clips, zone metrics
+python src/wind_exposure.py --site sisters               # Winstral Sx, upwind fetch
+python src/storm_analysis.py --site sisters              # weather before each natural
+python src/stress_hotspots.py --site sisters             # fetch-index stress hotspots
+python src/micromet_loading.py --site sisters            # wind loading, nucleation potential, storm test (~7 min)
+python src/event_stats.py --site sisters                 # bootstrap / permutation / period split
+python src/threshold_analysis.py --site sisters          # stress threshold, release rate, size
 ```
 
-Copying in just the DEM (e.g. `Sisters_crp.tif` from OneDrive) is enough —
-the LAZ steps are skipped when their inputs are absent.  Missing inputs are
-reported before anything runs.
+`pipeline.py` runs before the wind model, so its text report includes the nucleation-potential summary only from the second run on (`python src/pipeline.py --site sisters --skip-process`).
 
-A site can instead take a pre-made elevation raster (e.g. a photogrammetry
-DTM) via `source_raster` in its `SITES` entry: it is block-averaged to
-`dem_resolution` and replaces the LAZ steps.  It must be **bare earth** — a
-DSM that includes trees biases slope, aspect and curvature.  Pointing
-`source_raster` at a different file always rebuilds the DEM and everything
-downstream.
+MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` (saturation length, m) with `--tag _eta15` etc. to keep outputs apart.  `--plot-only` redraws figures and re-exports the nucleation GeoTIFF/KML from the saved grids without rerunning the model.
 
-Outputs land in `figures/` as PNG figures, a text report, and a KML file.
+### Scripts
 
-### Adding a new site
+| Script | Does |
+|---|---|
+| `pipeline.py` | Site config (`SITES`); LAZ or raster → DEM, terrain attributes, start-zone clips; per-zone terrain metrics and correlations with natural counts; text report |
+| `assign_avalanche_paths.py` | Match CAIC records that have coordinates but no path name to paths, by tracing each start zone downhill |
+| `merge_avalanche_records.py` | Append the matched records to the named highway export (duplicates kept from the highway export) |
+| `sql_util.py` | Fetch hourly station data from the CAIC database |
+| `wind_exposure.py` | Winstral shelter index and upwind source area per wind direction |
+| `storm_analysis.py` | Wind and snowfall in the 72 h before each natural |
+| `stress_hotspots.py` | Stress margin and hotspot patches from fetch-index loading |
+| `micromet_loading.py` | MicroMet winds + saltation transport; landing sites; zone-day stress; nucleation potential; storm-by-storm test |
+| `event_stats.py` | Exact permutation p-values (zone level), cluster bootstrap and date-shift tests (storm level) |
+| `threshold_analysis.py` | Stress threshold implied by the record; release rate vs excess stress; avalanche size |
+| `terrain_util.py`, `avl_data.py` | DEM I/O and terrain attributes; avalanche CSV loading |
 
-Add an entry to the `SITES` dict in `src/pipeline.py`.  Each key is documented inline.  You need:
+### Main outputs (`figures/`, prefix `seven_sisters_`)
 
-- A directory under `data/` with LAZ tiles and KML start-zone polygons
-- An avalanche CSV (CAIC format or the simplified two-column format)
-- A `sz_avi_path_map` mapping DEM stems to CAIC path names
+| File | Content |
+|---|---|
+| `sz_slope_map.png` | Slope inside the start zones on NAIP |
+| `loading_patterns.png`, `loading_closeups.png` | Modelled wind accumulation per season, by sector |
+| `nucleation_potential.png` | Nucleation-potential map with release points; observed vs expected natural days |
+| `nucleation_potential.tif` | The same map as a GeoTIFF (band 1: Pa·day per season; band 2: days per season above threshold) |
+| `nucleation.kml` | High-potential patches (≥ P95 of start-zone cells, ≥ 2 cells) as polygons, for Google Earth |
+| `stress_hotspots.png` | Fetch-index stress hotspots |
+| `threshold_analysis.png` | Skill vs stress threshold; hotspot days vs natural days per path |
+| `report.txt` | Zone terrain metrics, correlations and nucleation-potential summary |
+| `*.csv` | Tables behind every result in the report |
+
+`figures/` is git-ignored; files the report uses are committed with `git add -f`.
+
+---
+
+## Terrain pipeline options
+
+```bash
+python src/pipeline.py --site sisters                    # process + analyse
+python src/pipeline.py --site sisters --skip-process     # analysis only
+python src/pipeline.py --site sisters --skip-analyze     # processing only
+python src/pipeline.py --site sisters --force-from sz    # re-clip all start zones
+python src/pipeline.py --site sisters --force-from dem   # DEM onward
+python src/pipeline.py --site sisters --force            # everything
+```
+
+Processing steps are skipped when their output is newer than all of its inputs, so editing a start-zone KML re-clips just that zone.  Missing inputs are reported before anything runs.
+
+A site takes either LAZ tiles (merged, SMRF ground-filtered and gridded) or a pre-made elevation raster via `source_raster`, block-averaged or resampled to `dem_resolution`.  The raster must be **bare earth** — a surface model that includes trees biases slope, aspect and curvature.
+
+### Adding a site
+
+Add an entry to `SITES` in `src/pipeline.py` (every key is documented inline).  The terrain pipeline needs a DEM source, start-zone KMLs, an avalanche CSV and a `sz_avi_path_map` from DEM stems to CAIC path names.  The wind-loading scripts also need `source_raster`, `weather_stations` and a weather CSV from `sql_util.py`; `micromet_loading.py` currently has the CALVP station location hard-coded.
 
 ---
 
@@ -210,23 +134,27 @@ Add an entry to the `SITES` dict in `src/pipeline.py`.  Each key is documented i
 
 ```
 data/
-  Sisters/          Seven Sisters LiDAR, DEMs, KMLs, satellite image
-  Star_mtn/         Star Mountain LiDAR, DEMs, KMLs
-  550/              US-550 corridor LiDAR, DEMs, KMLs
-  avalanches/       CAIC CSV records
-  masks/            Manual snow masks (used in earlier exploratory work)
-figures/            All output figures, reports, and KML files
-src/
-  pipeline.py       Main processing and analysis pipeline
-  terrain_util.py   DEM I/O, terrain attribute computation (GDAL + WhiteboxTools)
-  avl_data.py       Avalanche record loading and filtering
-unused/             Earlier exploratory scripts (kept for reference)
+  Sisters/       3DEP DEM, drone DSM, NAIP, start-zone KMLs, GCPs
+  Star_mtn/      Star Mountain LiDAR, DEMs, KMLs
+  550/           US-550 corridor LiDAR, DEMs, KMLs
+  avalanches/    CAIC exports and the merged Sisters record
+  weather/       Hourly station data (from sql_util.py)
+  masks/         Manual snow masks (earlier exploratory work)
+docs/            Research note (terrain_analysis_report.md)
+figures/         Outputs: figures, tables, KML, GeoTIFF
+sources/         Reference papers
+src/             Analysis scripts (above)
+unused/          Earlier exploratory scripts and notebooks
 ```
 
 ---
 
 ## Key references
 
-- Gvirtzman, S. et al. (2025). Detection of likely shear initiation location for dry-snow slab avalanches. *Nature*, https://doi.org/10.1038/s41586-024-08287-y
-- Pingel, T. J., Clarke, K. C., & McBride, W. A. (2013). An improved simple morphological filter for the terrain classification of airborne LIDAR data. *ISPRS Journal of Photogrammetry and Remote Sensing*, 77, 21–30.
-- Colorado Avalanche Information Center (CAIC) highway observer database, 2009–2021.
+- Gvirtzman, S., Kammer, D. S., Adda-Bedia, M. & Fineberg, J. (2025). How frictional ruptures and earthquakes nucleate and evolve. *Nature* 637, 369–374. https://doi.org/10.1038/s41586-024-08287-y
+- Liston, G. E. & Elder, K. (2006). A meteorological distribution system for high-resolution terrestrial modeling (MicroMet). *Journal of Hydrometeorology* 7, 217–234.
+- Pomeroy, J. W. & Gray, D. M. (1990). Saltation of snow. *Water Resources Research* 26, 1583–1594.
+- Li, L. & Pomeroy, J. W. (1997). Estimates of threshold wind speeds for snow transport using meteorological data. *Journal of Applied Meteorology* 36, 205–213.
+- Winstral, A., Elder, K. & Davis, R. E. (2002). Spatial snow modeling of wind-redistributed snow using terrain-based parameters. *Journal of Hydrometeorology* 3, 524–538.
+- Pingel, T. J., Clarke, K. C. & McBride, W. A. (2013). An improved simple morphological filter for the terrain classification of airborne LIDAR data. *ISPRS Journal of Photogrammetry and Remote Sensing* 77, 21–30.
+- Colorado Avalanche Information Center (CAIC) highway observer database and avalanche records.

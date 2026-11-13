@@ -38,7 +38,9 @@ storm weak-layer stress for each start zone.
    weak layer).  h(θ): 1 to 50°, linear to 0 at 60°.
 
 Outputs (figures/): loading maps (all / SW / WNW transport, natural-event
-storms), per-zone loading table, zone-day stress table, event test.
+storms), per-zone loading table, zone-day stress table, event test, and the
+nucleation-potential map as a GeoTIFF plus a KML of its top-5 % patches
+(<slug>_nucleation_potential.tif, <slug>_nucleation.kml).
 
 Usage:  python src/micromet_loading.py --site sisters
 """
@@ -300,6 +302,114 @@ def plot_loading(grids: Path, slug: str) -> None:
         fig.savefig(FIGURES / f'{slug}_nucleation_potential.png', dpi=140); plt.close(fig)
 
 
+def export_nucleation(grids: Path, slug: str, pctile: float = 95.0,
+                      min_cells: int = 2) -> None:
+    """Write the nucleation-potential map as a GeoTIFF and its patches as KML.
+
+    Patches: connected start-zone cells (8-neighbour) whose potential is at
+    or above the given percentile of all start-zone cells pooled, with at
+    least `min_cells` cells (≈ critical-crack-length scale).  Forest and
+    forest-edge cells carry no stress, so they are never in a patch.
+    Outputs: <slug>_nucleation_potential.tif (Pa·day per season; NaN outside
+    the map region and on forest) and <slug>_nucleation.kml (one polygon per
+    patch, with zone, area, peak/mean potential and threshold-exceedance
+    days per season in the description).
+    """
+    g = np.load(grids, allow_pickle=False)
+    if not {'potential', 'gt', 'wkt'} <= set(g.files):
+        print(f"  [nucleation] {grids.name} has no georeferencing — rerun "
+              "micromet_loading.py (not --plot-only) to export the GeoTIFF/KML")
+        return
+    gt = tuple(float(v) for v in g['gt']); wkt = str(g['wkt'])
+    res = float(g['res']); names = [str(n) for n in g['zone_names']]
+    zones = g['zones']; pot = g['potential'].astype('f8'); exd = g['exceed_days']
+    P = np.where(g['region'] & ~g['forest'], pot, np.nan)
+
+    tif = FIGURES / f'{slug}_nucleation_potential.tif'
+    drv = gdal.GetDriverByName('GTiff')
+    ds = drv.Create(str(tif), P.shape[1], P.shape[0], 2, gdal.GDT_Float32,
+                    options=['COMPRESS=DEFLATE'])
+    ds.SetGeoTransform(gt); ds.SetProjection(wkt)
+    for b, (arr, desc) in enumerate(((P, 'nucleation potential, Pa·day per season'),
+                                     (np.where(np.isfinite(P), exd, np.nan),
+                                      'days per season above threshold')), start=1):
+        band = ds.GetRasterBand(b); band.WriteArray(arr.astype('f4'))
+        band.SetNoDataValue(float('nan')); band.SetDescription(desc)
+    ds = None
+    print(f"  Saved: {tif.name}")
+
+    inz = zones.any(axis=0)
+    vals = np.nan_to_num(P[inz])
+    thr = float(np.percentile(vals, pctile))
+    if thr <= 0:
+        print(f"  [nucleation] P{pctile:.0f} of start-zone potential is 0 — no patches")
+        return
+    lab, n = ndi.label(inz & (np.nan_to_num(P) >= thr) & (np.nan_to_num(P) > 0),
+                       structure=np.ones((3, 3)))
+    sizes = ndi.sum(np.ones_like(lab), lab, index=np.arange(1, n + 1))
+    keep = [i + 1 for i, s in enumerate(sizes) if s >= min_cells]
+    lab = np.where(np.isin(lab, keep), lab, 0).astype('i4')
+
+    # Polygonise the patch labels and reproject to WGS84 for KML
+    from osgeo import ogr
+    mem = gdal.GetDriverByName('MEM').Create('', lab.shape[1], lab.shape[0], 1, gdal.GDT_Int32)
+    mem.SetGeoTransform(gt); mem.SetProjection(wkt)
+    mem.GetRasterBand(1).WriteArray(lab)
+    src_srs = osr.SpatialReference(wkt=wkt)
+    vds = ogr.GetDriverByName('MEM').CreateDataSource('')   # keep a reference: the layer dies with it
+    lyr = vds.CreateLayer('p', srs=src_srs)
+    lyr.CreateField(ogr.FieldDefn('id', ogr.OFTInteger))
+    gdal.Polygonize(mem.GetRasterBand(1), mem.GetRasterBand(1), lyr, 0)
+    dst = osr.SpatialReference(); dst.ImportFromEPSG(4326)
+    for s in (src_srs, dst):
+        s.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    tf = osr.CoordinateTransformation(src_srs, dst)
+    geoms = {}
+    for f in lyr:
+        geom = f.GetGeometryRef().Clone(); geom.Transform(tf)
+        i = f.GetField('id')
+        geoms[i] = geoms[i].Union(geom) if i in geoms else geom
+
+    def label(nm):
+        return nm.replace('_SZ', '').replace('_', ' #')
+
+    rows = []
+    for i in keep:
+        m = lab == i
+        zi = int(np.argmax([(z & m).sum() for z in zones]))
+        rows.append(dict(id=i, zone=label(names[zi]), cells=int(m.sum()),
+                         area=float(m.sum() * res ** 2), peak=float(np.nanmax(P[m])),
+                         mean=float(np.nanmean(P[m])), days=float(np.nanmean(exd[m]))))
+    rows.sort(key=lambda r: -r['peak'])
+    pm = []
+    for rank, r in enumerate(rows, 1):
+        desc = (f"Zone: {r['zone']}<br>Area: {r['area']:.0f} m² ({r['cells']} cells at {res:g} m)<br>"
+                f"Peak potential: {r['peak']:.0f} Pa·day/season<br>"
+                f"Mean potential: {r['mean']:.0f} Pa·day/season<br>"
+                f"Days above threshold: {r['days']:.1f} per season<br>"
+                f"Rank {rank} of {len(rows)} (by peak)")
+        pm.append(f"  <Placemark><name>{r['zone']} – patch {rank}</name>"
+                  f"<description><![CDATA[{desc}]]></description><styleUrl>#patch</styleUrl>"
+                  f"{geoms[r['id']].ExportToKML()}</Placemark>")
+    kml = FIGURES / f'{slug}_nucleation.kml'
+    kml.write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<kml xmlns="http://www.opengis.net/kml/2.2"><Document>\n'
+        f'  <name>{slug} nucleation patches</name>\n'
+        f'  <description>Start-zone cells at or above P{pctile:.0f} of nucleation potential '
+        f'({thr:.0f} Pa·day/season; Σ excess 72-h stress margin above the P99 threshold), '
+        f'≥ {min_cells} connected cells. From micromet_loading.py.</description>\n'
+        '  <Style id="patch"><LineStyle><color>ff0000ff</color><width>2</width></LineStyle>'
+        '<PolyStyle><color>660000ff</color></PolyStyle></Style>\n'
+        + '\n'.join(pm) + '\n</Document></kml>\n')
+    by_zone = pd.DataFrame(rows).groupby('zone').agg(patches=('id', 'size'), area_m2=('area', 'sum'),
+                                                     peak=('peak', 'max')) if rows else pd.DataFrame()
+    print(f"  Saved: {kml.name}  ({len(rows)} patches ≥ P{pctile:.0f} = {thr:.0f} Pa·day/season)")
+    if len(by_zone):
+        print(by_zone.round(0).to_string())
+        by_zone.to_csv(FIGURES / f'{slug}_nucleation_patches.csv')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--site', default='sisters', choices=list(SITES))
@@ -324,6 +434,7 @@ def main():
     if a.plot_only:
         slug = SITES[a.site]['name'].lower().replace(' ', '_') + a.tag
         plot_loading(FIGURES / f'{slug}_loading_grids.npz', slug)
+        export_nucleation(FIGURES / f'{slug}_loading_grids.npz', slug)
         print('figures redrawn'); return
     t0 = time.time()
 
@@ -755,6 +866,9 @@ def main():
         potential=_unflat(pot['P99'], zc, z.shape)[win].astype('f4'),
         exceed_days=_unflat(exceed['P99'], zc, z.shape)[win].astype('f4'),
         region=region[win],
+        gt=np.array([gt[0] + win[1].start * gt[1], gt[1], gt[2],
+                     gt[3] + win[0].start * gt[5], gt[4], gt[5]]),
+        wkt=np.array(wkt),
         naip=_naip_rgb(cfg, (x0, y0, x1, y1), a.res, z.shape, wkt)[win],
         pts_xy=np.array([[r_ - win[0].start, c_ - win[1].start, 1 if inside else 0]
                          for r_, c_, inside in _event_pixels(av, s_srs, d_srs, gt, z.shape, masks)] or
@@ -763,6 +877,7 @@ def main():
         oe_exp_hot=oe[(oe.threshold == 'P99') & (oe.basis == 'hotspot days')].set_index('zone').loc[list(masks), 'expected'].values,
         oe_exp_exc=oe[(oe.threshold == 'P99') & (oe.basis == 'summed excess')].set_index('zone').loc[list(masks), 'expected'].values)
     plot_loading(grids, slug)
+    export_nucleation(grids, slug)
     print(f"\nSaved figures and tables with prefix {slug}_  ({time.time() - t0:.0f} s)")
 
 
