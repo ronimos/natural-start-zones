@@ -16,7 +16,7 @@ The working hypothesis comes from Gvirtzman et al. (2025, *Nature*), a laborator
 4. **Nucleation potential.** Per cell, the excess 72-h stress margin above a threshold, summed over each season.  Patches of high potential are the most likely nucleation sites.
 5. **Tests.** Observed vs expected natural-release days per path, a storm-by-storm test (does the model pick the days, and the path, that release?), and the stress threshold implied by the record.
 
-**Headline results** (see the report for numbers and caveats): steepness alone does not separate the paths; wind landing sites do — Sister #2, the quiet path, has no W–NW landing area.  The stress model predicts natural-slab days (AUC 0.76) and which path releases on those days (0.74), and the record implies a threshold of ≈ 30 Pa of added stress (≈ 14 mm SWE in 72 h on a 45° slope), with the release rate rising about 20-fold well above it.
+**Headline results** (see the report for numbers and caveats): steepness alone does not separate the paths; wind landing sites do — Sister #2, the quiet path, has no W–NW landing area.  The stress model predicts natural-slab days (AUC 0.76) and which path releases on those days (0.74).  Days on which W–NW winds load a path's hotspot terrain put the paths in the same order as their natural counts; SW loading days do not.  The record implies a threshold of ≈ 30 Pa of added stress (≈ 14 mm SWE in 72 h on a 45° slope), with the release rate rising about 20-fold well above it.
 
 ---
 
@@ -69,6 +69,7 @@ python src/stress_hotspots.py --site sisters             # fetch-index stress ho
 python src/micromet_loading.py --site sisters            # wind loading, nucleation potential, storm test (~7 min)
 python src/event_stats.py --site sisters                 # bootstrap / permutation / period split
 python src/threshold_analysis.py --site sisters          # stress threshold, release rate, size
+python src/loading_days.py --site sisters                # loading days by wind direction vs natural days
 ```
 
 `pipeline.py` runs before the wind model, so its text report includes the nucleation-potential summary only from the second run on (`python src/pipeline.py --site sisters --skip-process`).
@@ -89,6 +90,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `micromet_loading.py` | MicroMet winds + saltation transport; landing sites; zone-day stress; nucleation potential; storm-by-storm test |
 | `event_stats.py` | Exact permutation p-values (zone level), cluster bootstrap and date-shift tests (storm level) |
 | `threshold_analysis.py` | Stress threshold implied by the record; release rate vs excess stress; avalanche size |
+| `loading_days.py` | Days per season each wind direction loads each path's hotspot terrain, against natural days |
 | `terrain_util.py`, `avl_data.py` | DEM I/O and terrain attributes; avalanche CSV loading |
 
 ### Main outputs (`figures/`, prefix `seven_sisters_`)
@@ -102,6 +104,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `nucleation.kml` | High-potential patches (≥ P95 of start-zone cells, ≥ 2 cells) as polygons, for Google Earth |
 | `stress_hotspots.png` | Fetch-index stress hotspots |
 | `threshold_analysis.png` | Skill vs stress threshold; hotspot days vs natural days per path |
+| `loading_days.png` | Loading days per season by wind direction and path, with natural days |
 | `report.txt` | Zone terrain metrics, correlations and nucleation-potential summary |
 | `*.csv` | Tables behind every result in the report |
 

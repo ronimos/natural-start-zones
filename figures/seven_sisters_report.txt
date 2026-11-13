@@ -33,41 +33,41 @@ KEY TERRAIN METRICS PER START ZONE
   terrain and the steepest terrain are the same cells. Use
   pct_steep_near_loading as the closest proxy for that co-occurrence.
 
-                 pct_40_50  slope_max_1cell  aspect_entropy  aspect_entropy_steep  pct_steep_near_loading  profile_curv_p95_steep  area_m2  avi_per_area
-start_zone                                                                                                                                              
-Sister_1_SZ_DEM     50.991           61.689           1.008                 1.010                   0.842                   0.138  2905.92        34.413
-Sister_2_SZ_DEM     50.743           58.439           0.776                 0.786                   0.595                   0.115  2905.92         3.441
-Sister_3_SZ_DEM     62.117           64.319           1.615                 1.609                  29.765                   0.137  2394.72        50.110
-Sister_4_SZ_DEM     57.187           65.625           1.738                 1.741                  23.306                   0.159  1402.56        28.519
-Sister_6_SZ_DEM     55.126           58.545           1.238                 1.249                   7.210                   0.099  3834.72        23.470
+                 pct_40_50  slope_max_1cell  aspect_entropy  aspect_entropy_steep  pct_steep_near_loading  profile_curv_p95_steep  area_m2  avi_count
+start_zone                                                                                                                                           
+Sister_1_SZ_DEM     50.991           61.689           1.008                 1.010                   0.842                   0.138  2905.92         10
+Sister_2_SZ_DEM     50.743           58.439           0.776                 0.786                   0.595                   0.115  2905.92          1
+Sister_3_SZ_DEM     62.117           64.319           1.615                 1.609                  29.765                   0.137  2394.72         12
+Sister_4_SZ_DEM     57.187           65.625           1.738                 1.741                  23.306                   0.159  1402.56          4
+Sister_6_SZ_DEM     55.126           58.545           1.238                 1.249                   7.210                   0.099  3834.72          9
 
 SPEARMAN CORRELATIONS
 ----------------------------------------------------------------------
-          terrain_metric       outcome  spearman_rho  p_spearman  kendall_tau  p_kendall
-                Slope SD Avis / 10k m²         0.700       0.188          0.6      0.233
-                Slope CV Avis / 10k m²         0.700       0.188          0.6      0.233
-                 % > 35° Avis / 10k m²         0.900       0.037          0.8      0.083
-                 % > 40° Avis / 10k m²         0.900       0.037          0.8      0.083
-                % 40–50° Avis / 10k m²         0.700       0.188          0.6      0.233
-         Mean tanθ (τ/σ) Avis / 10k m²         0.600       0.285          0.4      0.483
-                P90 tanθ Avis / 10k m²         0.600       0.285          0.4      0.483
-  Mean sinθcosθ (τ/load) Avis / 10k m²         0.600       0.285          0.4      0.483
-        Max slope 1-cell Avis / 10k m²         0.700       0.188          0.6      0.233
-          Aspect entropy Avis / 10k m²         0.500       0.391          0.4      0.483
-         Aspect circ var Avis / 10k m²         0.500       0.391          0.4      0.483
-        N aspect octants Avis / 10k m²         0.105       0.866          0.0      1.000
-  Aspect entropy (steep) Avis / 10k m²         0.500       0.391          0.4      0.483
-   % steep near 225–315° Avis / 10k m²         0.700       0.188          0.6      0.233
-Profile curv P95 (steep) Avis / 10k m²         0.500       0.391          0.2      0.817
+          terrain_metric  outcome  spearman_rho  p_spearman  kendall_tau  p_kendall
+                Slope SD Naturals         0.400       0.505          0.4      0.483
+                Slope CV Naturals         0.400       0.505          0.4      0.483
+                 % > 35° Naturals         0.700       0.188          0.6      0.233
+                 % > 40° Naturals         0.700       0.188          0.6      0.233
+                % 40–50° Naturals         0.600       0.285          0.4      0.483
+         Mean tanθ (τ/σ) Naturals         0.200       0.747          0.2      0.817
+                P90 tanθ Naturals         0.200       0.747          0.2      0.817
+  Mean sinθcosθ (τ/load) Naturals         0.700       0.188          0.6      0.233
+        Max slope 1-cell Naturals         0.400       0.505          0.4      0.483
+          Aspect entropy Naturals         0.300       0.624          0.2      0.817
+         Aspect circ var Naturals         0.300       0.624          0.2      0.817
+        N aspect octants Naturals         0.105       0.866          0.0      1.000
+  Aspect entropy (steep) Naturals         0.300       0.624          0.2      0.817
+   % steep near 225–315° Naturals         0.600       0.285          0.4      0.483
+Profile curv P95 (steep) Naturals         0.100       0.873          0.0      1.000
 
 BOOTSTRAP 95% CIs  (Spearman ρ · 10,000 resamples)
 ----------------------------------------------------------------------
-  % 40–50°                         vs  Avis/area       ρ=+0.700  [CI: N/A]
-  Max slope 1-cell                 vs  Avis/area       ρ=+0.700  [CI: N/A]
-  Aspect entropy                   vs  Avis/area       ρ=+0.500  [CI: N/A]
-  Aspect entropy (steep)           vs  Avis/area       ρ=+0.500  [CI: N/A]
-  % steep near 225–315°            vs  Avis/area       ρ=+0.700  [CI: N/A]
-  Profile curv P95 (steep)         vs  Avis/area       ρ=+0.500  [CI: N/A]
+  % 40–50°                         vs  Naturals        ρ=+0.600  [CI: N/A]
+  Max slope 1-cell                 vs  Naturals        ρ=+0.400  [CI: N/A]
+  Aspect entropy                   vs  Naturals        ρ=+0.300  [CI: N/A]
+  Aspect entropy (steep)           vs  Naturals        ρ=+0.300  [CI: N/A]
+  % steep near 225–315°            vs  Naturals        ρ=+0.600  [CI: N/A]
+  Profile curv P95 (steep)         vs  Naturals        ρ=+0.100  [CI: N/A]
   (N=5 is too small for meaningful bootstrap CIs)
 
 SUMMARY
@@ -75,14 +75,15 @@ SUMMARY
 N = 5 start zones (excluded: none).  At this N, zone-level
   correlations are exploratory: the p-values in the table above are
   asymptotic and too small; exact permutation p (event_stats.py) is
-  ≥ 0.017 at N = 5 and ≈ 0.08 for ρ = 0.9.  Outcome is naturals per
-  10,000 m², which favours small zones.  Strongest |ρ| this run:
-    % > 35°: ρ=+0.90
-    % > 40°: ρ=+0.90
-    Slope SD: ρ=+0.70
-  % in the 40–50° band: ρ=+0.70.  Per-area rates differ from
-  the count-based comparison in the research note (§5.1, mean tanθ vs
-  natural count ρ = 0.2), where steepness does not track releases.
+  ≥ 0.017 at N = 5 and ≈ 0.08 for ρ = 0.9.  Outcome is the natural
+  count per path (not per area: what matters is whether a zone has
+  hotspots and whether they get loaded, not their share of the
+  zone).  Strongest |ρ| this run:
+    % > 35°: ρ=+0.70
+    % > 40°: ρ=+0.70
+    Mean sinθcosθ (τ/load): ρ=+0.70
+  % in the 40–50° band: ρ=+0.60.  Compare research note §5.1
+  (mean tanθ vs natural count ρ = 0.2).
   pct_steep_near_loading uses aspect only (no wind model); the loading
   analysis proper is in micromet_loading.py.
 

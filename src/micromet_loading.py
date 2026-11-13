@@ -580,11 +580,36 @@ def main():
     new_day = gain.where(gain >= 2.54, 0.0).clip(lower=0)
     valid_day = hw['swe'].groupby(local_day(hw.index)).count() >= 12
     A_day = {}
+    # Directional loading per zone and day: for each 10° wind-from bin, the
+    # wind deposition on the zone's stress-bearing cells (open, tanθ > μ,
+    # < 60°) and the weak-layer stress it adds there.  2nd-highest cell =
+    # a patch of ≥ 2 cells, as for hotspots.  Used by loading_days.py.
+    sb = {name: zsel[name] & (shape_term > 0) for name in masks}
+    dir_rows = []
     for dd, eh in h.groupby(local_day(h.index)):
         A = np.zeros(len(zc), 'f4')
+        A_dir = {}
         for key, n in eh.groupby(['dbin', 'ubin', 'tbin']).size().items():
-            A += n * bin_zone[key]
+            inc = n * bin_zone[key]
+            A += inc
+            A_dir[key[0]] = A_dir.get(key[0], 0) + inc
         A_day[dd] = A
+        hrs = eh.groupby('dbin').size()
+        for w, Aw in A_dir.items():
+            for name in masks:
+                dep = Aw[sb[name]]
+                if not dep.size:
+                    continue
+                st = np.sort(G * np.clip(dep, 0, None) * shape_term[sb[name]])
+                dsort = np.sort(dep)
+                dir_rows.append(dict(
+                    day=dd.date(), zone=name, dir=int(w), hours=int(hrs.get(w, 0)),
+                    dep_mean=float(dep.mean()),
+                    dep_2nd=float(dsort[-2] if dep.size > 1 else dsort[-1]),
+                    stress_2nd=float(st[-2] if st.size > 1 else st[-1]),
+                    area_ge5=float((dep >= 5).sum() * a.res ** 2)))
+    pd.DataFrame(dir_rows).round(3).to_csv(FIGURES / f'{slug}_zone_day_dir_loading.csv', index=False)
+    print(f"  directional loading table: {len(dir_rows)} zone-day-direction rows")
     zero = np.zeros(len(zc), 'f4')
 
     # Resets: explosive control (CAIC AX/AL/AA/AB/AE/AH/AP on any Sister path)

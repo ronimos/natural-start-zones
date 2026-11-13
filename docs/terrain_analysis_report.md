@@ -11,6 +11,7 @@
 - **Storm by storm, the same model predicts natural slab days and which path releases.** The pre-registered test (72-h load, P99 weak-layer stress margin) gives **AUC 0.76 (95 % CI 0.67–0.84, p = 0.001)** over 32 natural events in 16 seasons, and on natural days it ranks the released path above the others (**AUC 0.74, p < 0.001**). Snowfall sets the timing (AUC 0.71 alone) but cannot pick the path; wind loading does.
 - **The 2021–2026 events score as well as the development period** (AUC 0.82). Two model changes — a redrawn Sister #6 start zone and a forest-edge correction — were made after those events were available, though not tuned on them; before the changes the 2021–2026 AUC was already 0.81.
 - **The record implies a stress threshold, and the release rate grows with the excess above it — the paper's pattern.** The threshold that best separates natural days is ≈ 30 Pa of added stress margin from 72-h loading (95 % CI 26–67 Pa; ≈ 14 mm SWE of new load on a 45° slope). 29 of 32 naturals occurred on a day their path had a hotspot above it, and per-path hotspot days rank like natural counts (ρ = 0.82). Naturals are ~20× more frequent at > 80 Pa than below 30 Pa (+20 % odds per 10 Pa). Exceeding the threshold is close to necessary but far from sufficient (only 0.2–0.6 % of hotspot days release) — weak-layer state, not in the model, is the likely missing factor.
+- **W–NW loading of hotspot terrain tracks the paths' natural counts.** Days per season on which W–NW winds add ≥ 10 Pa to a hotspot patch rank the five paths exactly as their natural days (ρ = 0.97, exact p = 0.033, the minimum attainable); SW loading days do not (ρ ≈ 0.7). Sister #2 gets no W–NW loading days at all.
 - **Larger naturals follow higher hotspot stress, weakly.** Median hotspot stress rises from 39 Pa (D1) to 69 Pa (D1.5) and 93 Pa (D2); ρ = 0.32 with D size (p = 0.07), 0.43 (p = 0.015) without one wind-loaded D2.5 outlier.
 - **Remaining caveats:** five zones (no zone-level correlation reaches significance), modelled rather than measured loading, and saltation-only transport. A snow-on drone survey is the most valuable next step.
 
@@ -37,13 +38,15 @@ Load raises the margin only where tanθ > μ. Because sinθ cosθ is nearly flat
 
 Seven Sisters is a set of avalanche paths on the north side of the ridge above US-6, west of the Loveland Pass summit (start zones ≈ 39.677° N, 105.891° W, 3,460–3,620 m). CDOT controls the paths with explosives (hand charges and Avalauncher); every mission includes all paths. Five start zones are analysed: Sisters #1, #2, #3, #4 and #6, which are all the active paths. There is no Sister #5 on the ground (the two CAIC records under that name are presumably misattributions), and Sister #7 is not an active path. Sisters #2–#4 start among spruce forest; Sisters #1 and #6 start in open alpine terrain (Figure 1).
 
-| Zone | Area (m²) | Natural HS/SS 2009–2026 | per 10,000 m² | Slab on control days (2009–2021) |
-|---|---|---|---|---|
-| Sister #1 | 2,896 | 10 | 34.5 | 67 % |
-| Sister #2 | 2,884 | 1 | 3.5 | 45 % |
-| Sister #3 | 2,384 | 12 | 50.3 | 61 % |
-| Sister #4 | 1,416 | 4 | 28.2 | 55 % |
-| Sister #6 | 3,840 | 9 | 23.4 | 53 % |
+| Zone | Area (m²) | Natural HS/SS 2009–2026 | Slab on control days (2009–2021) |
+|---|---|---|---|
+| Sister #1 | 2,896 | 10 | 67 % |
+| Sister #2 | 2,884 | 1 | 45 % |
+| Sister #3 | 2,384 | 12 | 61 % |
+| Sister #4 | 1,416 | 4 | 55 % |
+| Sister #6 | 3,840 | 9 | 53 % |
+
+Natural counts are compared per path, not per unit area: what matters is whether a zone has hotspots and whether they get loaded, not what share of the zone they occupy.
 
 *Control-day column: share of the 198 recorded control days on which explosives released a slab on that path.*
 
@@ -284,6 +287,29 @@ Why exceedance is not sufficient: (1) the paper's threshold is location- and sta
 
 Larger naturals follow higher hotspot stress and more stressed area, but weakly: Spearman ρ with D size = 0.32 for hotspot stress (permutation p = 0.07), 0.24 for stressed area (p = 0.19) and 0.27 for new snow (p = 0.13); wind deposition alone shows no relation. The single D2.5 event — 2021-01-24 on Sister #6, a hard slab after WSW winds to 28 mph with almost no new snow, from a coordinate-assigned record with an estimated date — is the model's largest miss (34 Pa); without it, ρ = 0.43 for hotspot stress (p = 0.015) and 0.39 for new snow (p = 0.03). That event looks like wind loading the saltation-only model under-represents. The paper would predict that nucleation follows local excess stress while size follows the extent of stressed slab; hotspot stress and stressed area are driven by the same loading and are strongly correlated here, so these data cannot separate the two. Size also depends on the path itself (median D1 on Sister #1, D2 on Sister #4), and the size classes are coarse.
 
+### 5.10 Loading days by wind direction
+
+How often does each wind direction load each path's hotspot terrain? For each path and day, the MicroMet run gives the weak-layer stress that the wind deposition from each 10° direction adds to the path's stress-bearing cells (open, tanθ > μ, < 60°), taken at the 2nd-highest cell (a ≥ 2-cell patch). A **loading day** from a sector is a day on which that sector adds ≥ 10 Pa (≈ 5 mm SWE on a 45° slope) to such a patch (`src/loading_days.py`; 10° bins within a sector summed).
+
+| Path | SW loading days / season | W–NW loading days / season | Natural days |
+|---|---|---|---|
+| Sister #3 | 51.8 | **46.6** | 12 |
+| Sister #6 | 62.4 | **37.7** | 8 |
+| Sister #1 | 54.1 | **20.7** | 8 |
+| Sister #4 | 42.2 | **7.0** | 3 |
+| Sister #2 | 7.7 | **0.0** | 1 |
+
+- **W–NW loading days rank the paths exactly as their natural days do** (ρ = 0.97, exact p = 0.033 — the smallest p attainable with a tie in five paths), at 5, 10 and 20 Pa, and also when the 10° bins are combined by maximum instead of sum (lower bound; ρ = 0.97 at 5–10 Pa, 0.79–0.89 at 20–30 Pa). SW loading days do not (ρ = 0.67–0.82, p ≥ 0.13): Sister #4 gets frequent SW loading but has few naturals.
+- By 30° bin, loading from 285–315° tracks natural days best (ρ = 0.97), 255–285° less (0.82), 225–255° least (0.67).
+- **Before naturals, the path had been loaded:** 29 of 32 natural days had a loading day on that path in the 72-h window (all zone-days: 57 %). SW loading preceded 22 (69 % vs 40 %, lift 1.7), W–NW loading 14 (44 % vs 24 %, lift 1.8). All 8 Sister #6 natural days followed SW loading (lift 1.8), consistent with its SW exposure; Sister #1's naturals followed W–NW loading twice as often as its other days.
+- Per loading day, natural rates are similar across #1, #3 and #6 (0.3–0.5 per 100 days), lower for #4 (0.17) and zero for #2.
+
+This is the zone-level counterpart of §5.4: Sister #2 is the path the W–NW winds never load. The test is exploratory: N = 5, several thresholds and sectors were examined, and the correlation reaches the smallest p the data allow rather than conventional significance by a margin.
+
+![Loading days](../figures/seven_sisters_loading_days.png)
+
+*Figure 8. Left: days per season on which SW and W–NW winds add ≥ 10 Pa to a ≥ 2-cell patch of each path's stress-bearing cells, with natural slab days (diamonds). Right: loading days by 30° wind-from bin.*
+
 ---
 
 ## 6. Limitations
@@ -328,6 +354,7 @@ python src/stress_hotspots.py --site sisters                      # fetch-index 
 python src/micromet_loading.py --site sisters                     # MicroMet, landing sites, potential, storm test
 python src/event_stats.py --site sisters                          # bootstrap / permutation / period split
 python src/threshold_analysis.py --site sisters                   # stress threshold, release rate, size (§5.8–5.9)
+python src/loading_days.py --site sisters                         # loading days by wind direction (§5.10)
 ```
 
 The NAIP image (`data/Sisters/NAIP_sisters.tif`) comes from the USGS National Map `USGSNAIPImagery` ImageServer (exportImage, bbox 423100,4391800,424300,4392800, EPSG:26913, 0.6 m). Profile curvature and aspect entropy (earlier hypotheses) are still computed by the pipeline's zone-metric table but are not used here. The earlier rule-based nucleation-candidate map (steep, E-facing near N-facing terrain, convex) has been removed; nucleation sites now come from the nucleation potential, exported by `micromet_loading.py` as `figures/seven_sisters_nucleation_potential.tif` and as a KML of patches at or above the 95th percentile of start-zone potential (`figures/seven_sisters_nucleation.kml`).

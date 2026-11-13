@@ -1127,7 +1127,7 @@ def _write_report(cfg: dict, site_slug: str, analysis_df: pd.DataFrame,
     key_cols = ['pct_40_50', 'slope_max_1cell',
                 'aspect_entropy', 'aspect_entropy_steep',
                 'pct_steep_near_loading', 'profile_curv_p95_steep',
-                'area_m2', 'avi_per_area']
+                'area_m2', 'avi_count']
 
     # ── Pre-compute values used in the interpretation ─────────────────────────
     avi_corrs = corr_df.set_index('terrain_metric')
@@ -1207,12 +1207,13 @@ def _write_report(cfg: dict, site_slug: str, analysis_df: pd.DataFrame,
         f'N = {n} start zones (excluded: {excl_str}).  At this N, zone-level',
         '  correlations are exploratory: the p-values in the table above are',
         '  asymptotic and too small; exact permutation p (event_stats.py) is',
-        '  ≥ 0.017 at N = 5 and ≈ 0.08 for ρ = 0.9.  Outcome is naturals per',
-        '  10,000 m², which favours small zones.  Strongest |ρ| this run:',
+        '  ≥ 0.017 at N = 5 and ≈ 0.08 for ρ = 0.9.  Outcome is the natural',
+        '  count per path (not per area: what matters is whether a zone has',
+        '  hotspots and whether they get loaded, not their share of the',
+        '  zone).  Strongest |ρ| this run:',
     ] + top + [
-        f'  % in the 40–50° band: ρ={slope_rho:+.2f}.  Per-area rates differ from',
-        '  the count-based comparison in the research note (§5.1, mean tanθ vs',
-        '  natural count ρ = 0.2), where steepness does not track releases.',
+        f'  % in the 40–50° band: ρ={slope_rho:+.2f}.  Compare research note §5.1',
+        '  (mean tanθ vs natural count ρ = 0.2).',
         '  pct_steep_near_loading uses aspect only (no wind model); the loading',
         '  analysis proper is in micromet_loading.py.',
         '',
@@ -1362,6 +1363,7 @@ def analyze_site(cfg: dict) -> None:
         avi_counts.get(avi_path_map.get(s, s), 0)
         for s in analysis_df.index
     ]
+    # Kept for reference only; correlations use the count (see report).
     analysis_df['avi_per_area'] = (analysis_df['avi_count']
                                    / (analysis_df['area_m2'] / 10_000))
 
@@ -1390,7 +1392,7 @@ def analyze_site(cfg: dict) -> None:
         # stress concentration: convex terrain on steep interior cells
         ('profile_curv_p95_steep',  'Profile curv P95 (steep)'),
     ]
-    outcome_vars = [('avi_per_area', 'Avis / 10k m²')]
+    outcome_vars = [('avi_count', 'Naturals')]
     results = []
     for t_col, t_name in terrain_vars:
         for o_col, o_name in outcome_vars:
@@ -1427,16 +1429,16 @@ def analyze_site(cfg: dict) -> None:
 
     print("\nStep 11 — Scatter plots")
     _scatter_grid(
-        [('pct_40_50',            'avi_per_area', '% 40–50°',               'Avis / 10k m²'),
-         ('aspect_entropy',       'avi_per_area', 'Aspect entropy',         'Avis / 10k m²'),
-         ('aspect_entropy_steep', 'avi_per_area', 'Aspect entropy (steep)', 'Avis / 10k m²')],
+        [('pct_40_50',            'avi_count',    '% 40–50°',               'Naturals'),
+         ('aspect_entropy',       'avi_count',    'Aspect entropy',         'Naturals'),
+         ('aspect_entropy_steep', 'avi_count',    'Aspect entropy (steep)', 'Naturals')],
         f"{site_slug}_terrain_vs_avis.png",
         f"{name} — Loading & Aspect Diversity vs Avalanche Frequency",
     )
     _scatter_grid(
-        [('slope_max_1cell',          'avi_per_area', 'Max slope 1-cell (°)',          'Avis / 10k m²'),
-         ('pct_steep_near_loading',   'avi_per_area', f'% steep near {lo_az}–{hi_az}°', 'Avis / 10k m²'),
-         ('profile_curv_p95_steep',   'avi_per_area', 'Profile curv P95 steep',        'Avis / 10k m²')],
+        [('slope_max_1cell',          'avi_count',    'Max slope 1-cell (°)',          'Naturals'),
+         ('pct_steep_near_loading',   'avi_count',    f'% steep near {lo_az}–{hi_az}°', 'Naturals'),
+         ('profile_curv_p95_steep',   'avi_count',    'Profile curv P95 steep',        'Naturals')],
         f"{site_slug}_steepness_vs_avis.png",
         f"{name} — Crack Initiation Proxies vs Avalanche Frequency",
     )
@@ -1449,10 +1451,10 @@ def analyze_site(cfg: dict) -> None:
                            ('aspect_entropy_steep',    'Aspect entropy (steep)'),
                            ('pct_steep_near_loading',  f'% steep near {lo_az}–{hi_az}°'),
                            ('profile_curv_p95_steep',  'Profile curv P95 (steep)')]:
-        print(f"\n{t_name}  vs  Avis/area:")
+        print(f"\n{t_name}  vs  naturals:")
         obs, lo_ci, hi_ci = bootstrap_spearman(analysis_df[t_col].values.astype(float),
-                                               analysis_df['avi_per_area'].values.astype(float))
-        boot_results.append((t_name, 'Avis/area', obs, lo_ci, hi_ci))
+                                               analysis_df['avi_count'].values.astype(float))
+        boot_results.append((t_name, 'Naturals', obs, lo_ci, hi_ci))
 
     print("\nStep 13 — Nucleation potential (from micromet_loading.py)")
     nuc_lines = _nucleation_summary(site_slug)
