@@ -2,7 +2,12 @@
 
 Why do some avalanche paths release naturally far more often than their neighbours, when all of them share the same storms and are controlled together?  This project combines high-resolution terrain, modelled wind transport and station weather to answer that question for the **Seven Sisters** paths above US-6 on Loveland Pass, Colorado, and to locate where within each start zone a slab is most likely to start.
 
-The full write-up — methods, results, limitations and next steps — is the research note **[docs/terrain_analysis_report.md](docs/terrain_analysis_report.md)**.  This README covers what the code does and how to run it.
+The write-up is in two research notes:
+
+- **[docs/terrain_analysis_report.md](docs/terrain_analysis_report.md)** — *which paths release naturally, and why*: data, terrain, the wind-loading and stress model, hotspots, nucleation potential, the storm-by-storm test and loading days by wind direction.
+- **[docs/release_mechanism_note.md](docs/release_mechanism_note.md)** — *when they release, and how a natural slab might start*: the stress threshold, avalanche size, loading rate, hour-by-hour stress before timed releases, and whether natural slabs start in shear rather than as an anticrack.
+
+This README covers what the code does and how to run it.
 
 ---
 
@@ -16,7 +21,7 @@ The working hypothesis comes from Gvirtzman et al. (2025, *Nature*), a laborator
 4. **Nucleation potential.** Per cell, the excess 72-h stress margin above a threshold, summed over each season.  Patches of high potential are the most likely nucleation sites.
 5. **Tests.** Observed vs expected natural-release days per path, a storm-by-storm test (does the model pick the days, and the path, that release?), and the stress threshold implied by the record.
 
-**Headline results** (see the report for numbers and caveats): steepness alone does not separate the paths; wind landing sites do — Sister #2, the quiet path, has no W–NW landing area.  The stress model predicts natural-slab days (AUC 0.76) and which path releases on those days (0.74).  Days on which W–NW winds load a path's hotspot terrain put the paths in the same order as their natural counts; SW loading days do not.  The record implies a threshold of ≈ 30 Pa of added stress (≈ 14 mm SWE in 72 h on a 45° slope), with the release rate rising about 20-fold well above it.
+**Headline results** (see the notes for numbers and caveats): steepness alone does not separate the paths; wind landing sites do — Sister #2, the quiet path, has no W–NW landing area.  The stress model predicts natural-slab days (AUC 0.76) and which path releases on those days (0.74).  Days on which W–NW winds load a path's hotspot terrain put the paths in the same order as their natural counts; SW loading days do not.  The record implies a threshold of ≈ 30 Pa of added stress (≈ 14 mm SWE in 72 h on a 45° slope), with the release rate rising about 20-fold well above it.  The last 24 h of loading carry the timing signal (AUC 0.83), and every natural with a recorded time released while snowfall or wind transport was still loading the path — consistent with, but not proof of, natural slabs starting as slow shear failures.
 
 ---
 
@@ -148,7 +153,7 @@ data/
   avalanches/    CAIC exports and the merged Sisters record
   weather/       Hourly station data (from sql_util.py)
   masks/         Manual snow masks (earlier exploratory work)
-docs/            Research note (terrain_analysis_report.md)
+docs/            Research notes (terrain_analysis_report.md, release_mechanism_note.md)
 figures/         Outputs: figures, tables, KML, GeoTIFF
 sources/         Reference papers
 src/             Analysis scripts (above)
