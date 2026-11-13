@@ -92,7 +92,7 @@ def main():
     base = base.assign(season=base.day.dt.year + (base.day.dt.month >= 10))
 
     # ── 1–2. Day skill and path picking ───────────────────────────────────────
-    rows, boot_rows = [], []
+    rows = []
     for sc, col in (('72h window', 'margin_p99'), ('72h window', 'margin_2nd'), ('24h window', 'margin_2nd')):
         m = (base.scenario == sc).values
         d0 = base[m].reset_index(drop=True)
