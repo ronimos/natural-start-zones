@@ -70,6 +70,7 @@ python src/micromet_loading.py --site sisters            # wind loading, nucleat
 python src/event_stats.py --site sisters                 # bootstrap / permutation / period split
 python src/threshold_analysis.py --site sisters          # stress threshold, release rate, size
 python src/loading_days.py --site sisters                # loading days by wind direction vs natural days
+python src/loading_rate.py --site sisters                # 24/48/72-h loading windows; loading rate at fixed load
 ```
 
 `pipeline.py` runs before the wind model, so its text report includes the nucleation-potential summary only from the second run on (`python src/pipeline.py --site sisters --skip-process`).
@@ -91,6 +92,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `event_stats.py` | Exact permutation p-values (zone level), cluster bootstrap and date-shift tests (storm level) |
 | `threshold_analysis.py` | Stress threshold implied by the record; release rate vs excess stress; avalanche size |
 | `loading_days.py` | Days per season each wind direction loads each path's hotspot terrain, against natural days |
+| `loading_rate.py` | Whether the last 24 h of loading, or its concentration, predicts naturals beyond the 72-h load |
 | `terrain_util.py`, `avl_data.py` | DEM I/O and terrain attributes; avalanche CSV loading |
 
 ### Main outputs (`figures/`, prefix `seven_sisters_`)

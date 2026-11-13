@@ -625,7 +625,10 @@ def main():
                      for _, r in av.iterrows() if r['HW Path'] in path2zone}
     print(f"\nResets: {len(ctrl_days)} control days, {len(nat_path_days)} natural path-days")
 
-    scenarios = {'72h window': dict(kind='window'),
+    # 72h window is the primary test; 24h / 48h windows test loading rate.
+    scenarios = {'72h window': dict(kind='window', days=3),
+                 '48h window': dict(kind='window', days=2),
+                 '24h window': dict(kind='window', days=1),
                  'since control (all paths)': dict(kind='reset', scope='all', T=None),
                  'since control (released paths)': dict(kind='reset', scope='path', T=None),
                  'since control (all), 5-d settling': dict(kind='reset', scope='all', T=5.0),
@@ -641,13 +644,21 @@ def main():
         """{day: {zone: (new_snow_mm, wind_vec, load_vec)}} for evaluation days."""
         out = {}
         if sc['kind'] == 'window':
+            nd = sc.get('days', 3)
             for i, dd in enumerate(all_days):
                 if not eval_mask[i] or not valid_day.get(dd, False):
                     continue
-                win_d = all_days[max(0, i - 2):i + 1]
+                win_d = all_days[max(0, i - nd + 1):i + 1]
                 nsn = float(sum(new_day.get(x, 0.0) for x in win_d))
                 wv = sum((A_day.get(x, zero) for x in win_d), zero.copy())
                 out[dd] = {z_: (nsn, wv[zsel[z_]], (nsn + wv)[zsel[z_]]) for z_ in masks}
+                if nd == 3:
+                    # single-day loads: day d, d−1, d−2 (loading-rate analysis)
+                    parts = [all_days[i - k] if i - k >= 0 else None for k in range(3)]
+                    day_parts[dd] = {z_: [(float(new_day.get(x, 0.0)) if x is not None else 0.0,
+                                           (float(new_day.get(x, 0.0)) + A_day.get(x, zero))[zsel[z_]]
+                                           if x is not None else zero[zsel[z_]]) for x in parts]
+                                     for z_ in masks}
             return out
         decay = np.exp(-1.0 / sc['T']) if sc['T'] else 1.0
         zz = {z_: np.zeros(int(zsel[z_].sum()), 'f4') for z_ in masks}
@@ -682,6 +693,7 @@ def main():
     ev = av.assign(day=av['Date'].dt.normalize().dt.date, zone=av['HW Path'].map(path2zone))[['day', 'zone']]
     ev['natural'] = 1
     tests, zd_main, zd_all = [], None, []
+    day_parts = {}
     for sc_name, sc in scenarios.items():
         res = run_scenario(sc)
         # pooled thresholds from all zone-day cells (outcome-blind)
@@ -705,6 +717,12 @@ def main():
                                  loaded_hot_m2=float((loaded & (mz > q99)).sum() * a.res ** 2),
                                  area_gt_q95=float((mz > q95).sum() * a.res ** 2),
                                  area_gt_q99=float((mz > q99).sum() * a.res ** 2)))
+                if sc_name == '72h window' and dd in day_parts:
+                    # stress from each single day's load (d0 = release day)
+                    for k, (sn_k, ld_k) in enumerate(day_parts[dd][z_]):
+                        mk = np.sort(G * np.maximum(ld_k, 0) * shape_term[sel])
+                        rows[-1][f'swe_d{k}'] = sn_k
+                        rows[-1][f'margin_2nd_d{k}'] = float(mk[-2]) if mk.size > 1 else 0.0
         zd = pd.DataFrame(rows).merge(ev.drop_duplicates(), on=['day', 'zone'], how='left').fillna({'natural': 0})
         for col in ('swe_new_mm', 'wind_acc_p90', 'margin_p99', 'area_gt_q95', 'area_gt_q99',
                     'margin_p99_loaded', 'loaded_hot_m2'):
