@@ -12,7 +12,7 @@ Skier-triggered slabs are thought to start as a mixed-mode *anticrack*: a local,
 **The proposed sequence.**
 1. Where local shear stress passes a weak-layer threshold τ_thresh, a patch starts to fail and grows slowly. The paper puts the time to fast rupture at T ≈ α / (τ − τ_thresh), so it shortens as the excess stress grows.
 2. While it is small, the patch is confined and its growth is controlled by the stress threshold. Once it reaches the critical crack length, classical fracture mechanics take over and the crack runs. Confinement therefore matters only in the nucleation phase, not for the whole failure. Fast propagation can still involve weak-layer collapse, and on steep slopes it can become supershear (Trottet et al. 2022). How a slab *starts* and how the crack *propagates* are separate questions.
-3. Sintering competes with growth. A weak layer heals while the patch grows, so release needs loading to outpace healing. Rapid loading raises τ − τ_thresh quickly and shortens T. A patch whose edges keep moving also meets fresh, unsintered contacts. Both favour release during fast loading, consistent with the field rule that 30 cm in one day is far worse than 10 cm a day for three days. This is the classic shear-band picture of natural release (McClung 1979; Bader & Salm 1990) in the paper's terms.
+3. Sintering competes with growth. A weak layer heals while the patch grows, so release needs loading to outpace healing. Rapid loading raises τ − τ_thresh quickly and shortens T. A patch whose edges keep moving also meets fresh, unsintered contacts. Both favour release during fast loading, consistent with the field rule that 30 cm in one day is far worse than 10 cm a day for three days.
 
 **What the Sisters data show — consistent with this picture:**
 - Natural releases have a stress threshold (≈ 30 Pa of added shear-stress margin), and the release rate rises with the excess above it (§3.1).
@@ -20,10 +20,14 @@ Skier-triggered slabs are thought to start as a mixed-mode *anticrack*: a local,
 - In all 26 releases with a recorded time, loading was still going on, by snowfall or wind transport, mostly within hours of release. In 18 of 26 the modelled hotspot stress was still rising (§3.4). None released after loading had clearly stopped.
 - They were cold, dry storm releases (−4 to −19 °C), not warming events.
 
-**What the data cannot show.** None of this tells shear initiation from collapse initiation. On a given cell, shear and normal stress both scale with the same load, so any threshold model — a collapse-driven one included — predicts a threshold, a rate rising with the excess, and release during loading. The data are **consistent with, not evidence for,** shear-initiated natural release.
+**What timing alone cannot show.** None of the above tells shear initiation from collapse initiation. On a given cell, shear and normal stress both scale with the same load, so any threshold model — a collapse-driven one included — predicts a threshold, a rate rising with the excess, and release during loading.
 
-**Tests that could tell the two apart:**
-- **Normal-stress-only model.** Rerun the storm test with the stress margin replaced by normal stress alone (g·SWE·cos²θ). If the shear term (tanθ − μ) is what matters, day and path prediction should get worse. This uses the existing model.
+**What the normal-stress test adds (§3.5).** The only thing that separates the two is how the load is weighted across slopes: shear stress grows with slope, normal stress shrinks. The model was rerun with normal stress (g·SWE·cos²θ) in place of the shear margin, everything else unchanged.
+- **Timing is the same either way** (day AUC 0.75–0.76 at 72 h, 0.83–0.84 at 24 h): *when* a path releases is set by the load, whatever it is weighted by.
+- **Picking the path is better with shear.** On natural days, normal stress picks the released path less well (within-day AUC 0.66 vs 0.74, bootstrap p ≈ 0.02–0.06), and its zone pattern fits worse (ρ 0.56 vs 0.82; it expects 3.5 naturals on Sister #2, which had 1). Shear stress without friction does as well as the shear margin, so it is the shear weighting, not the friction angle, that matters.
+- So the data favour **shear stress, not normal load, as what decides where a natural releases**. That is consistent with shear-driven nucleation, but it doesn't prove it: shear also drives the slab to slide once the weak layer has failed, however the failure began. The effect is modest and rests on 32 natural days.
+
+**Tests that could tell the two apart further:**
 - **Excess stress vs time to release.** Slow shear nucleation predicts that larger excess stress shortens the delay to release. This needs more releases with accurate times.
 - **Field observation.** Bed-surface and crown geometry of naturals vs skier-triggered slabs, or seismic and acoustic monitoring for slow precursors in a start zone.
 
@@ -34,6 +38,7 @@ Skier-triggered slabs are thought to start as a mixed-mode *anticrack*: a local,
 - **The record implies a stress threshold, and the release rate grows with the excess above it — the paper's pattern.** The threshold that best separates natural days is ≈ 30 Pa of added stress margin from 72-h loading (95 % CI 26–67 Pa; ≈ 14 mm SWE of new load on a 45° slope). 29 of 32 naturals occurred on a day their path had a hotspot above it, and per-path hotspot days rank like natural counts (ρ = 0.82). Naturals are ~20× more frequent at > 80 Pa than below 30 Pa (+20 % odds per 10 Pa). Exceeding the threshold is close to necessary but far from sufficient (only 0.2–0.6 % of hotspot days release) — weak-layer state, not in the model, is the likely missing factor.
 - **The last 24 hours of loading carry the timing signal.** Stress from the release day's load predicts natural days better (AUC 0.83; 0.86 with known-date events) than the 72-h load (0.76), and once it is known the earlier 48 h add nothing. At equal 72-h stress, loading concentrated in one day looks ≈ 3× worse than spread loading, but that is not significant (p = 0.2).
 - **Timed releases happen during loading.** For the 26 naturals with a recorded release time, modelled hotspot stress rose from a median of 16 Pa at −12 h to 35 Pa at release, still rising in 18 of 26. Wind transport or snowfall was going on before every release (§3.4, anecdotal).
+- **Shear stress, not normal stress, picks the path.** Replacing the shear margin with normal stress leaves day prediction unchanged (AUC ≈ 0.75) but worsens path picking (within-day AUC 0.74 → 0.66) and the per-path pattern (ρ 0.82 → 0.56). Consistent with shear-driven nucleation, not proof of it (§3.5).
 - **Larger naturals follow higher hotspot stress, weakly.** Median hotspot stress rises from 39 Pa (D1) to 69 Pa (D1.5) and 93 Pa (D2); ρ = 0.32 with D size (p = 0.07), 0.43 (p = 0.015) without one wind-loaded D2.5 outlier.
 
 ---
@@ -150,6 +155,26 @@ This is anecdotal. There is no matching set of hourly storms without naturals; r
 
 *Figure 3. The same per storm, for all five paths. Bold lines with dots: released paths and release times. Faint dashed: paths that did not release. Grey: stress from snowfall alone at the steepest open cell — the gap above it is wind loading.*
 
+### 3.5 Shear or normal stress? (the stress-variant test)
+
+On any one cell, shear stress (g·SWE·sinθ cosθ), the shear margin (g·SWE·cos²θ·(tanθ − μ)) and normal stress (g·SWE·cos²θ) all scale with the same load, so they cannot be told apart from timing. They differ in how they weight slopes: the shear margin is zero at 30° and rises steeply with slope; normal stress is highest on the flattest cells. Which weighting picks the days, the paths and the per-path counts is the one available test of shear- vs collapse-driven release. The wind model was rerun with `--stress` set to each variant; snowfall, wind deposition, forest buffer, the 60° cap and the method for P99 thresholds (from each variant's own distribution) are unchanged (`src/stress_variant_test.py`).
+
+| Stress per unit load | Day AUC, 72 h (P99) | Day AUC, 24 h (hotspot) | Within-day AUC, 72 h (P99) | Within-day, 72 h (hotspot) | Per-path ρ (deviance) |
+|---|---|---|---|---|---|
+| **Shear margin** cos²θ(tanθ − μ) | **0.76** (0.68–0.82) | 0.83 | **0.74** (0.64–0.83) | **0.74** | **0.82** (2.8) |
+| Shear stress sinθ cosθ | 0.75 | 0.84 | 0.73 | 0.75 | 0.82 (2.2) |
+| Normal stress cos²θ, slopes > 30° | 0.75 | 0.84 | 0.66 (0.53–0.77) | 0.67 | 0.56 (4.2) |
+| Normal stress cos²θ, all slopes | 0.75 | 0.84 | 0.66 (0.53–0.77) | 0.66 | 0.56 (4.6) |
+
+*Expected natural days per path (#1 / #2 / #3 / #4 / #6; observed 8 / 1 / 12 / 3 / 8): shear margin 6.4 / 1.8 / 9.0 / 4.0 / 10.9; normal stress > 30° 9.2 / 3.4 / 8.1 / 3.0 / 8.3.*
+
+- **Timing doesn't discriminate.** Day AUCs agree within 0.015 at 72 h and 0.01 at 24 h. The normal-stress P99 is slightly but consistently lower at 72 h (paired bootstrap p = 0.005), slightly higher at 24 h (n.s.).
+- **Path picking does.** Normal stress drops the within-day AUC by 0.08 (paired bootstrap: p = 0.06 for the zone P99, 0.02–0.04 for the hotspot), and at 24 h by 0.06 (p ≈ 0.13). Pure shear stress matches the shear margin (difference ≤ 0.01).
+- **The per-path pattern does too.** Normal stress over-predicts Sister #2 (3.4–3.6 vs 1 observed) and Sister #1, and under-predicts Sister #6; ρ falls from 0.82 to 0.56 and the Poisson deviance rises from 2.8 to 4.2–4.6.
+- **Head to head.** The two predictors correlate at r = 0.99 across zone-days. With both in a logistic model of the 72-h zone P99, the shear margin keeps a positive coefficient (p < 0.001) and normal stress takes a negative one (p ≤ 0.001): what carries the signal is the *difference* between them — load on steeper cells. For the hotspot cell and for the 24-h window the two can't be separated (p > 0.3).
+
+**Reading.** The data favour shear stress as what decides **where** a natural slab releases; they say nothing about **when** beyond the load itself. Even restricting normal stress to slopes > 30° — the slopes where a slab can slide — leaves it worse, so the result is not just "slabs need steep ground". This is what shear-driven nucleation predicts. It is not proof of it: once a weak layer fails by collapse, shear stress still drives the slab to slide, so a steeper-weighted predictor would also favour collapse-started slabs that only release where the slope can carry them. The differences are modest (bootstrap p 0.02–0.06 for path picking, on 32 natural days), and four variants and several metrics were compared.
+
 ---
 
 ## 4. Limitations
@@ -159,14 +184,14 @@ This is anecdotal. There is no matching set of hourly storms without naturals; r
 - **Weak-layer state is not modelled.** This is the most likely reason exceeding the stress threshold rarely produces a natural (§3.1).
 - **Observation timing.** Two-thirds of 2009–2021 naturals were logged on a control day or the day after; naturals are seen when observers are out, mostly during and just after storms. Many dates are estimated, and only 26 records have a release time.
 - **Daily vs hourly.** The 24/48/72-h windows are calendar days and include load after the release (§3.4). Release times are converted as MST, so March–May times may be an hour off.
-- **Shear vs collapse.** The stress margin is a shear-minus-friction quantity, but on a given cell shear and normal stress scale with the same load, so these results don't separate shear from collapse initiation (Foreword).
+- **Shear vs collapse.** On a given cell shear and normal stress scale with the same load, so timing can't separate them; only the slope weighting can (§3.5). That test favours shear but can't separate shear-driven initiation from shear-driven sliding after a collapse.
 
 ---
 
 ## 5. Next steps
 
-1. **Normal-stress-only stress model**: rerun the storm test with normal stress (g·SWE·cos²θ) in place of the shear margin. If day and path prediction get worse, that is evidence that the shear term — and shear initiation — matters (Foreword).
-2. **Excess stress vs time to release**: slow shear nucleation predicts that a larger excess stress shortens the delay between the start of loading and release. Rebuild the release-day window to end at the release time, and collect more releases with accurate times.
+1. **Excess stress vs time to release**: slow shear nucleation predicts that a larger excess stress shortens the delay between the start of loading and release. Rebuild the release-day window to end at the release time, and collect more releases with accurate times.
+2. **Separate initiation from sliding**: the stress-variant test (§3.5) can't tell shear-driven initiation from shear-driven sliding after a collapse. Repeat it with the slope gate raised (e.g. normal stress only on slopes > 35°) and with patch-scale stress (hotspots at the critical-crack-length scale vs whole-slab driving stress), to see which scale carries the shear signal.
 3. **Weak-layer information**: add a snowpack indicator (e.g. persistent weak layer present, from CAIC observations or a snowpack model such as SNOWPACK driven by CALVP/LBAC2) to the threshold analysis — the step most likely to turn "threshold exceeded" into "release likely".
 4. **Observation timing**: two-thirds of naturals were logged on a control day or the day after, so the record is tied to when crews are out. A CDOT mission log (including missions without results, and after 2021) would let control be modelled properly — as both a slab-removal and an observation process — instead of as simple censoring (§3.1).
 5. **Field observation**: bed-surface and crown geometry of naturals vs skier-triggered slabs; seismic or acoustic monitoring for slow precursors in a start zone such as Sister #1's west wall.
@@ -181,14 +206,16 @@ Run the wind model and storm test first (see the [companion note](terrain_analys
 python src/threshold_analysis.py --site sisters                   # stress threshold, release rate, size (§3.1–3.2)
 python src/loading_rate.py --site sisters                         # 24/48/72-h windows, loading rate (§3.3)
 python src/event_stress_timeline.py --site sisters                # hourly stress before timed releases (§3.4)
+for v in normal normal30 shear; do                                # stress variants (§3.5), ~7 min each
+    python src/micromet_loading.py --site sisters --stress $v --tag _st_$v
+done
+python src/stress_variant_test.py --site sisters                  # shear vs normal stress (§3.5)
 ```
 
 ## References
 
-- Bader, H.-P. & Salm, B. (1990). On the mechanics of snow slab release. *Cold Regions Science and Technology* 17, 287–300.
 - Colorado Avalanche Information Center (CAIC) highway observer database, 2009–2021, and CAIC avalanche records export, 2026.
 - Gaume, J., Gast, T., Teran, J., van Herwijnen, A. & Jiang, C. (2018). Dynamic anticrack propagation in snow. *Nature Communications* 9, 3047.
 - Gvirtzman, S., Kammer, D. S., Adda-Bedia, M. & Fineberg, J. (2025). How frictional ruptures and earthquakes nucleate and evolve. *Nature* 637, 369–374. https://doi.org/10.1038/s41586-024-08287-y
 - Heierli, J., Gumbsch, P. & Zaiser, M. (2008). Anticrack nucleation as triggering mechanism for snow slab avalanches. *Science* 321, 240–243.
-- McClung, D. M. (1979). Shear fracture precipitated by strain softening as a mechanism of dry slab avalanche release. *Journal of Geophysical Research* 84(B7), 3519–3526.
 - Trottet, B., Simenhois, R., Bobillier, G., Bergfeld, B., van Herwijnen, A., Jiang, C. & Gaume, J. (2022). Transition from sub-Rayleigh anticrack to supershear crack propagation in snow avalanches. *Nature Physics* 18, 1094–1098.

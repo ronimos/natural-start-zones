@@ -420,6 +420,8 @@ def main():
     ap.add_argument('--window-h', type=int, default=72)
     ap.add_argument('--buffer', type=float, default=1300.0)
     ap.add_argument('--tag', default='', help='suffix for output names (sensitivity runs)')
+    ap.add_argument('--stress', default='margin', choices=['margin', 'normal', 'normal30', 'shear'],
+                    help='stress per unit load: shear margin (default) or a variant for the shear-vs-normal test')
     ap.add_argument('--forest-buffer', type=float, default=4.0,
                     help='cells within this distance (m) of canopy carry no slab stress')
     ap.add_argument('--landing-mm', type=float, default=5.0,
@@ -563,8 +565,17 @@ def main():
     # at the tree line (found while checking Sister #2, whose few extreme
     # deposition cells — 70 % of its deposition — all sit at forest edges).
     near_forest = ndi.binary_dilation(forest, iterations=max(1, int(round(a.forest_buffer / a.res))))
-    shape_full = (np.cos(sl) ** 2 * np.clip(np.tan(sl) - mu, 0, None)
-                  * np.clip((60 - slope_deg) / 10, 0, 1)) * ~near_forest
+    # Stress per unit load (--stress): 'margin' = cos²θ·(tanθ − μ), the
+    # shear excess over friction (default); 'normal' = cos²θ, normal stress
+    # only, on every slope; 'normal30' = cos²θ on slopes steeper than μ (same
+    # cells as 'margin', without the shear weighting); 'shear' = sinθ·cosθ.
+    # The variants test whether the shear term carries the skill.
+    steep_enough = np.tan(sl) > mu
+    per_load = {'margin': np.cos(sl) ** 2 * np.clip(np.tan(sl) - mu, 0, None),
+                'normal': np.cos(sl) ** 2,
+                'normal30': np.cos(sl) ** 2 * steep_enough,
+                'shear': np.sin(sl) * np.cos(sl)}[a.stress]
+    shape_full = per_load * np.clip((60 - slope_deg) / 10, 0, 1) * ~near_forest
     shape_term = shape_full.ravel()[zc]
     zone_of = np.full(len(zc), '', dtype=object)
     for name, m in masks.items():

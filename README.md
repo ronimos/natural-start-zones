@@ -81,7 +81,7 @@ python src/event_stress_timeline.py --site sisters       # hourly hotspot stress
 
 `pipeline.py` runs before the wind model, so its text report includes the nucleation-potential summary only from the second run on (`python src/pipeline.py --site sisters --skip-process`).
 
-MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` (saturation length, m) with `--tag _eta15` etc. to keep outputs apart.  `--plot-only` redraws figures and re-exports the nucleation GeoTIFF/KML from the saved grids without rerunning the model.
+MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` (saturation length, m) with `--tag _eta15` etc. to keep outputs apart.  Stress variants for the shear-vs-normal test: `--stress normal|normal30|shear --tag _st_normal` etc., then `python src/stress_variant_test.py --site sisters`.  `--plot-only` redraws figures and re-exports the nucleation GeoTIFF/KML from the saved grids without rerunning the model.
 
 ### Scripts
 
@@ -99,6 +99,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `threshold_analysis.py` | Stress threshold implied by the record; release rate vs excess stress; avalanche size |
 | `loading_days.py` | Days per season each wind direction loads each path's hotspot terrain, against natural days |
 | `loading_rate.py` | Whether the last 24 h of loading, or its concentration, predicts naturals beyond the 72-h load |
+| `stress_variant_test.py` | Shear margin vs normal stress vs pure shear as the stress per unit load: day skill, path picking, per-path pattern (needs the `--stress` runs of `micromet_loading.py`) |
 | `event_stress_timeline.py` | Hour-by-hour hotspot stress (snowfall + MicroMet wind deposition) from 24 h before each natural with a release time, plus station weather around release |
 | `terrain_util.py`, `avl_data.py` | DEM I/O and terrain attributes; avalanche CSV loading |
 
