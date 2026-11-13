@@ -71,6 +71,7 @@ python src/event_stats.py --site sisters                 # bootstrap / permutati
 python src/threshold_analysis.py --site sisters          # stress threshold, release rate, size
 python src/loading_days.py --site sisters                # loading days by wind direction vs natural days
 python src/loading_rate.py --site sisters                # 24/48/72-h loading windows; loading rate at fixed load
+python src/event_stress_timeline.py --site sisters       # hourly hotspot stress before timed releases (~1 min)
 ```
 
 `pipeline.py` runs before the wind model, so its text report includes the nucleation-potential summary only from the second run on (`python src/pipeline.py --site sisters --skip-process`).
@@ -93,6 +94,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `threshold_analysis.py` | Stress threshold implied by the record; release rate vs excess stress; avalanche size |
 | `loading_days.py` | Days per season each wind direction loads each path's hotspot terrain, against natural days |
 | `loading_rate.py` | Whether the last 24 h of loading, or its concentration, predicts naturals beyond the 72-h load |
+| `event_stress_timeline.py` | Hour-by-hour hotspot stress (snowfall + MicroMet wind deposition) from 24 h before each natural with a release time, plus station weather around release |
 | `terrain_util.py`, `avl_data.py` | DEM I/O and terrain attributes; avalanche CSV loading |
 
 ### Main outputs (`figures/`, prefix `seven_sisters_`)
@@ -107,6 +109,7 @@ MicroMet sensitivity runs: `--eta 15|60` (curvature length, m) or `--lf 50|200` 
 | `stress_hotspots.png` | Fetch-index stress hotspots |
 | `threshold_analysis.png` | Skill vs stress threshold; hotspot days vs natural days per path |
 | `loading_days.png` | Loading days per season by wind direction and path, with natural days |
+| `event_stress_timeline.png`, `event_stress_panels.png` | Hotspot stress from 24 h before each timed natural, aligned at release and per storm |
 | `report.txt` | Zone terrain metrics, correlations and nucleation-potential summary |
 | `*.csv` | Tables behind every result in the report |
 
